@@ -1,0 +1,29 @@
+'<a href="production.html" id="" onclick="setTarget(this.id)"></a>
+    <div class="timer-a-container newtimer">
+        <div class="timer-label text-center">
+            <h3 class="mt-2"></h3>
+            <h3></h3>
+            <button class="timer-remove"
+                onclick="event.preventDefault();destroy(timer_id)">
+                <i class="fa-solid fa-square-minus"></i>
+            </button>
+        </div>
+        <div class="timer-details text-center container-fluid">
+            <div class="row">
+                <div class="col border-end">
+                    <h5>Productivity /Rate per Hour</h5>
+                    <h3 id="totalrate">??/Hour</h3>
+                </div>
+                <div class="col border-end">
+                    <h5>Total Task Submitted</h5>
+                    <h3 id="totaltask">??? submits</h3>
+                </div>
+                <hr class="d-block d-md-none" />
+                <div class="col-12 col-md-4 border-end">
+                    <h5>Total Working Hours</h5>
+                    <h3 id="totaltime">?? Hour/s ?? Min/s</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>'

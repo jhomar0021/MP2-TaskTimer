@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    padding: 0;
+    /* background-image: linear-gradient(to right, rgb(238, 9, 238),pink );  */
+    background-attachment: fixed;
+}
+.navbar {
+
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.logo,.logo-icon{
+    height: 3vw;
+    min-height: 5vh;
+    margin-left: 1vw;
+}
+.navitems{
+    display: flex;
+    justify-content: space-between;
+}
+.navitem {
+    margin-left: 5vw;
+    color: white;
+}
+.loginprompt{
+    margin-right: 1vw;
+}
+.loginprompt button{
+    background-color: white;
+    color: blueviolet;
+    border: none;
+    margin-left: 1vw;
+}
+.navitem,.loginprompt{
+    font-size: max(1vw,2.5vh);
+    
+}
+.modal-dialog{
+    background-color: blueviolet;
+}

@@ -1,0 +1,169 @@
+.sidebar{
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: fixed;
+    min-width: 40px;
+}
+.sidebar-label{
+    height: 30px;
+    color: aliceblue;
+    font-weight: bold;
+}
+.uploadpic{
+margin-top: 3vh;
+width: 90%;
+height: auto;
+border: solid aliceblue;
+border-radius: 50%;
+background-color: aliceblue;
+}
+.listed-items{
+    color: aliceblue;
+    background-color: transparent;
+    display: block;
+    list-style-type: none;
+    transition: .5s;
+}
+.listed-items:hover{
+    background-color: white;
+    color: blueviolet;
+    border-radius: 10px;
+}
+a{
+    text-decoration: none;
+}
+.logout {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    color: aliceblue;
+    border: none;
+    transition: 0.2ms;
+}
+.logout:hover{
+    background-color: aliceblue;
+    color: blueviolet;
+}
+.logout:active{
+    border-radius: 10px;
+}
+header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    color: black;
+    font-size: 30px;
+    border-bottom: solid blueviolet;
+}
+.page-label{
+    margin-left: 5vw;
+    font-weight: 900;
+}
+.task-add{
+    border: solid black;
+    border-radius: 20px;
+    color: black;
+    overflow: hidden;
+}
+.add-taskbutton{
+    overflow: hidden;
+}
+.add-item-label{
+    background-color: blueviolet;
+    width: 100%;
+    border-bottom: solid black;
+
+}
+.add-task{
+    width: 85%;
+    border: solid black;
+    border-radius: 15px;
+    transition: .2s;
+}
+.add-task:hover{
+    color: blueviolet;
+    width: 90%;
+    border: solid black;
+}
+.add-task:active{
+    color: black;
+    background-color: blueviolet;
+}
+
+.button-label{
+    display: inline;
+}
+.timer-a-container {
+    margin-top: 3vh;
+    width: 100%;
+    border: solid black;
+    border-radius: 20px;
+    background-color: white;
+    overflow: hidden;
+    text-decoration: none;
+    
+}
+
+.timer-label {
+    color: black;
+    width: 103%;
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    min-height: 35px;
+    background-color: blueviolet;
+    border-bottom: solid black;
+}
+
+.timer-details{
+color: black;
+display: block;
+word-wrap: none;
+height: 100%;
+margin-top: 3vh;
+margin-bottom: 3vh;
+}
+.timer-details-item{
+    border: black;
+    min-height: 20vh;
+}
+.timer-remove{
+    color: white;
+    margin-right: 3%;
+    border: solid blueviolet;
+    background-color: transparent;
+    transition: .5s;
+}
+.timer-remove:hover {
+    color: blueviolet;
+    margin-right: 3%;
+    border: solid blueviolet;
+    background-color: #fff;
+    border-radius: 50px;
+
+}
+#calendar{
+    font-size: max(1vw,10px);
+}
+.addtimermodal{
+    background-color: blueviolet;
+    border: solid black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.modalclose {
+    border: none;
+    background-color: blueviolet;
+    color: #fff;
+    border-radius: 30px;
+}
+.modalclose:hover{
+    color: blueviolet;
+    background-color: #fff;
+}
+.atmodalbody {
+    background-color: #fff;
+}
