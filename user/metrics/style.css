@@ -1,0 +1,25 @@
+.graph{
+    border: solid;
+    border-right: 0;
+    display: flex;
+    justify-content: space-between;
+    height: 50vh;
+}
+.graphline{
+    border-right: solid black;
+    background-color: white;
+    width: 12.5%;
+    height: 100%;
+}
+.gridgraph {
+    margin-top: 50px;
+    height: 20vh;
+    display: grid;
+    grid-template-columns: repeat(3600,1fr);
+    background-color: aqua;
+}
+.gridgraphitem{
+    grid-row: 2/3;
+    background-color: green;
+    height: 30%;
+}
