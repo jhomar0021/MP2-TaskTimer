@@ -13,6 +13,9 @@ let int = null;
 let workTime = 0;
 let submittedTask = 0;
 let currentSession =null;
+let start = "";
+let startValue = "";
+let recorded = false;
 
 const urlParams = new URLSearchParams(window.location.search);
 console.log(urlParams);
@@ -26,7 +29,7 @@ document.getElementById("task-start").addEventListener("click", () => {
     startBtn.classList.add("d-none");
     submitBtn.classList.remove("d-none");
     endBtn.classList.remove("d-none");
-    sessionStore();
+    stampStart();
 });
 
 document.getElementById("task-resume").addEventListener("click", () => {
@@ -37,13 +40,20 @@ document.getElementById("task-resume").addEventListener("click", () => {
     resumeBtn.classList.add("d-none");
     submitBtn.classList.remove("d-none");
     endBtn.classList.remove("d-none");
-    sessionStore();
+    stampStart();
 });
 document.getElementById("task-submit").addEventListener("click", () => {
     
     if([seconds, minutes, hours, days] !== [0,0,0,0]){
         [seconds, minutes, hours, days] = [0, 0, 0, 0];
         timeRef.innerHTML = "00:00:00";
+        if(recorded == false){
+            recorded = true;
+            sessionStore();
+        }
+        else{
+            console.log("Updating Session")
+        }
         submittedTask +=1 ;
         document.getElementById("submit-counter-display").innerHTML = submittedTask;
         taskSubmit();
@@ -59,6 +69,13 @@ document.getElementById("end-session").addEventListener("click", () => {
     clearInterval(int);
     [seconds, minutes, hours, days] = [0, 0, 0, 0];
     timeRef.innerHTML = "00:00:00";
+        if(recorded == false){
+            sessionStore();
+        }
+        else{
+            console.log("Updating Session")
+            recorded = false;
+        }
     submittedTask +=1 ;
     int = null;
     document.getElementById("submit-counter-display").innerHTML = submittedTask;
@@ -80,6 +97,13 @@ document.addEventListener('keydown', (event) => {
             if([seconds, minutes, hours, days] !== [0,0,0,0]){
                 [seconds, minutes, hours, days] = [0, 0, 0, 0];
                 timeRef.innerHTML = "00:00:00";
+                if(recorded == false){
+                    recorded = true;
+                    sessionStore();
+                }
+                else{
+                    console.log("Updating Session")
+                }
                 submittedTask +=1 ;
                 document.getElementById("submit-counter-display").innerHTML = submittedTask;              
                 taskSubmit();
@@ -91,7 +115,7 @@ document.addEventListener('keydown', (event) => {
             startBtn.classList.add("d-none");
             submitBtn.classList.remove("d-none");
             endBtn.classList.remove("d-none");
-            sessionStore();
+            stampStart();
         }
 
     }
@@ -194,14 +218,17 @@ function taskSubmit(){
     });
 };
 
-function sessionStore (){
+function stampStart(){
     var sessionStartDate = new Date(); 
-                
-    var month = sessionStartDate.getMonth()+1;
-    if(month < 10){
-        month = "0"+month;
+    var month;           
+    var shortMonth = sessionStartDate.getMonth()+1;
+    if(shortMonth < 10){
+        month = "0"+shortMonth;
     }
-    var start = 
+    else{
+        month = shortMonth;
+    }
+    start = 
         sessionStartDate.getFullYear()+"-"
         + month+"-"
         + sessionStartDate.getDate()+" "
@@ -209,9 +236,18 @@ function sessionStore (){
         + sessionStartDate.getMinutes() +":"
         + sessionStartDate.getSeconds();
     
-    var startValue = sessionStartDate.getHours()*60 + sessionStartDate.getMinutes();
-    
-    currentSession = timer_id + sessionStartDate.getFullYear()+ month+sessionStartDate.getDate() + startValue;
+    startValue = sessionStartDate.getHours()*60 + sessionStartDate.getMinutes();
+    var year = '"'+sessionStartDate.getFullYear()+'"';
+    var shortYear = year.slice(3,5);
+
+    currentSession = timer_id + shortYear + shortMonth +sessionStartDate.getDate() + startValue + sessionStartDate.getSeconds();
+
+    console.log("session:"+ currentSession+" has started, start time is "+start+" with start value of "+startValue);
+    console.log(year);
+    console.log(shortYear);
+}
+
+function sessionStore (){
 
     let sessionRecord = { 
         "session_start" : start,
