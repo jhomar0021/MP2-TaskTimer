@@ -12,6 +12,7 @@ let tabTitle = document.querySelector('.tab-title');
 let int = null;
 let workTime = 0;
 let submittedTask = 0;
+let currentSession =null;
 
 const urlParams = new URLSearchParams(window.location.search);
 console.log(urlParams);
@@ -20,13 +21,12 @@ let timer_id = urlParams.get('q');
 
 
 document.getElementById("task-start").addEventListener("click", () => {
-    // if(int !== null) {
-    //     clearInterval(int);
-    // }
+
     int = setInterval(displayTimer, 1000);
     startBtn.classList.add("d-none");
     submitBtn.classList.remove("d-none");
     endBtn.classList.remove("d-none");
+    sessionStore();
 });
 
 document.getElementById("task-resume").addEventListener("click", () => {
@@ -37,6 +37,7 @@ document.getElementById("task-resume").addEventListener("click", () => {
     resumeBtn.classList.add("d-none");
     submitBtn.classList.remove("d-none");
     endBtn.classList.remove("d-none");
+    sessionStore();
 });
 document.getElementById("task-submit").addEventListener("click", () => {
     
@@ -46,7 +47,7 @@ document.getElementById("task-submit").addEventListener("click", () => {
         submittedTask +=1 ;
         document.getElementById("submit-counter-display").innerHTML = submittedTask;
         taskSubmit();
-    
+        sessionUpdate();
     }
     else{
         false;
@@ -67,6 +68,7 @@ document.getElementById("end-session").addEventListener("click", () => {
     endBtn.classList.add("d-none");
     document.getElementById("tab-title").innerHTML = `On Break`;
     taskSubmit();
+    sessionUpdate();
 
 });
 
@@ -81,6 +83,7 @@ document.addEventListener('keydown', (event) => {
                 submittedTask +=1 ;
                 document.getElementById("submit-counter-display").innerHTML = submittedTask;              
                 taskSubmit();
+                sessionUpdate();
             }
         }
         else{
@@ -88,6 +91,7 @@ document.addEventListener('keydown', (event) => {
             startBtn.classList.add("d-none");
             submitBtn.classList.remove("d-none");
             endBtn.classList.remove("d-none");
+            sessionStore();
         }
 
     }
@@ -189,3 +193,78 @@ function taskSubmit(){
         }
     });
 };
+
+function sessionStore (){
+    var sessionStartDate = new Date(); 
+                
+    var month = sessionStartDate.getMonth()+1;
+    if(month < 10){
+        month = "0"+month;
+    }
+    var start = 
+        sessionStartDate.getFullYear()+"-"
+        + month+"-"
+        + sessionStartDate.getDate()+" "
+        + sessionStartDate.getHours() +":"
+        + sessionStartDate.getMinutes() +":"
+        + sessionStartDate.getSeconds();
+    
+    var startValue = sessionStartDate.getHours()*60 + sessionStartDate.getMinutes();
+    
+    currentSession = timer_id + sessionStartDate.getFullYear()+ month+sessionStartDate.getDate() + startValue;
+
+    let sessionRecord = { 
+        "session_start" : start,
+        "start_value" : startValue,
+        "timer_id" : timer_id,
+        "id" : currentSession
+    }
+
+    $.ajax({
+        "url" : TIMER_API, //URL of the API
+        "type" : "POST", //GET and POST 
+        "data" : "timersessionstart=" + JSON.stringify(sessionRecord), //auth will be our php variable $_POST['auth']
+        "success" : function (response) { //success yung response
+            console.log(response)
+        },
+        "error" : function (xhr, status, error) { //error yung response
+            alert("Error")
+        }
+    });
+}
+
+function sessionUpdate (){
+    var sessionEndDate = new Date(); 
+                
+    var month = sessionEndDate.getMonth()+1;
+    if(month < 10){
+        month = "0"+month;
+    }
+    var end = 
+        sessionEndDate.getFullYear()+"-"
+        + month+"-"
+        + sessionEndDate.getDate()+" "
+        + sessionEndDate.getHours() +":"
+        + sessionEndDate.getMinutes() +":"
+        + sessionEndDate.getSeconds();
+    
+    var endValue = sessionEndDate.getHours()*60 + sessionEndDate.getMinutes();
+    
+    let sessionRecord = { 
+        "session_end" : end,
+        "end_value" : endValue,
+        "id" : currentSession
+    }
+
+    $.ajax({
+        "url" : TIMER_API, //URL of the API
+        "type" : "POST", //GET and POST 
+        "data" : "timersessionend=" + JSON.stringify(sessionRecord), //auth will be our php variable $_POST['auth']
+        "success" : function (response) { //success yung response
+            console.log(response)
+        },
+        "error" : function (xhr, status, error) { //error yung response
+            alert("Error")
+        }
+    });
+}
