@@ -7,16 +7,22 @@ let [wseconds, wminutes, whours] = [0, 0, 0];
 let timeRef = document.querySelector(".timer-display");
 let wtimeRef = document.querySelector(".wtimer-display");
 let workTimer = document.querySelector(".work-time-display")
+let submitDisplay = document.getElementById("submit-counter-display")
 let tabTitle = document.querySelector('.tab-title');
 let int = null;
 let workTime = 0;
 let submittedTask = 0;
 
+const urlParams = new URLSearchParams(window.location.search);
+console.log(urlParams);
+
+let timer_id = urlParams.get('q');
+
 
 document.getElementById("task-start").addEventListener("click", () => {
-    if(int !== null) {
-        clearInterval(int);
-    }
+    // if(int !== null) {
+    //     clearInterval(int);
+    // }
     int = setInterval(displayTimer, 1000);
     startBtn.classList.add("d-none");
     submitBtn.classList.remove("d-none");
@@ -39,48 +45,55 @@ document.getElementById("task-submit").addEventListener("click", () => {
         timeRef.innerHTML = "00:00:00";
         submittedTask +=1 ;
         document.getElementById("submit-counter-display").innerHTML = submittedTask;
+        taskSubmit();
+    
     }
     else{
         false;
     }
 }); 
 
-
-
-
-// document.addEventListener('keydown', (event) => {
-//     var name = event.key;
-//     if (name === ' ') {
-
-//         if(int !== null){
-//         [seconds, minutes, hours, days] = [0, 0, 0, 0];
-//         timeRef.innerHTML = "00:00:00";
-//         submittedTask +=1 ;
-//         document.getElementById("submit-counter-display").innerHTML = submittedTask;
-//         }
-
-//     }
-//     else{
-//         int = setInterval(displayTimer, 1000);
-//         startBtn.classList.add("d-none");
-//         returnBtn.classList.add("d-none");
-//         submitBtn.classList.remove("d-none");
-//         endBtn.classList.remove("d-none");
-//     }  
-//     }
-//  );
-
 document.getElementById("end-session").addEventListener("click", () => {
+    
     clearInterval(int);
     [seconds, minutes, hours, days] = [0, 0, 0, 0];
     timeRef.innerHTML = "00:00:00";
     submittedTask +=1 ;
     int = null;
     document.getElementById("submit-counter-display").innerHTML = submittedTask;
+
     resumeBtn.classList.remove("d-none");
     submitBtn.classList.add("d-none");
     endBtn.classList.add("d-none");
+    document.getElementById("tab-title").innerHTML = `On Break`;
+    taskSubmit();
+
 });
+
+
+document.addEventListener('keydown', (event) => {
+    var name = event.key;
+    if (name === ' ') {
+        if(int !== null){
+            if([seconds, minutes, hours, days] !== [0,0,0,0]){
+                [seconds, minutes, hours, days] = [0, 0, 0, 0];
+                timeRef.innerHTML = "00:00:00";
+                submittedTask +=1 ;
+                document.getElementById("submit-counter-display").innerHTML = submittedTask;              
+                taskSubmit();
+            }
+        }
+        else{
+            int = setInterval(displayTimer, 1000);
+            startBtn.classList.add("d-none");
+            submitBtn.classList.remove("d-none");
+            endBtn.classList.remove("d-none");
+        }
+
+    }
+    }
+ );
+
 
 function displayTimer() {
     workTime +=1;
@@ -125,7 +138,8 @@ function displayTimer() {
 
     timeRef.innerHTML = `${h}:${m}:${s}`;
 
-    // document.getElementById("tab-title").innerHTML = `${h}:${m}:${s}`;
+
+    document.getElementById("tab-title").innerHTML = `${h}:${m}:${s}`;
 
     let wh = whours < 10 ? "0" + whours : whours;
     let wm = wminutes < 10 ? "0" + wminutes : wminutes;
@@ -141,4 +155,37 @@ function displayTimer() {
     let wtm = Math.round(((submittedTask / (workTime/60))*60)*10)/10;
 
     workTimer.innerHTML = `${wtm}`;
+};
+
+function taskSubmit(){
+    var currentdate = new Date(); 
+                
+    var month = currentdate.getMonth()+1;
+    if(month < 10){
+        month = "0"+month;
+    }
+    var datetime = 
+        currentdate.getFullYear()+"-"
+        + month+"-"
+        + currentdate.getDate()+" "
+        + currentdate.getHours() +":"
+        + currentdate.getMinutes() +":"
+        + currentdate.getSeconds();
+    
+    let recordsubmit = { 
+        "time_stamp" : datetime,
+        "timer_id" : timer_id
+    }
+
+    $.ajax({
+        "url" : TIMER_API, //URL of the API
+        "type" : "POST", //GET and POST 
+        "data" : "submits=" + JSON.stringify(recordsubmit), //auth will be our php variable $_POST['auth']
+        "success" : function (response) { //success yung response
+            console.log(response)
+        },
+        "error" : function (xhr, status, error) { //error yung response
+            alert("Error")
+        }
+    });
 };

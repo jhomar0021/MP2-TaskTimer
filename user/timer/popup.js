@@ -25,6 +25,9 @@ pipButton.addEventListener("click", async () => {
         let placeHolder2= document.createElement("div");
         let placeHolderStyle = document.createElement("link");
         let placeHolderStyle2 = document.createElement("link");
+        let tabTitle = document.createElement("title")
+        tabTitle.setAttribute("id","tab-title")
+        placeHolder.setAttribute("id","submit-counter-display")
         placeHolder2.classList.add("timer-display");
         placeHolderStyle.setAttribute("rel","stylesheet");
         placeHolderStyle.setAttribute("href","style-watch.css");
@@ -33,18 +36,20 @@ pipButton.addEventListener("click", async () => {
         placeHolderStyle2.setAttribute("integrity","sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM");
         placeHolderStyle2.setAttribute("href","https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
         playerContainerHead.appendChild(placeHolderStyle);
+        playerContainerHead.appendChild(tabTitle);
         playerContainerHead.appendChild(placeHolderStyle2);
         playerContainer.appendChild(placeHolder);
         playerContainer.appendChild(placeHolder2);
         placeHolder2.innerHTML = "00:00:00";
-
+        placeHolder.innerHTML = "0";
 
         function updateDisplay (){
             placeHolder2.innerHTML = pipWindow.document.getElementById("timer-display").innerHTML;
+            pipWindow.document.getElementById("submit-counter-display").innerText =placeHolder.innerText;
         }
 
         updateDisplay();
-        var updateDisplayinterval = setInterval(updateDisplay,1000);
+        var updateDisplayinterval = setInterval(updateDisplay,500);
         
 
         // Move the player back when the Picture-in-Picture window closes.
@@ -74,13 +79,4 @@ pipButton.addEventListener("click", async () => {
 
   });
 
-  const urlParams = new URLSearchParams(window.location.search);
-  console.log(urlParams);
-  
-  show(urlParams.get('q'))
-  function show(id){
-
-      console.log(id);
-      $("#frameID").text(id);
-  };
   
