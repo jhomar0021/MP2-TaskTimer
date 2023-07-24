@@ -243,8 +243,6 @@ function stampStart(){
     currentSession = timer_id + shortYear + shortMonth +sessionStartDate.getDate() + startValue + sessionStartDate.getSeconds();
 
     console.log("session:"+ currentSession+" has started, start time is "+start+" with start value of "+startValue);
-    console.log(year);
-    console.log(shortYear);
 }
 
 function sessionStore (){
