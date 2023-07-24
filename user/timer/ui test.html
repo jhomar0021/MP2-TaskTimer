@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" id="playerContainer">
+<div id="player">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="origin-trial"
+            content="AoyF8jLx/syWIYhj1k3HM4tLVs7WYV5G6jzTu9V2IUYgDawjrF6ipMruqRpV5VxKB2oFtJIn7MiOBX3LoUX4iwUAAAB7eyJvcmlnaW4iOiJodHRwczovL2luZmluaXR5ZnJlZWFwcC5jb206NDQzIiwiZmVhdHVyZSI6IkRvY3VtZW50UGljdHVyZUluUGljdHVyZUFQSSIsImV4cGlyeSI6MTY5NDEzMTE5OSwiaXNTdWJkb21haW4iOnRydWV9">
+        <title id="tab-title">Production</title>
+        <link rel="stylesheet" href="test.css">
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+        <header></header>
+        <div class="d-none">
+            <h1 id="frameID">ID:</h1>
+        </div>
+        <div class="gridlayout">
+            <div class="master-timer bigbox">
+                <div class="text-end me-4 mt-3">
+                    <button id="pipButton" class="pipButton" onclick="buttonHide()">
+                        <img src="../../assets/img/pop-up-window.png" alt="floating-window" class="pipButton-icon"
+                            id="pipButton-icon">
+                    </button>
+                </div>
+
+                <div class="mx-0 timer-display text-center" id="timer-display">
+                    00:00:00
+                </div>
+                <div class="buttons bigbox-btn container text-center" id="btnHolder">
+                    <div class="">
+                        <div class=""><button id="task-start" class="task-start button">Start Session</button></div>
+                        <div class=""><button id="task-submit" class="task-submit button d-none">Submit</button></div>
+                        <div class=""><button id="end-session" class="end-session button d-none">Submit & Stop
+                                Working</button></div>
+                        <div class=""><button id="task-resume" class="task-resume button d-none">Resume Session</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="metrics-box medbox text-center">
+                <p class="mb-text">Production Time</p>
+                <div class="text-center">
+                    <p class="wtimer-display display">00:00:00</p>
+                </div>
+            </div>
+            <div class="metrics-box smbox1 text-center">
+                <div>
+                    <p class="mb-text">Submitted</p>
+                    <div class="">
+                        <p id="submit-counter-display" class="display submit-counter-display">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-box smbox2 text-center">
+                <div>
+                    <p class="mb-text">Productivity</p>
+                    <div class="">
+                        <p class="work-time-display display">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="../../js/jquery.min.js"></script>
+        <script src="script.js"></script>
+        <script src="popup.js"></script>
+        <script src="../../js/account.js"></script>
+        <script src="../../js/routes.js"></script>
+
+    </body>
+</div>
+
+</html>

@@ -1,0 +1,60 @@
+body{
+    padding:0;
+    margin: 0;
+}
+body::-webkit-scrollbar{
+    display: none;
+  }
+
+.pipButton{
+    border: none;
+    width: 2vw;
+    height: 2vw;
+    background-color: transparent;
+}
+.pipButton-icon{
+    width: 2vw;
+}
+.master-timer{
+    color: black;
+    border: solid blueviolet;
+    border-radius: 10px;
+    height: 41vw;
+    min-height: 10gvh;
+    width: 100%;
+
+}
+
+.timer-display{
+    font-size: max(13vw, 9vh);
+    
+}
+.metrics-box{
+    border: solid blueviolet;
+    border-radius: 10px;
+
+    color: black;
+    margin-bottom: 0.5vw;
+}
+.mb-text{
+    font-size: max(3vw, 3.5vh);
+    
+}
+.display{
+    font-size: max(4vw, 7vh);
+}
+.button{
+    font-size: max(2.5vw,2vh);
+    width: 90%;
+    height: 8vw;
+    min-height: 10vh;
+    border: solid blueviolet;
+    color: black;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.buttons button:hover {
+    background-color: blueviolet;
+    color: #fff;
+}
