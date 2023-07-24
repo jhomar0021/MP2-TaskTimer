@@ -1,4 +1,11 @@
 getProfile()
+
+let userID = "";
+let userFirstName = "";
+let userLastName = "";
+let userName ="";
+
+
 function getProfile() {
     $.ajax({
         "url" : PROFILE_API,
@@ -7,6 +14,16 @@ function getProfile() {
         "success" : function (response) {
             console.log(response)
             let parseResponse = JSON.parse(response);
+            userID =parseResponse['data']['id'];
+            userFirstName =parseResponse['data']['fname'];
+            userLastName =parseResponse['data']['lname'];
+            userName = userFirstName + " " + userLastName;
+
+            $("#hello").text(userName);
+            $("#userID").text(userID);
+
+            console.log(userID);
+            console.log(userName);
 
             if (parseResponse.status == 401) {
                 window.location.href = "../../index.html";
@@ -44,3 +61,4 @@ function getProfile() {
     });
 
  }
+ 

@@ -75,7 +75,7 @@ document.getElementById("end-session").addEventListener("click", () => {
 
 document.addEventListener('keydown', (event) => {
     var name = event.key;
-    if (name === ' ') {
+    if (name === 's') {
         if(int !== null){
             if([seconds, minutes, hours, days] !== [0,0,0,0]){
                 [seconds, minutes, hours, days] = [0, 0, 0, 0];

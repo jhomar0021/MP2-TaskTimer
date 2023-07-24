@@ -65,25 +65,27 @@ function viewtimer(){
 }
 
 function addtimer() {
-    let record = { 
-        "timer_name" : $("#timername").val(),
-     }
-
-    $.ajax({
-        "url" : TIMERRECORD_API, //URL of the API
-        "type" : "POST", //GET and POST 
-        "data" : "store=" + JSON.stringify(record), //auth will be our php variable $_POST['auth']
-        "success" : function (response) {
-            console.log(response)
-            let parseResponse = JSON.parse(response);
-            viewtimer();
-            
-        },
-        "error" : function (xhr, status, error) {
-           alert("Error")
-         }
-        })
-    }
+ 
+        let record = { 
+            "timer_name" : $("#timername").val(),
+            }
+    
+        $.ajax({
+            "url" : TIMERRECORD_API, //URL of the API
+            "type" : "POST", //GET and POST 
+            "data" : "store=" + JSON.stringify(record), //auth will be our php variable $_POST['auth']
+            "success" : function (response) {
+                console.log(response)
+                let parseResponse = JSON.parse(response);
+                viewtimer();
+                
+            },
+            "error" : function (xhr, status, error) {
+                alert("Error")
+                }
+            })
+    
+}
 
 
 
