@@ -13,14 +13,12 @@ body::-webkit-scrollbar{
     height: 4vw;
     background-color: transparent;
     overflow: hidden;
-    transition: 500ms;
 }
-.pipButton:hover{
-    background-color: #ead6fd;
-}
+
 .pipButton-icon{
-    width: 3vw;
+    width: 2.5vw;
     margin: auto;
+
 }
 
 .master-timer{

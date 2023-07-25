@@ -1,5 +1,6 @@
 let today = "";
 let todayTime ="";
+let sundayDate ="";
 let timerID = $("#timerlist").val();
 
 viewtimer()
@@ -62,13 +63,19 @@ function setDefaultDate(){
         + "00" +":"+ "00" +":"+ "00";
     todayTime = getToday.getFullYear()+"-" + month+"-" + getToday.getDate()+" "+ hrs +":"+ min +":"+ sec;
 
+    sundayDate = date - getToday.getDay();
+
     $("#from-date").val(today);
     $("#to-date").val(todayTime);
 
 }
 
+graphRecords();
 
+function graphRecords(){
 
+    console.log(sundayDate + " is sunday")
+}
 
 function viewRecords(){
     let fromDate = $("#from-date").val();

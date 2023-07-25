@@ -26,19 +26,22 @@ if (isset($_POST['store'])) {
 
     $registerRequest = json_decode($_POST['store']);
     $response = array();
-
-    $sql = "INSERT INTO ". TBL_TIMER. " (`timer_name`, `id`)
-    VALUES ('{$registerRequest->timer_name}','{$createdBy}')";
-
-    $isInserted = $connection->query($sql);
-
-    if ($isInserted) {
-        $response = createResponse(200, "Successful", "Successfully Saved");
-    } else {
-        $response = createResponse(300, "Error", "Error while saving user");
+    if($registerRequest->timer_name == "" || $registerRequest->timer_name == null ){
+        $response = createResponse(300, "error", "Use Valid Inputs");
+    }
+    else{
+        $sql = "INSERT INTO ". TBL_TIMER. " (`timer_name`, `id`)
+        VALUES ('{$registerRequest->timer_name}','{$createdBy}')";
+    
+        $isInserted = $connection->query($sql);
+    
+        if ($isInserted) {
+            $response = createResponse(200, "Successful", "Successfully Saved");
+        } else {
+            $response = createResponse(300, "Error", "Error while saving user");
+        }
     }
 
-    
     echo json_encode($response);
 }
 

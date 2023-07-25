@@ -7,7 +7,7 @@ if (isset($_POST['submits'])) {
     echo $timestamp->timer_id;
 
 
-    $sql = "INSERT INTO `submit_stamp`(`submit`, `timer_id`, `time_stamp`) VALUES ('1','{$timestamp->timer_id}','{$timestamp->time_stamp}');";
+    $sql = "INSERT INTO `submit_stamp`(`submit`, `user_id`, `timer_id`, `time_stamp`) VALUES ('1','{$timestamp->user_id}','{$timestamp->timer_id}','{$timestamp->time_stamp}');";
 
 
     $isInserted = $connection->query($sql);
@@ -30,7 +30,7 @@ if (isset($_POST['timersessionstart'])) {
     /**
      * Please change column names and values
      */
-    $sql = "INSERT INTO `tbl_timer_session`(`session_start`, `timer_id`, `session_start_value`, `id`) VALUES ('{$sessionRecord->session_start}','{$sessionRecord->timer_id}', '{$sessionRecord->start_value}','{$sessionRecord->id}');";
+    $sql = "INSERT INTO `tbl_timer_session`(`session_start`, `user_id`, `timer_id`, `session_start_value`, `id`) VALUES ('{$sessionRecord->session_start}','{$sessionRecord->user_id}','{$sessionRecord->timer_id}', '{$sessionRecord->start_value}','{$sessionRecord->id}');";
 
 
     $isInserted = $connection->query($sql);

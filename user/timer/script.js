@@ -16,10 +16,9 @@ let currentSession =null;
 let start = "";
 let startValue = "";
 let recorded = false;
-
+let accountID = "";
 const urlParams = new URLSearchParams(window.location.search);
 console.log(urlParams);
-
 let timer_id = urlParams.get('q');
 
 
@@ -201,6 +200,7 @@ function taskSubmit(){
         + currentdate.getSeconds();
     
     let recordsubmit = { 
+        "user_id" : accountID,
         "time_stamp" : datetime,
         "timer_id" : timer_id
     }
@@ -243,11 +243,14 @@ function stampStart(){
     currentSession = timer_id + shortYear + shortMonth +sessionStartDate.getDate() + startValue + sessionStartDate.getSeconds();
 
     console.log("session:"+ currentSession+" has started, start time is "+start+" with start value of "+startValue);
+    accountID = $("#userID").text();
+    console.log("account id is " + accountID);
 }
 
 function sessionStore (){
 
     let sessionRecord = { 
+        "user_id" : accountID,
         "session_start" : start,
         "start_value" : startValue,
         "timer_id" : timer_id,
