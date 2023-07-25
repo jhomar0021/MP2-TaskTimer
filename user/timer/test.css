@@ -7,14 +7,22 @@ body::-webkit-scrollbar{
   }
 
 .pipButton{
-    border: none;
-    width: 2vw;
-    height: 2vw;
+    border: blueviolet solid 3px;
+    border-radius: 5px;
+    width: 4vw;
+    height: 4vw;
     background-color: transparent;
+    overflow: hidden;
+    transition: 500ms;
+}
+.pipButton:hover{
+    background-color: #ead6fd;
 }
 .pipButton-icon{
-    width: 2vw;
+    width: 3vw;
+    margin: auto;
 }
+
 .master-timer{
     color: black;
     border: solid blueviolet;

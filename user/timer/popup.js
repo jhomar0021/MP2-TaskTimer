@@ -12,8 +12,8 @@ pipButton.addEventListener("click", async () => {
 
         // Open a Picture-in-Picture window.
         const pipWindow = await documentPictureInPicture.requestWindow({
-            width: 700,
-            height: 200,
+            width: 475,
+            height: 120,
 
           });
 
@@ -36,7 +36,7 @@ let popUpSub ='<head>'+
 '</div>'+
 '<div class="gridlayout">'+
 '<div class="master-timer bigbox">'+
-'<div class="mt-5 pt-5 timer-display text-center" id="timer-display">'+
+'<div class="mt-3 pt-5 timer-display text-center" id="timer-display">'+
 '00:00:00'+
 '</div>'+
 '<div class="mt-3 pt-0 timer-display text-center">'+
@@ -71,7 +71,6 @@ $("#playerContainer").html(popUpSub);
 
 
 
-
         function updateDisplay (){
           document.getElementById("timer-display").innerHTML = pipWindow.document.getElementById("timer-display").innerHTML;
           document.querySelector(".work-time-display").innerHTML = pipWindow.document.querySelector(".work-time-display").innerHTML;
@@ -80,7 +79,7 @@ $("#playerContainer").html(popUpSub);
         }
 
         updateDisplay();
-        var updateDisplayinterval = setInterval(updateDisplay,500);
+        var updateDisplayinterval = setInterval(updateDisplay,200);
         
 
         // Move the player back when the Picture-in-Picture window closes.
