@@ -22,8 +22,6 @@ function getProfile() {
             $("#hello").text(userName);
             $("#userID").text(userID);
 
-            console.log(userID);
-            console.log(userName);
 
             if (parseResponse.status == 401) {
                 window.location.href = "../../index.html";
@@ -46,7 +44,6 @@ function getProfile() {
         "type" : "POST", 
         "data" : "logout",
         "success" : function (response) { 
-            console.log(response)
 
             let parseResponse = JSON.parse(response);
 

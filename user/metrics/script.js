@@ -75,6 +75,10 @@ graphRecords();
 function graphRecords(){
 
     console.log(sundayDate + " is sunday")
+
+    let recordRequest = {
+        'user_id' : $('#userID').text(),
+    }
 }
 
 function viewRecords(){

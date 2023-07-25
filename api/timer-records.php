@@ -62,3 +62,22 @@ if (isset($_POST['destroy'])) {
 
     echo json_encode($response);
 }
+
+if (isset($_GET['showsessionvalue'])) {
+    $request = json_decode($_GET['showsessionvalue']);
+
+    $sql = "SELECT * FROM `tbl_timer_session` WHERE `session_end` BETWEEN '$request->from_time' AND '$request->to_time' AND `user_id` = $request->user_id;";
+
+    $results = $connection->query($sql);
+
+    $response = array();
+    $records = array();
+
+    while ($row = $results->fetch_assoc()) {
+        array_push($records, $row);
+    }
+
+    $response = createResponse(200, "Successful", "Succesful", $records);
+
+    echo json_encode($response);
+}

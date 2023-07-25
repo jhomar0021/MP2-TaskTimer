@@ -4,11 +4,10 @@ function viewtimer(){
 
 
     $.ajax({
-        "url" : TIMERRECORD_API, //URL of the API
-        "type" : "GET", //GET and POST 
-        "data" : "index", //auth will be our php variable $_POST['auth']
-        "success" : function (response) { //success yung response
-            console.log(response)
+        "url" : TIMERRECORD_API, 
+        "type" : "GET", 
+        "data" : "index", 
+        "success" : function (response) {
             let parseResponse = JSON.parse(response);
             
             let contents = parseResponse.data;
@@ -58,11 +57,13 @@ function viewtimer(){
 
             $("#timerlist").html(timerItem);
         },
-        "error" : function (xhr, status, error) { //error yung response
+        "error" : function (xhr, status, error) {
             alert("Error")
         }
     });
 }
+
+
 
 function addtimer() {
  
@@ -71,9 +72,9 @@ function addtimer() {
             }
     
         $.ajax({
-            "url" : TIMERRECORD_API, //URL of the API
-            "type" : "POST", //GET and POST 
-            "data" : "store=" + JSON.stringify(record), //auth will be our php variable $_POST['auth']
+            "url" : TIMERRECORD_API, 
+            "type" : "POST", 
+            "data" : "store=" + JSON.stringify(record),
             "success" : function (response) {
                 console.log(response)
                 let parseResponse = JSON.parse(response);
@@ -100,13 +101,13 @@ function destroy(id) {
 
 
     $.ajax({
-        "url" : TIMERRECORD_API, //URL of the API
-        "type" : "POST", //GET and POST 
-        "data" : "destroy=" + JSON.stringify(idRequest), //auth will be our php variable $_POST['auth']
-        "success" : function (response) { //success yung response
+        "url" : TIMERRECORD_API, 
+        "type" : "POST",
+        "data" : "destroy=" + JSON.stringify(idRequest),
+        "success" : function (response) { 
             console.log(response)
             let parseResponse = JSON.parse(response);
-            //Do certain process
+           
             
 
             if (parseResponse.status == 200) {
@@ -114,7 +115,7 @@ function destroy(id) {
                 alert(parseResponse.description);
             }
         },
-        "error" : function (xhr, status, error) { //error yung response
+        "error" : function (xhr, status, error) { 
             viewtimer();
             alert("Error");
         }
@@ -124,6 +125,5 @@ function destroy(id) {
 function viewUser(id) {
 
     window.open("../timer/index.html?q=" + id,'_blank')
-    // window.location.href = ;
 }
 
