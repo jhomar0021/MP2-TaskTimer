@@ -19,33 +19,64 @@ pipButton.addEventListener("click", async () => {
 
 
         pipWindow.document.body.append(player);
-        const playerContainer = document.body;
-        const playerContainerHead = document.head;
-        let placeHolder= document.createElement("div");
-        let placeHolder2= document.createElement("div");
-        let placeHolderStyle = document.createElement("link");
-        let placeHolderStyle2 = document.createElement("link");
-        let tabTitle = document.createElement("title")
-        tabTitle.setAttribute("id","tab-title")
-        placeHolder.setAttribute("id","submit-counter-display")
-        placeHolder2.classList.add("timer-display");
-        placeHolderStyle.setAttribute("rel","stylesheet");
-        placeHolderStyle.setAttribute("href","style-watch.css");
-        placeHolderStyle2.setAttribute("rel","stylesheet");
-        placeHolderStyle2.setAttribute("crossorigin","anonymous");
-        placeHolderStyle2.setAttribute("integrity","sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM");
-        placeHolderStyle2.setAttribute("href","https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
-        playerContainerHead.appendChild(placeHolderStyle);
-        playerContainerHead.appendChild(tabTitle);
-        playerContainerHead.appendChild(placeHolderStyle2);
-        playerContainer.appendChild(placeHolder);
-        playerContainer.appendChild(placeHolder2);
-        placeHolder2.innerHTML = "00:00:00";
-        placeHolder.innerHTML = "0";
+        
+let popUpSub ='<head>'+
+'<meta charset="UTF-8">'+
+'<meta http-equiv="X-UA-Compatible" content="IE=edge">'+
+'<meta name="viewport" content="width=device-width, initial-scale=1.0">'+
+'<title id="tab-title">Production</title>'+
+'<link rel="stylesheet" href="test.css">'+
+'<link rel="stylesheet" href="styles.css">'+
+'<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"'+
+'integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">'+
+'</head>'+
+'<body>'+
+'<div class="d-none">'+
+'<h1 id="frameID">ID:</h1>'+
+'</div>'+
+'<div class="gridlayout">'+
+'<div class="master-timer bigbox">'+
+'<div class="mt-5 pt-5 timer-display text-center" id="timer-display">'+
+'00:00:00'+
+'</div>'+
+'<div class="mt-3 pt-0 timer-display text-center">'+
+'PIP Mode'+
+'</div>'+
+'</div>'+
+'<div class="metrics-box medbox text-center">'+
+'<p class="mb-text">Production Time</p>'+
+'<div class="text-center">'+
+'<p class="wtimer-display display">00:00:00</p>'+
+'</div>'+
+'</div>'+
+'<div class="metrics-box smbox1 text-center">'+
+'<div>'+
+'<p class="mb-text">Submitted</p>'+
+'<div class="">'+
+'<p id="submit-counter-display" class="display submit-counter-display">0</p>'+
+'</div>'+
+'</div>'+
+'</div>'+
+'<div class="metrics-box smbox2 text-center">'+
+'<div>'+
+'<p class="mb-text">Productivity</p>'+
+'<div class="">'+
+'<p class="work-time-display display">0</p>'+
+'</div>'+
+'</div>'+
+'</div>'+
+'</div>';
+$("#playerContainer").html(popUpSub);
+
+
+
+
 
         function updateDisplay (){
-            placeHolder2.innerHTML = pipWindow.document.getElementById("timer-display").innerHTML;
-            pipWindow.document.getElementById("submit-counter-display").innerText =placeHolder.innerText;
+          document.getElementById("timer-display").innerHTML = pipWindow.document.getElementById("timer-display").innerHTML;
+          document.querySelector(".work-time-display").innerHTML = pipWindow.document.querySelector(".work-time-display").innerHTML;
+          document.querySelector(".wtimer-display").innerHTML = pipWindow.document.querySelector(".wtimer-display").innerHTML;
+          pipWindow.document.getElementById("submit-counter-display").innerText = document.getElementById("submit-counter-display").innerText ;
         }
 
         updateDisplay();
@@ -55,8 +86,7 @@ pipButton.addEventListener("click", async () => {
         // Move the player back when the Picture-in-Picture window closes.
         pipWindow.addEventListener("pagehide", (event) => {
           const pipPlayer = event.target.querySelector("#player");
-          playerContainer.removeChild(placeHolder);
-          playerContainer.removeChild(placeHolder2);
+          $("#playerContainer").html("");
           playerContainer.append(pipPlayer);
           clearInterval(updateDisplayinterval);
 
