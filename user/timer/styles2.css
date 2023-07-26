@@ -1,6 +1,7 @@
 body{
     padding:0;
     margin: 0;
+
 }
 body::-webkit-scrollbar{
     display: none;
@@ -14,7 +15,12 @@ body::-webkit-scrollbar{
     background-color: transparent;
     overflow: hidden;
 }
-
+.pipButton-icon:hover{
+    width: 2.8vw;
+}
+.pipButton:hover{
+    background-color: white;
+}
 .pipButton-icon{
     width: 2.5vw;
     margin: auto;
@@ -22,23 +28,27 @@ body::-webkit-scrollbar{
 }
 
 .master-timer{
+    font-family: Roboto,sans-serif;
     color: black;
     border: solid blueviolet;
     border-radius: 10px;
     height: 41vw;
     min-height: 10gvh;
     width: 100%;
+    overflow: hidden;
 
 }
 
 .timer-display{
     font-size: max(13vw, 9vh);
     
+    
 }
 .metrics-box{
+    font-family: Roboto,sans-serif;
     border: solid blueviolet;
     border-radius: 10px;
-
+    overflow: hidden;
     color: black;
     margin-bottom: 0.5vw;
 }
@@ -50,14 +60,14 @@ body::-webkit-scrollbar{
     font-size: max(4vw, 7vh);
 }
 .button{
-    
+    font-family: Roboto,sans-serif;
     font-size: max(2.5vw,2vh);
     width: 90%;
     height: 8vw;
     min-height: 10vh;
     border: solid blueviolet;
     color: black;
-    background-color: rgb(217, 177, 255);
+    background-color: rgb(159, 95, 223);
     border-radius: 10px;
 }
 
@@ -65,3 +75,8 @@ body::-webkit-scrollbar{
     background-color: blueviolet;
     color: #fff;
 }
+.cons-top{
+    background-color: rgb(159, 95, 223);
+    height: 2vh;
+}
+
