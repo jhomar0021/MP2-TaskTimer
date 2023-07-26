@@ -20,7 +20,7 @@
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    height: 40vh;
+    height: 30vh;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3640,1fr);

@@ -80,6 +80,8 @@ function setDefaultDate(){
 
 graphRecords();
 
+setTimeout(graphRecords,500);
+
 function graphRecords(){
 
     let recordRequest = {
@@ -141,7 +143,6 @@ function graphRecords(){
                 let difference = contents[i].session_end_value - contents[i].session_start_value;
                 if(difference < 1){difference = 1}
                 activeTime = activeTime + difference ;     
-
             }
 
             let activeMins = activeTime % 60;
