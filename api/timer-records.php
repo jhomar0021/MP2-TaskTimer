@@ -30,8 +30,11 @@ if (isset($_POST['store'])) {
         $response = createResponse(300, "error", "Use Valid Inputs");
     }
     else{
+
+        $timerName = ucwords($registerRequest->timer_name);
+        
         $sql = "INSERT INTO ". TBL_TIMER. " (`timer_name`, `id`)
-        VALUES ('{$registerRequest->timer_name}','{$createdBy}')";
+        VALUES ('{$timerName}','{$createdBy}')";
     
         $isInserted = $connection->query($sql);
     

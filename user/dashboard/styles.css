@@ -28,6 +28,8 @@
     border-top-right-radius: 10px;
     background-color: transparent;
     border-bottom: none;
+    font-family: Roboto;
+    
 }
 .hm-btn-off {
     width: 45%;
@@ -37,6 +39,7 @@
     border-top-right-radius: 10px;
     background-color: blueviolet;
     color: white;
+    font-family: Roboto;
 }
 
 .active-info-tab{
@@ -48,8 +51,9 @@
     margin-top: 2vh;
 }
 #greetings,#hello2{
-    font-size: 3vh;
+    font-size: 4vh;
     font-weight: 500;
+    font-family: Roboto;
 }
 .start-task{
     border: solid blueviolet;
@@ -91,6 +95,7 @@
 .data-show-text{
     
     font-size: clamp(2vh, 1.5vw, 1.5vw);
+    font-family: Roboto;
     overflow: hidden;
 }
 .cons{
@@ -130,12 +135,15 @@
     overflow: hidden;
 }
 .add-item-label{
+    font-family: Roboto;
+    color: white;
     background-color: blueviolet;
     width: 100%;
     border-bottom: solid black;
 
 }
 .add-task{
+    font-family: Roboto;
     width: 85%;
     border: solid black;
     border-radius: 15px;
@@ -177,18 +185,20 @@
 }
 
 .timer-details{
-color: black;
-display: block;
-word-wrap: none;
-height: 100%;
-margin-top: 3vh;
-margin-bottom: 3vh;
+    font-family: Roboto;
+    color: black;
+    display: block;
+    word-wrap: none;
+    height: 100%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
 }
 .timer-details-item{
     border: black;
     min-height: 20vh;
 }
 .timer-remove{
+    font-family: Roboto;
     color: white;
     margin-right: 3%;
     border: solid blueviolet;
@@ -204,6 +214,7 @@ margin-bottom: 3vh;
 
 }
 #calendar{
+    font-family: Roboto;
     font-size: max(1vw,10px);
 }
 .addtimermodal{

@@ -32,16 +32,16 @@ function viewtimer(){
                 '<div class="row">'+
                 '<div class="col border-end">'+
                 '<h5>Productivity /Rate per Hour</h5>'+
-                '<h3 id="totalrate">??/Hour</h3>'+
+                '<h3 id="'+id+'totalrate">??/Hour</h3>'+
                 '</div>'+
                 '<div class="col border-end">'+
                 '<h5>Total Task Submitted</h5>'+
-                '<h3 id="totaltask">??? submits</h3>'+
+                '<h3 id="'+id+'totaltask">??? submits</h3>'+
                 '</div>'+
                 '<hr class="d-block d-md-none" />'+
                 '<div class="col-12 col-md-4 border-end">'+
                 '<h5>Total Working Hours</h5>'+
-                '<h3 id="totaltime">?? Hour/s ?? Min/s</h3>'+
+                '<h3 id="'+id+'totaltime">?? Hour/s ?? Min/s</h3>'+
                 '</div>'+
                 '</div>'+
                 '</div>'+
