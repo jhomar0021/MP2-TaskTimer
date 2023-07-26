@@ -9,7 +9,6 @@ function viewtimer(){
         "data" : "index", 
         "success" : function (response) {
             let parseResponse = JSON.parse(response);
-            
             let contents = parseResponse.data;
             let timerItem = "";
             for (let i = 0; i <contents.length; i++) {
@@ -76,7 +75,6 @@ function addtimer() {
             "type" : "POST", 
             "data" : "store=" + JSON.stringify(record),
             "success" : function (response) {
-                console.log(response)
                 let parseResponse = JSON.parse(response);
                 viewtimer();
                 
@@ -105,7 +103,6 @@ function destroy(id) {
         "type" : "POST",
         "data" : "destroy=" + JSON.stringify(idRequest),
         "success" : function (response) { 
-            console.log(response)
             let parseResponse = JSON.parse(response);
            
             

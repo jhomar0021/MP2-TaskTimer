@@ -12,7 +12,6 @@ function getProfile() {
         "type" : "POST", 
         "data" : "getLoggedUser",
         "success" : function (response) {
-            console.log(response)
             let parseResponse = JSON.parse(response);
             userID =parseResponse['data']['id'];
             userFirstName =parseResponse['data']['fname'];

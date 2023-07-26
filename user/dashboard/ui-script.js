@@ -106,8 +106,6 @@ function setDefaultDate(){
           dayShort ="SAT"
           tommShort ="SUN"
       }
-    console.log("today is "+day);
-
     dayDate = month+"-"+date+" "+dayShort;
     console.log(dayDate);
       let dateTom = date+1;
@@ -120,25 +118,26 @@ function setDefaultDate(){
 
     let greetings ="";
 
-    if (hrs > 1 && hrs < 12){
+    if (hrs >= 1 && hrs < 12){
         greetings = "Good morning,";
     }
-    if (hrs > 12 && hrs < 17){
+    if (hrs >= 12 && hrs <= 17){
         greetings = "Good afternoon,";
     }
-    if (hrs > 17 || hrs < 1){ 
+    if (hrs >= 17 || hrs <= 1){ 
         greetings = "Good evening,";
     }
-
     $("#greetings").text(greetings);
 }
 
 graphRecords();
 
+let graphrefresh = setInterval(graphRecords,3000);
+
 setTimeout(graphRecords,500);
 
 function graphRecords(){
-
+    console.log("updating");
     let recordRequest = {
         'user_id' : $('#userID').text(),
         'from_time': today,
@@ -150,7 +149,6 @@ function graphRecords(){
         "type" : "GET", 
         "data" : "showsessionvalue=" + JSON.stringify(recordRequest),
         "success" : function (response) { 
-            console.log(response);
             let parseResponse = JSON.parse(response);
             
             let contents = parseResponse.data;
@@ -180,13 +178,9 @@ function graphRecords(){
                     contents[i].session_start_value = 0;
                     }
                     let correctionstart = contents[i].session_start_value * 2.5;
-                    console.log(correctionstart);
                     let correctionend = contents[i].session_end_value * 2.5;
-                    console.log(correctionend);
                     let graphstart = 40 + Math.round(correctionstart);
-                    console.log(graphstart); 
                     let graphend = 40 + Math.round(correctionend);
-                    console.log(graphend);
                     let graphItem = '<div class="gridgraphitem" style="grid-column:'+
                     + graphstart+'/'+ graphend +
                     ';"></div>';
