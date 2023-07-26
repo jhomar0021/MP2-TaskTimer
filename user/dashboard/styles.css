@@ -5,7 +5,7 @@
     border-top: none;
     border-bottom: none;
     min-height: 72vh;
-    height: 50%;
+    height: 92%;
     
 }
 
@@ -55,7 +55,8 @@
     border: solid blueviolet;
     border-radius: 5px;
     margin-top: 7vh;
-    width: 70%;
+    height: 40px;
+    width: 120px;
     margin-left: 1vw;
     font-size: 1vw;
     color: white;
@@ -92,6 +93,28 @@
     font-size: clamp(2vh, 1.5vw, 1.5vw);
     overflow: hidden;
 }
+.cons{
+    border: solid blueviolet;
+    background-color: blueviolet;
+    height: 2vh;
+}
+
+.cons-top{
+    border: solid rgb(159, 95, 223);
+    background-color: rgb(159, 95, 223);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 2vh;
+}
+.cons-bot{
+    border: solid rgb(159, 95, 223);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(159, 95, 223);
+    height: 2vh;
+}
+
+
 .timer-item-tab{
     width: 100%;
     margin-left: auto;
@@ -201,4 +224,7 @@ margin-bottom: 3vh;
 }
 .atmodalbody {
     background-color: #fff;
+}
+.projectlabel{
+    color: white;
 }

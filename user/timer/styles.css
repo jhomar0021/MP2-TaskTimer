@@ -10,21 +10,25 @@
     }
     
     .bigbox{
+        background-color: rgb(152, 255, 255);
         height: 100%;
         grid-row: 1/310;
         grid-column: 10/800;
     }
     .medbox{
+        background-color: rgb(152, 255, 255);
         height: 100%;
         grid-row: 1/100;
         grid-column: 810/1190;
     }
     .smbox1{
+        background-color: rgb(152, 255, 255);
         height: 100%;
         grid-row: 105/205;
         grid-column: 810/1190;
     }
     .smbox2{
+        background-color: rgb(152, 255, 255);
         height: 100%;
         grid-row: 210/310;
         grid-column: 810/1190;

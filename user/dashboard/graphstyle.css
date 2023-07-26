@@ -17,7 +17,6 @@
 .gridgraph {
     padding-left: 20px;
     padding-right: 20px;
-    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     height: 30vh;
@@ -25,7 +24,7 @@
     display: grid;
     grid-template-columns: repeat(3640,1fr);
     grid-template-rows: repeat(15,1fr);
-    background-color: aqua;
+    background-color: rgb(152, 255, 255);
     grid-column: 1/5;
 }
 .gridgraphitem{
@@ -35,7 +34,7 @@
     height: 100%;
 }
 .graphline {
-    grid-row : 2/14;
+    grid-row : 2/16;
     border-right: 1px solid rgba(0, 0, 0, 0.493);
 
 }
@@ -44,6 +43,16 @@
     width: 1px;
     font-size: 1px;
 }
+
+.graphlinelabeldate{
+    grid-row: 1/1;
+    width: 30px;
+    text-align: end;
+}
 .hourlabel{
     font-size: 1vw;
+}
+.datelabel{
+    font-size: .8vw;
+    display: block;
 }

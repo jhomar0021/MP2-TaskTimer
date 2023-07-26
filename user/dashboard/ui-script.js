@@ -6,6 +6,11 @@ let hello2 = document.getElementById("hello2");
 let today = "";
 let todayTime ="";
 let sundayDate ="";
+let day ="";
+let month ="";
+let dayShort = "";
+let dayDate ="";
+let dayDateTom= "";
 
 helloUser();
 setTimeout(helloUser,100);
@@ -36,7 +41,7 @@ setDefaultDate();
 function setDefaultDate(){
     var getToday = new Date(); 
                 
-    var month = getToday.getMonth()+1;
+    month = getToday.getMonth()+1;
     if(month < 10){
         month = "0"+month;
     }
@@ -62,6 +67,56 @@ function setDefaultDate(){
     todayTime = getToday.getFullYear()+"-" + month+"-" + getToday.getDate()+" "+ hrs +":"+ min +":"+ sec;
 
     sundayDate = date - getToday.getDay();
+
+    dayToDay = getToday.getDay();
+
+    switch (new Date().getDay()) {
+        case 0:
+          day = "Sunday";
+          dayShort ="SUN"
+          tommShort ="MON"
+          break;
+        case 1:
+          day = "Monday";
+          dayShort ="MON"
+          tommShort ="TUE"
+          break;
+        case 2:
+           day = "Tuesday";
+           dayShort ="TUE"
+           tommShort ="WED"
+          break;
+        case 3:
+          day = "Wednesday";
+          dayShort ="WED"
+          tommShort ="THRS"
+          break;
+        case 4:
+          day = "Thursday";
+          dayShort ="THRS"
+          tommShort ="FRI"
+          break;
+        case 5:
+          day = "Friday";
+          dayShort ="FRI"
+          tommShort ="SAT"
+          break;
+        case 6:
+          day = "Saturday";
+          dayShort ="SAT"
+          tommShort ="SUN"
+      }
+    console.log("today is "+day);
+
+    dayDate = month+"-"+date+" "+dayShort;
+    console.log(dayDate);
+      let dateTom = date+1;
+
+    dayDateTom = month+"-"+dateTom;
+
+    dayDateTom = dayDateTom +" "+ tommShort;
+
+
 
     let greetings ="";
 
@@ -102,15 +157,15 @@ function graphRecords(){
             let activeTime = 0;
             let graph ="";
             let graphdefaultitems =                                
-                '<div class="graphlinelabel" style="grid-column: 1/1;"><p class="hourlabel">2400</p></div>'+
-                '<div class="graphlinelabel" style="grid-column:460/460;"><p class="hourlabel">0300</p></div>'+
-                '<div class="graphlinelabel" style="grid-column:910/910;"><p class="hourlabel">0600</p></div>'+
-                '<div class="graphlinelabel" style="grid-column:1350/1350;"><p class="hourlabel">0900</p></div>'+
-                '<div class="graphlinelabel" style="grid-column:1800/1800;"><p class="hourlabel">1200</p></div>'+
-                '<div class="graphlinelabel" style="grid-column:2250/2250;"><p class="hourlabel">1500</p></div>'+
-                '<div class="graphlinelabel" style="grid-column:2700/2700;"><p class="hourlabel">1800</p></div>'+
-                '<div class="graphlinelabel" style="grid-column:3150/3150;"><p class="hourlabel">2100</p></div>'+
-                '<div class="graphlinelabel" style="grid-column:3600/3600;"><p class="hourlabel">2400</p></div>'+
+                '<div class="graphlinelabeldate" style="grid-column: 1/50;"><bold class="datelabel">'+dayDate+'</bold></div>'+
+                '<div class="graphlinelabel" style="grid-column:460/460;"><bold class="hourlabel">03:00</bold></div>'+
+                '<div class="graphlinelabel" style="grid-column:910/910;"><bold class="hourlabel">06:00</bold></div>'+
+                '<div class="graphlinelabel" style="grid-column:1350/1350;"><bold class="hourlabel">09:00</bold></div>'+
+                '<div class="graphlinelabel" style="grid-column:1800/1800;"><bold class="hourlabel">12:00</bold></div>'+
+                '<div class="graphlinelabel" style="grid-column:2250/2250;"><bold class="hourlabel">15:00</bold></div>'+
+                '<div class="graphlinelabel" style="grid-column:2700/2700;"><bold class="hourlabel">18:00</bold></div>'+
+                '<div class="graphlinelabel" style="grid-column:3150/3150;"><bold class="hourlabel">21:00</bold></div>'+
+                '<div class="graphlinelabeldate" style="grid-column:3640/3641;"><bold class="datelabel">'+dayDateTom+'</bold></div>'+
                 '<div class="graphline" style="grid-column:40/40;"></div>'+
                 '<div class="graphline" style="grid-column:500/500;"></div>'+
                 '<div class="graphline" style="grid-column:950/950;"></div>'+
@@ -119,7 +174,7 @@ function graphRecords(){
                 '<div class="graphline" style="grid-column:2290/2290;"></div>'+
                 '<div class="graphline" style="grid-column:2740/2740;"></div>'+
                 '<div class="graphline" style="grid-column:3190/3190;"></div>'+
-                '<div class="graphline" style="grid-column:3640/3640;"></div> ';
+                '<div class="graphline" style="grid-column:3640/3641;"></div> ';
             for (let i = 0; i <contents.length; i++) {
                 if(contents[i].session_start < today){
                     contents[i].session_start_value = 0;

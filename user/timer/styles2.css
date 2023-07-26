@@ -50,13 +50,14 @@ body::-webkit-scrollbar{
     font-size: max(4vw, 7vh);
 }
 .button{
+    
     font-size: max(2.5vw,2vh);
     width: 90%;
     height: 8vw;
     min-height: 10vh;
     border: solid blueviolet;
     color: black;
-    background-color: #fff;
+    background-color: rgb(217, 177, 255);
     border-radius: 10px;
 }
 

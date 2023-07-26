@@ -19,7 +19,7 @@ function viewtimer(){
                 '<div class="timer-top text-center">'+
                 '<a onclick="viewUser('+id+')" class="timer-top">'+
                 '<h3 class="mt-2" style="font-size: 0px;">id</h3>'+
-                '<h3> '+contents[i].timer_name+' </h3>'+
+                '<h3 class="projectlabel"> '+contents[i].timer_name+' </h3>'+
                 '<h3></h3>'+
                 '</a>'+
                 '<button class="timer-remove"'+
