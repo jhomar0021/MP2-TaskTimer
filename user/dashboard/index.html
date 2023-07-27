@@ -31,17 +31,9 @@
 
                 <div class="sidebar-list">
                     <ul class="text-center text-md-start px-0 mx-0 ">
-                        <li class="py-1"><a href="index.html" class="listed-items ps-0 ps-md-3"><i
+                        <li class="py-1"><a href="../dashboard/index.html" class="listed-items ps-0 ps-md-3"><i
                                     class="my-3 my-md-0 fas fa-home"></i>
                                 <p class="side-category d-none d-md-inline-block">Home</p>
-                            </a></li>
-                        <li class="py-1"><a href="../profile/index.html" class="listed-items ps-0 ps-md-3"><i
-                                    class="my-3 my-md-0 fas fa-user"></i>
-                                <p class="side-category d-none d-md-inline-block">Profile</p>
-                            </a></li>
-                        <li class="py-1"><a href="../calendar/index.html" class="listed-items ps-0 ps-md-3"><i
-                                    class="my-3 my-md-0 fas fa-regular fa-calendar-days"></i>
-                                <p class="side-category d-none d-md-inline-block">Task Calendar</p>
                             </a></li>
                         <li class="py-1"><a href="../metrics/index.html" class="listed-items ps-0 ps-md-3"><i
                                     class="my-3 my-md-0 fas fa-duotone fa-clipboard"></i>
@@ -67,7 +59,7 @@
             </div>
         </div>
     </div>
-
+    
 <!-- ------------------------------ ----------------- END OF SIDEBAR HTML CODE----------------------------- ----------------- END OF SIDEBAR HTML CODE------------------------------ ----------------- END OF SIDEBAR HTML CODE---------------------------- -->
 
     <div class="container-fluid">
@@ -76,39 +68,45 @@
 <!-- ------------------------------ ----------------- START OF HTML HEADER/NOTFICATION AREA CONTENT----------------------------- ----------------- START OF HTML HEADER/NOTFICATION AREA CONTENT------------------------------ ----------------- START OF HTML HEADER/NOTFICATION AREA CONTENT---------------------------- -->
 
             <div class="col-11 col-md-10">
-                <header>
-                    <bold class="page-label">Home<bold>
-                </header>
+                <div class="toprightbox align-items-top">
+                    <i class="mt-1 my-md-0 fas fa-regular fa-calendar-days"></i><div id="datetimeview" class="datetimeview text-start"></div></div>
+                <header class="">
+                    <h2 class="page-label text-start">Home</h4><h2>
+                    </header>
 <!-- ------------------------------ ----------------- START OF HTML BODY CONTENT----------------------------- ----------------- START OF HTML BODY CONTENT------------------------------ ----------------- START OF HTML BODY CONTENT---------------------------- -->
 
                 <div class=" ms-0 home-menu mt-3">
                     <button class="hm-btn-on" id="activity-btn"  onclick="switchToActivityTab()">
-                        <h5 class="">Today's Activity</h5>
+                        <div class="row align-items-center">
+                            <i style="font-size: calc(1vw + 1vh);" class="fa-solid fa-chart-line col-2 col-lg-5 text-end mb-2 btn-icon"></i><h5 style="font-size: calc(1vw + 1vh);" class="col text-start">Today's Activity </h5>
+                        </div>
                     </button>
                     <button class="hm-btn-off" id="timers-btn" onclick="switchToTimerTab()">
-                        <h5 class="">Timers</h5>
+                        <div class="row align-items-center">
+                            <i style="font-size: calc(1vw + 1vh);" class="fa-solid fa-stopwatch col-2 col-lg-5 text-end mb-2 btn-icon"></i><h5 style="font-size: calc(1vw + 1vh);" class="col text-start">Task Timers</h5>
+                        </div>
                     </button>
                 </div>
-                
                 <div class="home-menu-container">
 
                     <div class="row active-info-tab" id="active-info-tab">
                         <div class="col-12 col-lg-7 row">
                             <div class="col-0 col-lg-1"></div>
                             <div class="col-7 col-lg-5">
-                                <p class="greetings"><p id="greetings">Updating..</p><p id="hello2"></p></p>
+                                <p id="greetings" style="font-size: calc(1vw + 2vh); margin-top: 50px;">Updating..</p><p id="hello2" style="font-size: calc(1vw + 2vh);"></p>
                                 <button class="start-task" onclick="switchToTimerTab()">
                                     <h5 class="start-task-btn">Start Tasks</h5>
                                 </button>
                             </div>
                             <div class="col-5 text-start">
-                                <img src="../../assets/img/dev icon.png" alt="tab-img" class="tab-img">
+                                <img src="../../assets/img/day.png" alt="tab-img" class="tab-img" id="dayimg">
+                                <img src="../../assets/img/night.png" alt="tab-img" class="tab-img" id="nightimg">
                             </div>
                         </div>
                         <div class="col-12 col-lg-5 row">
                             <div class="col col-lg-12 my-2 ms-3 data-show row align-items-center">
                                 <div class="data-show-label align-items-center text-center text-lg-end col-12 col-lg-6">
-                                    <p class="data-show-text">Total Active Hours</p>
+                                    <p class="data-show-text">Today's Active Hours</p>
                                 </div>
                                 <div class="data-show-value align-items-center text-center col">
                                     <p class="data-show-text" id="active-time-value">00:00</p>
@@ -116,15 +114,15 @@
                             </div>
                             <div class="col col-lg-12 my-2 ms-3 data-show row align-items-center">
                                 <div class="data-show-label align-items-center text-center text-lg-end col-12 col-lg-6">
-                                    <p class="data-show-text">Total Task Submitted</p>
+                                    <p class="data-show-text">Today's Task Submitted</p>
                                 </div>
                                 <div class="data-show-value align-items-center text-center col">
-                                    <p class="data-show-text">0 Total Submits</p>
+                                    <p class="data-show-text">0 Submits</p>
                                 </div>
                             </div>
                             <div class="col col-lg-12 my-2 ms-3 data-show row align-items-center">
                                 <div class="data-show-label align-items-center text-center text-lg-end col-12 col-lg-6">
-                                    <p class="data-show-text">Total Productivity</p>
+                                    <p class="data-show-text">Today's Productivity</p>
                                 </div>
                                 <div class="data-show-value align-items-center text-center col">
                                     <p class="data-show-text">0 Task Per Hour</p>
@@ -132,8 +130,19 @@
                             </div>
 
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-12 mt-3 mb-0">
                             <div class="cons-top"></div>
+                            <div class="graphlabeldiv">
+                                <div class="hourlabels" style="grid-column:1/1;"><p style="font-weight: 500; font-size: calc(0.8vw + 0.5vh); text-align: center; margin-left:-1.2vw ; position: absolute;" id="graphdatestart"></p></div>
+                                <div class="hourlabels" style="grid-column:4500/4500;"><p style="font-weight: 500; font-size: calc(0.8vw + 0.5vh);  text-align: center; margin-left: -15px; position: absolute;">0300</p></div>
+                                <div class="hourlabels" style="grid-column:9000/9000;"><p style="font-weight: 500; font-size: calc(0.8vw + 0.5vh);  text-align: center; margin-left: -15px; position: absolute;">0600</p></div>
+                                <div class="hourlabels" style="grid-column:13500/13500;"><p style="font-weight: 500; font-size: calc(0.8vw + 0.5vh);  text-align: center; margin-left: -15px; position: absolute;">0900</p></div>
+                                <div class="hourlabels" style="grid-column:18000/18000;"><p style="font-weight: 500; font-size: calc(0.8vw + 0.5vh);  text-align: center; margin-left: -15px; position: absolute;">1200</p></div>
+                                <div class="hourlabels" style="grid-column:22500/22500;"><p style="font-weight: 500; font-size: calc(0.8vw + 0.5vh);  text-align: center; margin-left: -15px; position: absolute;">1500</p></div>
+                                <div class="hourlabels" style="grid-column:27000/27000;"><p style="font-weight: 500; font-size: calc(0.8vw + 0.5vh);  text-align: center; margin-left: -15px; position: absolute;">1800</p></div>
+                                <div class="hourlabels" style="grid-column:31500/31500;"><p style="font-weight: 500; font-size: calc(0.8vw + 0.5vh);  text-align: center; margin-left: -15px; position: absolute;">2100</p></div>
+                                <div class="hourlabels" style="grid-column:36000/36000;"><p style="font-weight: 500; font-size: calc(0.8vw + 0.5vh); text-align: center; margin-left: -1.5vw; position: absolute;" id="graphdateend"></p></div>
+                            </div>
                             <div class="gridgraph" id="gridgraph"></div>
                             <div class="cons-bot"></div>
                         </div>

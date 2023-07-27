@@ -21,6 +21,12 @@ const urlParams = new URLSearchParams(window.location.search);
 console.log(urlParams);
 let timer_id = urlParams.get('q');
 
+setID();
+
+setTimeout(setID,100);
+function setID(){
+    accountID = $("#userID").text();
+}
 
 document.getElementById("task-start").addEventListener("click", () => {
 
@@ -89,9 +95,10 @@ document.getElementById("end-session").addEventListener("click", () => {
 });
 
 
+
 document.addEventListener('keydown', (event) => {
     var name = event.key;
-    if (name === 's') {
+    if (name == "s") {
         if(int !== null){
             if([seconds, minutes, hours, days] !== [0,0,0,0]){
                 [seconds, minutes, hours, days] = [0, 0, 0, 0];
@@ -241,10 +248,8 @@ function stampStart(){
     var shortYear = year.slice(3,5);
 
     currentSession = timer_id + shortYear + shortMonth +sessionStartDate.getDate() + startValue + sessionStartDate.getSeconds();
-
-    console.log("session:"+ currentSession+" has started, start time is "+start+" with start value of "+startValue);
-    accountID = $("#userID").text();
     console.log("account id is " + accountID);
+    console.log("session:"+ currentSession+" has started, start time is "+start+" with start value of "+startValue);
 }
 
 function sessionStore (){

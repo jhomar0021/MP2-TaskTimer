@@ -1,16 +1,35 @@
+.toprightbox{
+    height: 10px;
+    width: 150px;
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: nowrap;
+    position: fixed;
+    top: 0;
+    right: 2vw;
+    z-index: 2;
+    background-color: transparent;
+    margin-top: 1vh;
+    color: blueviolet;
+}
 
-
+.datetimeview{
+    font-family: sans-serif;
+    font-size: 15px;
+    color: blueviolet;
+}
 .home-menu-container {
     border: solid blueviolet;
     border-top: none;
-    border-bottom: none;
-    min-height: 72vh;
-    height: 92%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 95%;
     
 }
 
 .home-menu {
     display: flex;
+    vertical-align: baseline;
     justify-content: space-between;
     margin: 0;
     width: 100%;
@@ -18,7 +37,6 @@
     top:6vh;
     background-color: white;
 }
-
 
 .hm-btn-on {
     width: 55%;
@@ -46,10 +64,9 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 0;
 }
-.greetings{
-    margin-top: 2vh;
-}
+
 #greetings,#hello2{
     font-size: 4vh;
     font-weight: 500;
@@ -77,6 +94,7 @@
     background-color: blueviolet;
 }
 .tab-img{
+    display: none;
     margin-top: 5vh;
     width: 100%;
 }
@@ -122,6 +140,7 @@
 
 .timer-item-tab{
     width: 100%;
+    overflow: hidden;
     margin-left: auto;
     margin-right: auto;
 }
@@ -133,6 +152,7 @@
 }
 .add-taskbutton{
     overflow: hidden;
+    margin-bottom: 5vh;
 }
 .add-item-label{
     font-family: Roboto;
@@ -213,10 +233,7 @@
     border-radius: 50px;
 
 }
-#calendar{
-    font-family: Roboto;
-    font-size: max(1vw,10px);
-}
+
 .addtimermodal{
     background-color: blueviolet;
     border: solid black;

@@ -12,6 +12,7 @@ let dayShort = "";
 let dayDate ="";
 let dayDateTom= "";
 
+
 helloUser();
 setTimeout(helloUser,100);
 function helloUser(){
@@ -36,7 +37,6 @@ function switchToTimerTab(){
     activeTab.classList.add("d-none");
 }
 
-setDefaultDate();
 
 function setDefaultDate(){
     var getToday = new Date(); 
@@ -74,17 +74,17 @@ function setDefaultDate(){
         case 0:
           day = "Sunday";
           dayShort ="SUN"
-          tommShort ="MON"
+          tommShort =" MON"
           break;
         case 1:
           day = "Monday";
           dayShort ="MON"
-          tommShort ="TUE"
+          tommShort =" TUE"
           break;
         case 2:
            day = "Tuesday";
            dayShort ="TUE"
-           tommShort ="WED"
+           tommShort =" WED"
           break;
         case 3:
           day = "Wednesday";
@@ -99,45 +99,48 @@ function setDefaultDate(){
         case 5:
           day = "Friday";
           dayShort ="FRI"
-          tommShort ="SAT"
+          tommShort =" SAT"
           break;
         case 6:
           day = "Saturday";
           dayShort ="SAT"
-          tommShort ="SUN"
+          tommShort =" SUN"
       }
-    dayDate = month+"-"+date+" "+dayShort;
-    console.log(dayDate);
+
       let dateTom = date+1;
 
-    dayDateTom = month+"-"+dateTom;
-
-    dayDateTom = dayDateTom +" "+ tommShort;
-
-
+      $("#graphdatestart").html(month+"-"+date+"<br/>"+dayShort);
+      $("#graphdateend").html(month+"-"+dateTom+"<br/>"+tommShort);
 
     let greetings ="";
 
     if (hrs >= 1 && hrs < 12){
         greetings = "Good morning,";
     }
-    if (hrs >= 12 && hrs <= 17){
+    if (hrs >= 12 && hrs < 17){
         greetings = "Good afternoon,";
     }
-    if (hrs >= 17 || hrs <= 1){ 
+    if (hrs >= 17 || hrs < 1){ 
         greetings = "Good evening,";
     }
     $("#greetings").text(greetings);
+    $("#datetimeview").html(day+" "+month+"-"+date);
+
+    
+
+    if(hrs >=18 || hrs <= 4){
+        $("#nightimg").show();
+    }
+    if(hrs >=5 && hrs <= 17){
+        $("#dayimg").show();
+    }
 }
 
-graphRecords();
 
-let graphrefresh = setInterval(graphRecords,3000);
 
 setTimeout(graphRecords,500);
 
 function graphRecords(){
-    console.log("updating");
     let recordRequest = {
         'user_id' : $('#userID').text(),
         'from_time': today,
@@ -155,32 +158,23 @@ function graphRecords(){
             let activeTime = 0;
             let graph ="";
             let graphdefaultitems =                                
-                '<div class="graphlinelabeldate" style="grid-column: 1/50;"><bold class="datelabel">'+dayDate+'</bold></div>'+
-                '<div class="graphlinelabel" style="grid-column:460/460;"><bold class="hourlabel">03:00</bold></div>'+
-                '<div class="graphlinelabel" style="grid-column:910/910;"><bold class="hourlabel">06:00</bold></div>'+
-                '<div class="graphlinelabel" style="grid-column:1350/1350;"><bold class="hourlabel">09:00</bold></div>'+
-                '<div class="graphlinelabel" style="grid-column:1800/1800;"><bold class="hourlabel">12:00</bold></div>'+
-                '<div class="graphlinelabel" style="grid-column:2250/2250;"><bold class="hourlabel">15:00</bold></div>'+
-                '<div class="graphlinelabel" style="grid-column:2700/2700;"><bold class="hourlabel">18:00</bold></div>'+
-                '<div class="graphlinelabel" style="grid-column:3150/3150;"><bold class="hourlabel">21:00</bold></div>'+
-                '<div class="graphlinelabeldate" style="grid-column:3640/3641;"><bold class="datelabel">'+dayDateTom+'</bold></div>'+
-                '<div class="graphline" style="grid-column:40/40;"></div>'+
-                '<div class="graphline" style="grid-column:500/500;"></div>'+
-                '<div class="graphline" style="grid-column:950/950;"></div>'+
-                '<div class="graphline" style="grid-column:1390/1350;"></div>'+
-                '<div class="graphline" style="grid-column:1840/1840;"></div>'+
-                '<div class="graphline" style="grid-column:2290/2290;"></div>'+
-                '<div class="graphline" style="grid-column:2740/2740;"></div>'+
-                '<div class="graphline" style="grid-column:3190/3190;"></div>'+
-                '<div class="graphline" style="grid-column:3640/3641;"></div> ';
+                '<div class="graphline" style="grid-column:0/0;"></div>'+
+                '<div class="graphline" style="grid-column:450/450;"></div>'+
+                '<div class="graphline" style="grid-column:900/900;"></div>'+
+                '<div class="graphline" style="grid-column:1350/1350;"></div>'+
+                '<div class="graphline" style="grid-column:1800/1800;"></div>'+
+                '<div class="graphline" style="grid-column:2250/2250;"></div>'+
+                '<div class="graphline" style="grid-column:2700/2700;"></div>'+
+                '<div class="graphline" style="grid-column:3150/3150;"></div>'+
+                '<div class="graphline" style="grid-column:3600/3600;"></div> ';
             for (let i = 0; i <contents.length; i++) {
                 if(contents[i].session_start < today){
                     contents[i].session_start_value = 0;
                     }
                     let correctionstart = contents[i].session_start_value * 2.5;
                     let correctionend = contents[i].session_end_value * 2.5;
-                    let graphstart = 40 + Math.round(correctionstart);
-                    let graphend = 40 + Math.round(correctionend);
+                    let graphstart = Math.round(correctionstart);
+                    let graphend =  Math.round(correctionend);
                     let graphItem = '<div class="gridgraphitem" style="grid-column:'+
                     + graphstart+'/'+ graphend +
                     ';"></div>';
@@ -193,7 +187,6 @@ function graphRecords(){
                 if(difference < 1){difference = 1}
                 activeTime = activeTime + difference ;     
             }
-
             let activeMins = activeTime % 60;
             if(activeMins < 10){activeMins = "0"+ activeMins};
             let activeHrs = Math.floor(activeTime/60);
@@ -207,3 +200,13 @@ function graphRecords(){
     });
 }
 
+
+updateValues();
+
+setInterval(updateValues,1000);
+
+function updateValues (){
+    console.log("updating..");
+    setDefaultDate();
+    graphRecords();
+}
