@@ -190,7 +190,7 @@ function graphRecords(){
                 if(difference < 1){difference = 1}
                 activeTime = activeTime + difference ;     
             }
-            let activeMins = (activeTime % 60)
+            let activeMins = Math.round((activeTime % 60)*10)/10;
             if(activeMins < 10){activeMins = "0"+ activeMins};
             let activeHrs = Math.floor(activeTime/60);
             if(activeHrs < 10){activeHrs = "0"+ activeHrs};

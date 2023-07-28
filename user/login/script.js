@@ -35,6 +35,16 @@ function login() {
     });
 }
 
+document.addEventListener('keydown', (event) => {
+    var name = event.key;
+    if (name == "Enter") {
+        login();
+    }
+    }
+ );
+
+
+
 function register() {
     window.location.href = "user/register";
 }

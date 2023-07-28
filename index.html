@@ -20,14 +20,14 @@
           <a class="navitem" href="">Contact</a>
     </div>
 
-    <div class="loginprompt d-none d-md-block">
+    <div class="loginprompt">
           <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
           <button type="button" onclick="location.href ='user/register';">Register</button>
     </div>
   </div>
 </nav>
 
-<form action="">
+
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -39,7 +39,7 @@
             <div class="container">
                 <div id="alert"class="text-center row">
                 </div>
-                <div>
+                  <div>
                     <label for="InputEmail1" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email">
                 </div>
@@ -47,20 +47,19 @@
                     <label for="InputPassword" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password">
                 </div>
+
                 <div class="col-12 text-center register">
                     <a href="user/register/index.html" class="">New user? Sign-up here.</a>
                 </div>
-                <div class="col-12 text-center"></div>          
+                <div class="col-12 text-center"></div>  
             </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" id="sign-in" onclick="login()">Sign-in</button>
+          <button type="button" class="btn btn-primary" id="sign-in" onclick="login()">Sign-in</button>
         </div>
       </div>
     </div>
   </div>
-</form>
-
 
 
       

@@ -52,8 +52,7 @@ function viewtimer(){
 
                 let activeHoursMins = activeHrs + "Hrs " + activeMins +"Mins" ;
                 let submitDisplay = submitValue + "  Task Submitted"
-                let WorkRate =Math.floor(submitValue/activeValue*6000);
-                let RPH = WorkRate/100;
+                let RPH = Math.round(submitValue/activeValue*6000/10)/10;
                 if(activeMins == 0 || submitValue == 0){
                     workRateDisplay = "No Submitted Task"
                 }
