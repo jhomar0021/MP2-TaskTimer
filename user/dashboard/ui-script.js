@@ -172,13 +172,12 @@ function graphRecords(){
                 if(contents[i].session_start < today){
                     contents[i].session_start_value = 0.4;
                     }
-                    console.log(contents[i].session_start_value);
+
                     let correctionstart = contents[i].session_start_value * 2.5;
                     let correctionend = contents[i].session_end_value * 2.5;
                     let graphstart = Math.round(correctionstart);
                     let graphend =  Math.round(correctionend);
 
-                    console.log(graphstart+"/"+graphend);
                     let graphItem = '<div class="gridgraphitem" style="grid-column:'+
                     + graphstart+'/'+ graphend +
                     ';"></div>';
@@ -215,7 +214,7 @@ function graphRecords(){
 
 updateValues();
 
-// setInterval(updateValues,1000);
+setInterval(updateValues,1000);
 
 function updateValues (){
     console.log("updating..");
