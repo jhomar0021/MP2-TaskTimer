@@ -27,38 +27,41 @@
   </div>
 </nav>
 
-
-      <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-                <strong>Sign-in to your Task Timer Account</strong>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <div id="alert"class="text-center row">
-                    </div>
-                    <div>
-                        <label for="InputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email">
-                    </div>
-                    <div>
-                        <label for="InputPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password">
-                    </div>
-                    <div class="col-12 text-center register">
-                        <a href="user/register/index.html" class="">New user? Sign-up here.</a>
-                    </div>
-                    <div class="col-12 text-center"></div>          
+<form action="">
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <strong>Sign-in to your Task Timer Account</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div id="alert"class="text-center row">
                 </div>
+                <div>
+                    <label for="InputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div>
+                    <label for="InputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <div class="col-12 text-center register">
+                    <a href="user/register/index.html" class="">New user? Sign-up here.</a>
+                </div>
+                <div class="col-12 text-center"></div>          
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="sign-in" onclick="login()">Sign-in</button>
-            </div>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="sign-in" onclick="login()">Sign-in</button>
         </div>
       </div>
+    </div>
+  </div>
+</form>
+
+
 
       
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

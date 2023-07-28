@@ -22,15 +22,18 @@ function viewtimer(){
                 for (let j = 0; j < sessionrecords.length; j++){
                     let value = 0;
                     if(sessionrecords[j].timer_id == id){
-                        let stVal = sessionrecords[j].session_start_value;
-                        let enVal = sessionrecords[j].session_end_value
-                        if( stVal > enVal){   
-                            enVal = enVal + 1140; 
+                        let stVal = parseInt(sessionrecords[j].session_start_value);
+
+                        let enVal = 0;
+                        if( parseInt(sessionrecords[j].session_end_value) < parseInt(sessionrecords[j].session_start_value)){   
+                            enVal = 1440 +parseInt(sessionrecords[j].session_end_value) ;
+
                         }
-                    
+                        else{
+                            enVal = parseInt(sessionrecords[j].session_end_value);
+                        }
                         value = enVal - stVal;
                         activeValue = activeValue + value;
-                        console.log(activeValue);
                     }
                 }
 

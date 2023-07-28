@@ -158,7 +158,7 @@ function graphRecords(){
             let activeTime = 0;
             let graph ="";
             let graphdefaultitems =                                
-                '<div class="graphline" style="grid-column:0/0;"></div>'+
+                '<div class="graphline" style="grid-column:1/1;"></div>'+
                 '<div class="graphline" style="grid-column:450/450;"></div>'+
                 '<div class="graphline" style="grid-column:900/900;"></div>'+
                 '<div class="graphline" style="grid-column:1350/1350;"></div>'+
@@ -168,13 +168,17 @@ function graphRecords(){
                 '<div class="graphline" style="grid-column:3150/3150;"></div>'+
                 '<div class="graphline" style="grid-column:3600/3600;"></div> ';
             for (let i = 0; i <contents.length; i++) {
+
                 if(contents[i].session_start < today){
-                    contents[i].session_start_value = 0;
+                    contents[i].session_start_value = 0.4;
                     }
+                    console.log(contents[i].session_start_value);
                     let correctionstart = contents[i].session_start_value * 2.5;
                     let correctionend = contents[i].session_end_value * 2.5;
                     let graphstart = Math.round(correctionstart);
                     let graphend =  Math.round(correctionend);
+
+                    console.log(graphstart+"/"+graphend);
                     let graphItem = '<div class="gridgraphitem" style="grid-column:'+
                     + graphstart+'/'+ graphend +
                     ';"></div>';
@@ -187,7 +191,7 @@ function graphRecords(){
                 if(difference < 1){difference = 1}
                 activeTime = activeTime + difference ;     
             }
-            let activeMins = activeTime % 60;
+            let activeMins = (activeTime % 60)
             if(activeMins < 10){activeMins = "0"+ activeMins};
             let activeHrs = Math.floor(activeTime/60);
             if(activeHrs < 10){activeHrs = "0"+ activeHrs};
