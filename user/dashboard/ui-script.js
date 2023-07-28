@@ -153,8 +153,8 @@ function graphRecords(){
         "data" : "showsessionvalue=" + JSON.stringify(recordRequest),
         "success" : function (response) { 
             let parseResponse = JSON.parse(response);
-            
-            let contents = parseResponse.data;
+            $("#active-submit-count").text(parseResponse.data2 + " Submits");
+            let contents = parseResponse.data1;
             let activeTime = 0;
             let graph ="";
             let graphdefaultitems =                                
@@ -193,6 +193,14 @@ function graphRecords(){
             if(activeHrs < 10){activeHrs = "0"+ activeHrs};
             $("#active-time-value").text(activeHrs+":"+activeMins);
             $("#gridgraph").html(graphdefaultitems+graph);
+
+            let productivity =Math.floor(parseResponse.data2/activeTime*6000);
+            let prodvalue = productivity/100;
+            if(parseResponse.data2 == 0){
+                $("#active-productivity-count").text("No Subbmitted Task");
+            }
+            else{$("#active-productivity-count").text(prodvalue+"/Hour");}
+            
         },
         "error" : function (xhr, status, error) { //error yung response
             alert("Error")
@@ -203,7 +211,7 @@ function graphRecords(){
 
 updateValues();
 
-setInterval(updateValues,1000);
+// setInterval(updateValues,1000);
 
 function updateValues (){
     console.log("updating..");
