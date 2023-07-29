@@ -9,25 +9,25 @@
     }
     
     .bigbox{
-        background-color: rgb(152, 255, 255);
+        background-color: transparent;
         height: 100%;
         grid-row: 1/310;
         grid-column: 10/800;
     }
     .medbox{
-        background-color: rgb(152, 255, 255);
+        background-color: transparent;
         height: 100%;
         grid-row: 1/100;
         grid-column: 810/1190;
     }
     .smbox1{
-        background-color: rgb(152, 255, 255);
+        background-color: transparent;
         height: 100%;
         grid-row: 105/205;
         grid-column: 810/1190;
     }
     .smbox2{
-        background-color: rgb(152, 255, 255);
+        background-color: transparent;
         height: 100%;
         grid-row: 210/310;
         grid-column: 810/1190;
@@ -49,25 +49,25 @@
     }
     
     .bigbox{
-        background-color: rgb(152, 255, 255);
+        background-color: transparent;
         height: 100%;
         grid-row: 1/500;
         grid-column: 10/300;
     }
     .medbox{
-        background-color: rgb(152, 255, 255);
+        background-color: transparent;
         height: 100%;
         grid-row: 510/860;
         grid-column: 10/300;
     }
     .smbox1{
-        background-color: rgb(152, 255, 255);
+        background-color: transparent;
         height: 100%;
         grid-row: 870/1200;
         grid-column: 10/150;
     }
     .smbox2{
-        background-color: rgb(152, 255, 255);
+        background-color: transparent;
         height: 100%;
         grid-row: 870/1200;
         grid-column: 151/300;

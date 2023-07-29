@@ -1,26 +1,58 @@
 body{
-    padding:0;
     margin: 0;
-
+    padding: 0;
+    background-image: url(../../assets/img/07a5f4057cb0f03d2024.jpg);
+    animation: animatedBackground 200s linear infinite alternate;
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
 }
+
+@keyframes animatedBackground {
+    0% {
+      background-position: 50% 68%;
+    }
+    25% {
+        background-position: 75% 22%;
+      }
+    25% {
+        background-position: 91% 56% ;
+      }
+    50% {
+    background-position:  540% 89%;
+    }
+    50% {
+        background-position:  100% 100%;
+        }
+    75% {
+    background-position: 0 100%;
+    }
+  }
+
+.bgimg{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -99;
+}
+
 body::-webkit-scrollbar{
     display: none;
   }
 
 .pipButton{
-    border: blueviolet solid 3px;
+    border: white solid 3px;
     border-radius: 5px;
     width: 4vw;
     height: 4vw;
     background-color: transparent;
     overflow: hidden;
-}
-.pipButton-icon:hover{
-    width: 2.8vw;
+    color: white;
 }
 .pipButton:hover{
-    background-color: white;
+    color: aqua;
+    border: 5px solid aqua;
 }
+
 .pipButton-icon{
     width: 2.5vw;
     margin: auto;
@@ -29,11 +61,11 @@ body::-webkit-scrollbar{
 
 .master-timer{
     font-family: Roboto,sans-serif;
-    color: black;
-    border: solid blueviolet;
+    color: white;
+    border: solid white;
     border-radius: 10px;
     height: 41vw;
-    min-height: 10gvh;
+    min-height: 10vh;
     width: 100%;
     overflow: hidden;
 
@@ -46,10 +78,10 @@ body::-webkit-scrollbar{
 }
 .metrics-box{
     font-family: Roboto,sans-serif;
-    border: solid blueviolet;
+    border: solid white;
     border-radius: 10px;
     overflow: hidden;
-    color: black;
+    color: white;
     margin-bottom: 0.5vw;
 }
 .mb-text{
@@ -65,18 +97,18 @@ body::-webkit-scrollbar{
     width: 90%;
     height: 8vw;
     min-height: 10vh;
-    border: solid blueviolet;
-    color: black;
-    background-color: rgb(159, 95, 223);
+    border: solid white;
+    color: white;
+    background-color: transparent;
     border-radius: 10px;
 }
 
 .buttons button:hover {
-    background-color: blueviolet;
-    color: #fff;
+    color: aqua;
+    border: solid aqua;
 }
 .cons-top{
-    background-color: rgb(159, 95, 223);
+    background-color: transparent;
     height: 2vh;
 }
 
