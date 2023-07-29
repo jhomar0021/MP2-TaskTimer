@@ -14,16 +14,20 @@ function viewtimer(){
             let sessionrecords = parseResponse.data2;
             let submitrecords = parseResponse.data3;
             let timerItem = "";
-            let activeValue = 0;
-            let submitValue = 0;
+            
+            
 
             for (let i = 0; i < contents.length; i++){
                 let id = contents[i].timer_id;
+                let activeValue = 0;
+                let submitValue = 0;
+
                 for (let j = 0; j < sessionrecords.length; j++){
                     let value = 0;
                     if(sessionrecords[j].timer_id == id){
-                        let stVal = parseInt(sessionrecords[j].session_start_value);
 
+                        console.log(sessionrecords[j].timer_id+"is equal to"+id)
+                        let stVal = parseInt(sessionrecords[j].session_start_value);
                         let enVal = 0;
                         if( parseInt(sessionrecords[j].session_end_value) < parseInt(sessionrecords[j].session_start_value)){   
                             enVal = 1440 +parseInt(sessionrecords[j].session_end_value) ;
@@ -34,6 +38,9 @@ function viewtimer(){
                         }
                         value = enVal - stVal;
                         activeValue = activeValue + value;
+                    }
+                    else{
+                        console.log("is not equal"+sessionrecords[j].timer_id+"/"+id);
                     }
                 }
 
@@ -168,4 +175,3 @@ function viewUser(id) {
 
     window.open("../timer/index.html?q=" + id,'_blank')
 }
-
