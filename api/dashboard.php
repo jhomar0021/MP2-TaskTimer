@@ -14,6 +14,8 @@ if (isset($_GET['index'])) {
         array_push($dashboardResults, $row);
     }
 
+    
+
     $response = createResponse(200, "Successful", "Succesful", $dashboardResults);
 
     echo json_encode($response);

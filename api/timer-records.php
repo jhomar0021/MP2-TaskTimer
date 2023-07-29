@@ -6,13 +6,13 @@ session_start();
 $createdBy = $_SESSION['logged-in-user']["id"];
 
 if (isset($_GET['index'])) {
-    $sqlCommand = "SELECT * FROM `db_timer`.`tbl_timer` WHERE `id` = $createdBy;";
+    $sqlCommand = "SELECT * FROM `tbl_timer` WHERE `id` = $createdBy;";
     $results = $connection->query($sqlCommand);
 
-    $sqlCommand2 = "SELECT * FROM `db_timer`.`tbl_timer_session` WHERE `user_id` = $createdBy;";
+    $sqlCommand2 = "SELECT * FROM `tbl_timer_session` WHERE `user_id` = $createdBy;";
     $results2 = $connection->query($sqlCommand2);
 
-    $sqlCommand3 = "SELECT * FROM `db_timer`.`submit_stamp` WHERE `user_id` = $createdBy;";
+    $sqlCommand3 = "SELECT * FROM `submit_stamp` WHERE `user_id` = $createdBy;";
     $results3 = $connection->query($sqlCommand3);
 
     $response = array();

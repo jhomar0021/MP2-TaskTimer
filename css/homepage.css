@@ -40,3 +40,10 @@ body{
 .modal-dialog{
     background-color: blueviolet;
 }
+.contents{
+    background-image: url(../assets/img/07a5f4057cb0f03d2024.jpg);
+    background-position: 5;
+    background-clip: border-box;
+    width: 100vw;
+    height: 100vh;
+}
