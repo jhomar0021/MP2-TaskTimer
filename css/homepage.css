@@ -1,8 +1,9 @@
 body{
     margin: 0;
     padding: 0;
-    /* background-image: linear-gradient(to right, rgb(238, 9, 238),pink );  */
-    background-attachment: fixed;
+    background-image: url(../assets/img/07a5f4057cb0f03d2024.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
 }
 .navbar {
 
@@ -39,11 +40,4 @@ body{
 }
 .modal-dialog{
     background-color: blueviolet;
-}
-.contents{
-    background-image: url(../assets/img/07a5f4057cb0f03d2024.jpg);
-    background-position: 5;
-    background-clip: border-box;
-    width: 100vw;
-    height: 100vh;
 }

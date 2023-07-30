@@ -1,7 +1,9 @@
 @media (orientation: landscape) {
     .gridlayout{
-        height: 100vh;
-        width: 100vw;
+        position: fixed;
+        top: 0;
+        height: 100%;
+        width: 100%;
         display: grid;
         grid-template-columns: repeat(1200,1fr);
         grid-template-rows: repeat(310,1fr);
@@ -39,8 +41,10 @@
 }
 @media (orientation: portrait) {
     .gridlayout{
-        height: 100vh;
-        width: 100vw;
+        position: fixed;
+        top: 0;
+        height: 100%;
+        width: 100%;
         display: grid;
         grid-template-rows: repeat(1200,1fr);
         grid-template-columns: repeat(310,1fr);

@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title id="title"></title>
+    <link rel="icon" href="../../assets/img/fdev icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,600;0,900;1,400&family=Roboto:wght@500&display=swap" rel="stylesheet">
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="../../css/default.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="graphstyle.css">
+    <link rel="stylesheet" href="../../css/videobg.css">
 </head>
 
 <body>
@@ -20,6 +22,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-1 col-md-2 position-fixed sidebar px-0 px-lg-2">
+                <div class="video-wrapper">
+                    <video playsinline autoplay muted loop>
+                      <source src="../../assets/img/backgroundvide.mp4" type="video/mp4">
+                    </video>
+                </div>
                 <div class="sidebar-label d-none d-md-block text-center">
                     <p id="hello">Hello Admin</p>
                     <p id="userID" class="d-none"></p>

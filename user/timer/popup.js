@@ -33,6 +33,11 @@ let popUpSub ='<head>'+
 '<body>'+
 '<div class="d-none">'+
 '</div>'+
+'<div class="video-wrapper">'+
+'<video playsinline autoplay muted loop>'+
+'<source src="../../assets/img/backgroundvide.mp4" type="video/mp4">'+
+'</video>'+
+'</div>'+
 '<div class="gridlayout">'+
 '<div class="master-timer bigbox">'+
 '<div class="mt-3 pt-5 timer-display text-center" id="timer-display">'+

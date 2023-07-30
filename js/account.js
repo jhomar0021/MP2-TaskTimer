@@ -19,6 +19,7 @@ function getProfile() {
             userName = userFirstName + " " + userLastName;
 
             $("#hello").text(userName);
+            $("#title").text(userName+"-TaskTimer");    
             $("#userID").text(userID);
 
 
