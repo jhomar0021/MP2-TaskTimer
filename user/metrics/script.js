@@ -15,7 +15,8 @@ function viewtimer(){
             console.log(response)
             let parseResponse = JSON.parse(response);
             
-            let contents = parseResponse.data;
+            let contents = parseResponse.data1;
+            let sessions = parseResponse.data2;
             let timerItem = "";
             for (let i = 0; i <contents.length; i++) {
                 let id = contents[i].timer_id;
@@ -23,6 +24,9 @@ function viewtimer(){
                 let timerTemplate = '<option value ="'+id+'">'+ name +'</option>'
                 timerItem = timerTemplate + timerItem;
             
+            }
+
+            for (let i = 0; i <sessions.length; i++){
             }
 
             $("#timerlist").html(timerItem);
@@ -81,10 +85,80 @@ function graphRecords(){
     }
 }
 
+
+
 function viewRecords(){
     let fromDate = $("#from-date").val();
     let toDate = $("#to-date").val();
-    console.log(timerID);
-    console.log(fromDate);
-    console.log(toDate);
+    let timerID = $("#timerlist").val();
+
+
+    let datetest1 = new Date(toDate);
+    let datetest2 = new Date(fromDate);
+    // console.log(parseInt(datetest1/1000));
+
+        let dataRequest = { 
+            "timer_id" : timerID,
+            "session_start" : fromDate,
+            "session_end" : toDate
+        };
+    
+        $.ajax({
+            "url" : TIMERRECORD_API, //URL of the API
+            "type" : "GET", //GET and POST 
+            "data" : "getdataspan=" + JSON.stringify(dataRequest), //auth will be our php variable $_POST['auth']
+            "success" : function (response) { //success yung response
+                let parseResponse = JSON.parse(response);
+                let sessions= parseResponse.data1;
+                let submits= parseResponse.data2
+                let totalActiveTime = 0;
+                let totalSubmits = parseResponse.data2.length;
+                let tableItems = "";
+
+                for(let i = 0; i<sessions.length; i++){
+                    console.log(sessions[i].session_start+sessions[i].session_end)
+                    let start = sessions[i].session_start;
+                    let end = sessions[i].session_end;
+                    let startMins= Math.round(parseInt(new Date(sessions[i].session_start)/6000));
+                    let endMins = Math.round(parseInt(new Date(sessions[i].session_end)/6000));
+                    let activeTime = (endMins - startMins)/10;
+                    totalActiveTime = totalActiveTime + activeTime;
+                    let activeTimeInMins = Math.round(activeTime%60);
+                    let activeTimeinHours = Math.floor(activeTime/60);
+
+                    if(activeTimeInMins < 10){
+                        activeTimeInMins = "0"+activeTimeInMins;
+                    }
+                    if(activeTimeinHours < 10){
+                        activeTimeinHours = "0"+activeTimeinHours;
+                    }
+                    let activeTimeDisplay = activeTimeinHours+":"+activeTimeInMins;
+                    console.log(activeTimeDisplay);
+                    let submitted = 0;  
+                    for(let j=0; j < submits.length; j++){
+                        if(submits[j].time_stamp >= start && submits[j].time_stamp <= end){
+                        submitted = submitted +1;
+                        }
+                    }
+                    let prodRate = (Math.round((submitted/activeTime)*600))/10;
+
+                    console.log(submitted);
+                    tableItems += "<tr>" + 
+                    "<td>" + sessions[i].id + "</td>" + 
+                    "<td>" + start + "</td>" + 
+                    "<td>" + end + "</td>" + 
+                    "<td>" + submitted + "</td>" + 
+                    "<td>" + activeTimeDisplay + "</td>" + 
+                    "<td>" + prodRate + "</td>" + 
+                    "</tr>";
+                }
+                console.log(tableItems);
+                $("#sessionsrecord").html(tableItems);
+                console.log("total active : "+ totalActiveTime + " total submit : "+ totalSubmits);
+            },
+            "error" : function (xhr, status, error) { //error yung response
+                alert("Error")
+            }
+        });
+    
 }

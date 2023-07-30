@@ -13,36 +13,17 @@
     height: 10%;
   }
   @keyframes animatedBackground {
-    0% {
-    background-position: 50% 100%;
+    from {
+    background-position: 0% 0%;
     }
-    15% {
-    background-position: 75% 75%;
+    to {
+    background-position: 100% 100%;
     }
-    30% {
-    background-position: 100% 50%;
-    }
-    45% {
-    background-position: 75% 25%;
-    }
-    60% {
-    background-position: 50% 0;
-    }
-    75% {
-    background-position: 25% 25%;
-    }
-    90% {
-        background-position: 0% 50%;
-    }
-    100% {
-    background-position: 25% 75%;
-    }
-
   }
 .sidebar{
     background-color: blueviolet;
-    background-image: url(../assets/img/07a5f4057cb0f03d2024.jpg);
-    background-position: 0px 0px;
+    background-image: url(../assets/img/bg-uneddited.png);
+    background-position: 0 0%;
     background-repeat: repeat-x;
     animation: animatedBackground 30s linear infinite alternate;
     display: flex;

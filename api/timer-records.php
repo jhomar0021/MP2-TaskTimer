@@ -39,6 +39,36 @@ if (isset($_GET['index'])) {
     echo json_encode($response);
 }
 
+if (isset($_GET['getdataspan'])) {
+
+    $dataRequest = json_decode($_GET['getdataspan']);
+
+    $sql1 = "SELECT * FROM `tbl_timer_session` WHERE `session_start` BETWEEN '$dataRequest->session_start' AND '$dataRequest->session_end' AND `timer_id` = '$dataRequest->timer_id' OR `session_end` BETWEEN '$dataRequest->session_start' AND '$dataRequest->session_end' AND `timer_id` = '$dataRequest->timer_id';";
+    $results = $connection->query($sql1);
+
+    $response = array();
+
+    $records = array();
+
+    while ($row = $results->fetch_assoc()) {
+        array_push($records, $row);
+    }
+
+    $sql2 = "SELECT * FROM `submit_stamp` WHERE `time_stamp` BETWEEN '$dataRequest->session_start' AND '$dataRequest->session_end' AND `timer_id` = $dataRequest->timer_id;";
+    $results2 = $connection->query($sql2);
+
+    $records2 = array();
+
+    while ($row = $results2->fetch_assoc()) {
+        array_push($records2, $row);
+    }
+
+    $response = createResponses(200, "Successful", "Succesful", $records,$records2);
+
+    echo json_encode($response);
+}
+
+
 
 if (isset($_POST['store'])) {
 
