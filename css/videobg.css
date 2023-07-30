@@ -11,7 +11,7 @@ video {
   .video-wrapper {
     padding: 0;
     margin-left: -10px;
-    width: 100%;
+    width: calc(100% + 10px);
     height: 100%;
     overflow: hidden;
     position: absolute;
