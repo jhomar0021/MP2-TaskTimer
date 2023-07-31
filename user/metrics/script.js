@@ -93,16 +93,18 @@ function viewRecords(){
     let timerID = $("#timerlist").val();
 
 
-    let datetest1 = new Date(toDate);
+    let datetest1 = Math.floor(new Date(toDate));
+    console.log("see "+datetest1)
     let datetest2 = new Date(fromDate);
-    // console.log(parseInt(datetest1/1000));
+    console.log(parseInt(datetest1/1000));
 
         let dataRequest = { 
             "timer_id" : timerID,
             "session_start" : fromDate,
             "session_end" : toDate
         };
-    
+        
+
         $.ajax({
             "url" : TIMERRECORD_API, //URL of the API
             "type" : "GET", //GET and POST 
@@ -142,11 +144,13 @@ function viewRecords(){
                     }
                     let prodRate = (Math.round((submitted/activeTime)*600))/10;
 
+                    displaystart = start.slice(0,19);
+                    displayend = end.slice(0,19);
                     console.log(submitted);
                     tableItems += "<tr>" + 
                     "<td>" + sessions[i].id + "</td>" + 
-                    "<td>" + start + "</td>" + 
-                    "<td>" + end + "</td>" + 
+                    "<td>" + displaystart + "</td>" + 
+                    "<td>" + displayend + "</td>" + 
                     "<td>" + submitted + "</td>" + 
                     "<td>" + activeTimeDisplay + "</td>" + 
                     "<td>" + prodRate + "</td>" + 
@@ -162,3 +166,4 @@ function viewRecords(){
         });
     
 }
+

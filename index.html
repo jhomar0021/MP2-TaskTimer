@@ -1,59 +1,135 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Task Timer</title>
-    <link rel="stylesheet" href="css/homepage.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Timer</title>
+  <link rel="stylesheet" href="css/homepage.css">
+  <link rel="stylesheet" href="css/homepage2.css">
+  <link rel="stylesheet" href="css/videobg.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,600;0,900;1,400&family=Roboto:wght@500&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
+
 <body>
-    
-<nav>
-    <div class="navbar">
-      <div class="logo"><img src="assets/img/dev icon.png" alt="logo" class="logo-icon"></div>
-
-      <div class="navitems d-none d-md-block">
-          <a class="navitem" href="">Home</a>
-          <a class="navitem" href="">About</a>
-          <a class="navitem" href="">Help</a>
-          <a class="navitem" href="">Contact</a>
+  <!-- ------------------------------------------------------------------------------( NAVBAR )----------------------------- -->
+  <!-- ------------------------------------------------------------------------------( NAVBAR )----------------------------- -->
+  <!-- ------------------------------------------------------------------------------( NAVBAR )----------------------------- -->
+  <div class="navbgh" style="position: fixed;top: 0px;width: 100%;">
+    <div class="navbg" > 
     </div>
-
-    <div class="loginprompt">
-          <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
+      <nav class="navbar navbar-expand-lg">
+      <div class="logo me-5 pe-5"><img src="assets/img/dev icon.png" alt="logo" class="logo-icon"></div>
+      <button class="navbar-toggler" style="background-color:blueviolet;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mb-5 mb-lg-0">
+          <li><a class="navitem d-none" style="width:0px;">Home</a></li>
+          <li><a class="navitem " href="">Home</a></li>
+          <li><a class="navitem " href="">About</a></li>
+          <li><a class="navitem " href="">FAQ</a></li>
+          <li><a class="navitem " href="">Contact</a></li>
+          <li><a class="navitem d-lg-none"><button type="button" class="list-button" data-bs-toggle="modal"
+                data-bs-target="#loginModal">Sign In</button></a></li>
+          <li><a class="navitem d-lg-none"><button type="button" class="list-button"
+                onclick="location.href ='user/register';">Register</button></a></li>
+        </ul>
+        <div class="loginprompt d-none d-lg-block" style="margin-left: auto;">
+          <button type="button" class="me-4" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
           <button type="button" onclick="location.href ='user/register';">Register</button>
-    </div>
+        </div>
+
+    </nav>
   </div>
-</nav>
+
+  <!-- ------------------------------------------------------------------------------( BODY )----------------------------- -->
+  <!-- ------------------------------------------------------------------------------( BODY )----------------------------- -->
+  <!-- ------------------------------------------------------------------------------( BODY )----------------------------- -->
+<div class="container-fluid me-0">
+
+  <div class="row">
+
+    <div class="col-12 col-md-6 hero-text-area">
+        <div class="video-wrapper">
+          <video playsinline autoplay muted loop >
+              <source src="assets/img/data-animation.mp4" type="video/mp4" style="width: 100vw; object-fit: cover; position: absolute;">
+          </video>
+      </div>
+      <div class="hero-text">
+        <h1 class="subs">with</h1><h1 class="title">TASKTIMER,</h1>
+      </div>
+      <div class="hero-text">
+        <h1 class="subs">you can</h1><h1 class="title" id="animatedtext">DO THINGS</h1>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 d-none d-md-block img-area">
+      <div>
+        <img class="img1" src="assets/img/homepanelpreview.jpg" alt="">
+        <img class="img2" src="assets/img/metrics preview.jpg">
+        <!-- <img class="img3" src="assets/img/timerPIPpreview.jpg" alt=""> -->
+      </div>
+    </div>
+    <div class="col-12 col-md-6 d-block d-md-none img-area">
+      <div>
+        <img class="smimg1" src="assets/img/homepanelpreview.jpg" alt="">
+        <img class="smimg2" src="assets/img/metrics preview.jpg">
+        <!-- <img class="img3" src="assets/img/timerPIPpreview.jpg" alt=""> -->
+      </div>
+    </div>  
+  </div>
+   
+  <div class="row">
+    <div class="col-12 col-md-4 row">
+      <div class="col-4 col-md-12"></div>
+      <div class="col-8 col-md-12"></div>
+    </div>
+    <div class="col-12 col-md-4 row"></div>
+    <div class="col-12 col-md-4 row"></div>
+  </div>
+ 
+</div>
 
 
 
+
+
+  <!-- ------------------------------------------------------------------------------( MODALS )----------------------------- -->
+  <!-- ------------------------------------------------------------------------------( MODALS )----------------------------- -->
+  <!-- ------------------------------------------------------------------------------( MODALS )----------------------------- -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-            <strong>Sign-in to your Task Timer Account</strong>
+          <strong>Sign-in to your Task Timer Account</strong>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <div class="container">
-                <div id="alert"class="text-center row">
-                </div>
-                  <div>
-                    <label for="InputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email">
-                </div>
-                <div>
-                    <label for="InputPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password">
-                </div>
-
-                <div class="col-12 text-center register">
-                    <a href="user/register/index.html" class="">New user? Sign-up here.</a>
-                </div>
-                <div class="col-12 text-center"></div>  
+          <div class="container">
+            <div id="alert" class="text-center row">
             </div>
+            <div>
+              <label for="InputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div>
+              <label for="InputPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password">
+            </div>
+
+            <div class="col-12 text-center register">
+              <a href="user/register/index.html" class="">New user? Sign-up here.</a>
+            </div>
+            <div class="col-12 text-center"></div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" id="sign-in" onclick="login()">Sign-in</button>
@@ -63,17 +139,17 @@
   </div>
 
 
-      
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
-        crossorigin="anonymous"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="user/login/script.js"></script>
-    <script src="user/register/script.js"></script>
-    <script src="js/routes.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+    crossorigin="anonymous"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="user/login/script.js"></script>
+  <script src="user/register/script.js"></script>
+  <script src="js/routes.js"></script>
 </body>
 
 </html>

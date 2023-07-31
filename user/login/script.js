@@ -48,3 +48,76 @@ document.addEventListener('keydown', (event) => {
 function register() {
     window.location.href = "user/register";
 }
+
+// let animationTime = 0;
+
+// function animatetim(){
+//     animationTime =animationTime +1;
+//     console.log(animationTime)
+//     if(animationTime == 10){
+//         animationTime = 0;
+//     }
+// }
+
+// animatetim()
+
+// setInterval(animatetim,400)
+
+// animateText();
+
+// setInterval(animateText,400)
+// function animateText(){
+//         switch (animationTime) {
+//         case 0:
+//         console.log("1");
+//         text = "T|";
+//         break;
+//         case 1:
+//         console.log("1");
+//         text = "TR";
+//         break;
+//         case 2:
+//         console.log("1");
+//         text = "TRA|";
+//         break;
+//         case 3:
+//         console.log("1");
+//         text = "TRAC";
+//         break;
+
+//         case 4:
+//         console.log("1");
+//         text = "TRACK|";
+//         break;
+//         case 5:
+//         console.log("1");
+//         text = "TRACK T";
+//         break;
+//         case 6:
+//         console.log("1");
+//         text = "TRACK TI|";
+//         break;
+//         case 7:
+//         console.log("1");
+//         text = "TRACK TIM";
+//         break;
+//         case 8:
+//         console.log("1");
+//         text = "TRACK TIME|";
+//         break;
+//     }
+//         // case 1:
+//         //     console.log("2");
+//         //     text = "KEEP RECORDS";
+//         //     break;
+//         // case 2:
+//         //     console.log("3")
+//         //     text = "CREATE INVOCE";
+//         //     break;
+//         // case 3:
+//         //     console.log("4")
+//         //     text = "INCREASE PRODUCTIVITY";
+//         //     break;
+//     $("#animatedtext").html(text);
+//       }
+      
