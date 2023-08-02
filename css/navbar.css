@@ -1,4 +1,19 @@
 @media (orientation: landscape){
+    .navbgh{
+        background-color: transparent;
+    }
+    .navbgh:hover{
+        background-color: blueviolet;
+        opacity: .9;
+    }
+    .navbg{
+        background-color: blueviolet;
+        opacity: .3; 
+        width: 100vw; 
+        height: 9vh; 
+        position: absolute;
+    }
+
     .navbar {
         background-color: transparent;
     }
@@ -75,6 +90,9 @@
 
 }
 @media (orientation: portrait){
+    .navbar{
+        background-color: blueviolet;
+    }
 
     .logo,.logo-icon{
         height: 3vw;

@@ -2,23 +2,13 @@ body{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-}
-.navbgh{
-    background-color: transparent;
-}
-.navbgh:hover{
-    background-color: blueviolet;
-    opacity: .9;
-}
-.navbg{
-    background-color: blueviolet;
-    opacity: .3; 
-    width: 100vw; 
-    height: 9vh; 
-    position: absolute;
+    background-color: rgb(23, 2, 43);
 }
 
 
+.video-wrapper{
+    background-image: url(../assets/img/);
+}
 .hero-text-area{
     height: 50vh;
 }
