@@ -226,7 +226,15 @@ body{
     font-family: roboto;
     font-weight: 900;
     font-size: calc(2.5vh + 3vw);
-    color: rgb(43, 189, 226);
+    color: rgb(0, 204, 255);
+}
+.relative{
+    position: relative;
+    height: 10px;
+}
+.abolute{
+    position: absolute;
+    z-index: -7;
 }
 .blink{
     font-weight: 900;
@@ -245,4 +253,30 @@ body{
     to {
         opacity: 0;
     }
+}
+.hero-img{
+    position: absolute;
+    z-index: -8;
+}
+.hero-img1{
+    width: 80%;
+    opacity: .8;
+    margin-top: 5%;
+    margin-left: 15%;
+}
+.hero-img2{
+    width: 80%;
+    opacity: .8;
+    margin-top: -10%;
+    margin-left: 20%;
+}
+.call-to-action{
+    margin-top: 23%;
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+}
+.c2a1{
+    width: 30%;
+    background-color: #4eb9ff;
 }

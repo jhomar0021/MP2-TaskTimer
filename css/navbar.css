@@ -15,6 +15,9 @@
     }
 
     .navbar {
+        position: fixed;
+        top: 0;
+        z-index: 5;
         background-color: transparent;
     }
 
