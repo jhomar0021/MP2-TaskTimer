@@ -259,12 +259,14 @@ body{
     z-index: -8;
 }
 .hero-img1{
+    border-radius: 5px;
     width: 80%;
     opacity: .8;
     margin-top: 5%;
     margin-left: 15%;
 }
 .hero-img2{
+    border-radius: 5px;
     width: 80%;
     opacity: .8;
     margin-top: -10%;
