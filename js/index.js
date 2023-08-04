@@ -978,7 +978,6 @@ function open(index) {
   editable.textContent = '';
   const interval = setInterval(function() {
     const text = editable.textContent;
-    console.log(text.length === initialText.length);
     if (text.length === initialText.length) {
       clearInterval(interval);
       setTimeout(function() {
@@ -995,3 +994,8 @@ function writeWords() {
 }
 
 writeWords();
+
+
+$('.navbar-nav>li>a').on('click', function(){
+  $('.navbar-collapse').collapse('hide');
+});

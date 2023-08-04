@@ -3,8 +3,29 @@ body{
     background: radial-gradient(circle, rgba(73,45,107,1) 0%, rgba(36,23,84,1) 12%, rgba(35,22,82,1) 31%, rgba(11,12,47,1) 55%, rgba(11,12,46,1) 74%, rgba(13,9,40,1) 82%, rgba(14,7,34,1) 91%, rgba(0,0,0,1) 98%); */
     background-image:  linear-gradient(to bottom right, rgb(20, 6, 70),rgb(47, 11, 88),rgb(14, 27, 82));
     font-family: 'Montserrat';
-    overflow: hidden;
+    overflow-x: hidden;
     height: 100svh;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+    height: 10%;
+  }
+  .modal{
+    border-radius: 10px;
+    background-color: transparent;
+    overflow: hidden;
+  }
+  .modal-header{
+    background-color: rgb(165, 13, 235);
   }
   *{
     box-sizing: border-box;
@@ -57,164 +78,10 @@ body{
   }
   
   /* ---------------------------------------------------------------------------------------------------------------- */
-  
-  
-
-.floating-item{
-    position: absolute;
-    z-index: -9;
-    box-shadow: 0 0 10px rgb(128, 0, 128);
-    padding: 0;
-    margin: 0;
-    border-radius: 3%;
-    background-color: #8e38d9;
-    position: absolute;
-    bottom: 40svh;
-    left: calc(50svw - 75px);;
-    min-width: 150px;
-    aspect-ratio: .75;
-    box-shadow: 20px;
-    transition: 1sec;
-    opacity: .8;
-    animation: animate3dmain 10s ease-in infinite alternate;
+.heropage{
+    width: 100svw;
+    height: 100svh;
 }
-@keyframes animate3dmain {
-
-    0%{
-        transform: perspective(200px)
-        rotatey(-5deg)
-        
-        /* rotateX(-20deg) */
-        
-    }
-
-    50%{
-        transform: perspective(200px)
-        rotateX(-2deg)
-        translatey(-5%)
-    }
-
-    100%{
-        transform: perspective(200px)
-        rotatey(5deg)
-        /* rotateX(-20deg) */   
-        
-    }
-}
-.floating-item-box1{
-    border:solid yellow;
-    border-radius: 3%;
-    background-color: transparent;
-    aspect-ratio: .75;
-    width: 87%;
-    margin: 4%;
-    margin-top: 5%;
-    animation: animate3dbox1 10s linear infinite;
-    transform-style: preserve-3d;
-    transform: perspective(20000);
-    opacity: 1;
-}
-
-@keyframes animate3dbox1 {
-    0% {
-        transform: translatex(1%)
-        translatey(1%);
-    }
-    25%{
-        transform: translatex(-1%)
-        translatey(-1%);
-        
-    }
-    50%{
-        transform: translatex(-1%)
-        translatey(1%);
-        
-    }
-    75%{
-        transform: translatex(1%)
-        translatey(-1%);
-    }
-    100% {
-        transform: translatex(1%)
-        translatey(1%);
-    }
-}
-
-.bar{
-    
-    vertical-align: center;
-    width: 90%;
-    margin: 5%;
-    margin-top: 12%;
-    max-height: 4%;
-    overflow: hidden;
-    border-radius: 20px;
-}
-.fill{
-    height: 100%;
-    background-color: transparent;
-    color: transparent;
-    margin-left: 50px;
-}
-.graphval{
-    vertical-align: center;
-    max-height: 8px;
-    height: 5%;
-    width: 100%;
-    transition: 2s;
-    border-radius: 1000px;
-    overflow-y: hidden;
-}
-.graphval1{
-    background-color: #ff41ff;
-    animation: animate3dgraphs 1s linear infinite;
-}
-
-.graphval2{
-    background-color: #d239ff;
-    animation: animate3dgraphs 2s linear infinite;
-}
-.graphval3{
-    background-color: #ac7eff;
-    animation: animate3dgraphs 4s linear infinite;
-}
-.graphval4{
-    background-color: #74b7ff;
-    animation: animate3dgraphs 8s linear infinite;
-}
-.graphval5{
-    background-color: #4eb9ff;
-    animation: animate3dgraphs 12s linear infinite;
-}
-.graphval6{
-    
-    background-color: #50bcff;
-    animation: animate3dgraphs 16s linear infinite;
-}
-@keyframes animate3dgraphs {
-    0% {
-        transform: translatex(-60px)
-    }
-    0% {
-        transform: translatex(-45px)
-    }
-    25%{
-        transform: translatex(-35px)
-        
-    }
-    50%{
-        transform: translatex(-55px);
-        
-    }
-    75%{
-        transform: translatex(-45px);
-    }
-    100% {
-        transform: translatex(-60px)
-    }
-}
-
-
 
 .title{
     font-weight: 900;
@@ -231,6 +98,7 @@ body{
 .relative{
     position: relative;
     height: 10px;
+    z-index: -5;
 }
 .abolute{
     position: absolute;
@@ -281,4 +149,11 @@ body{
 .c2a1{
     width: 30%;
     background-color: #4eb9ff;
+}
+
+  /* ---------------------------------------------------------------------------------------------------------------- */
+
+.features-page{
+    width: 100svw;
+    height: 100svh;
 }
