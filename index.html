@@ -21,12 +21,12 @@
   <!-- ------------------------------------------------------------------------------( NAVBAR )----------------------------- -->
   <!-- ------------------------------------------------------------------------------( NAVBAR )----------------------------- -->
   <!-- ------------------------------------------------------------------------------( NAVBAR )----------------------------- -->
+  <div id="heropage" style="height: 1px;"></div>
   <div class="navbgh" style="position: fixed;top: 0px;width: 100%;">
-    <div class="navbg">
-    </div>
+    <div class="navbg"></div>
     <nav class="navbar navbar-expand-lg pe-0 me-0">
       <div class="logo me-5 pe-5"><img src="assets/img/dev icon.png" alt="logo" class="logo-icon"></div>
-      <button class="navbar-toggler" style="background-color:blueviolet;" type="button" data-bs-toggle="collapse"
+      <button class="navbar-toggler me-3 me-md-5" style="background-color:blueviolet; color: cyan;" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,9 +34,8 @@
         <ul class="navbar-nav mb-5 mb-lg-0">
           <li><a class="navitem d-none" style="width:0px;">Home</a></li>
           <li><a class="navitem " href="#heropage">Home</a></li>
-          <li><a class="navitem " href="">About</a></li>
-          <li><a class="navitem " href="#faq" >FAQ</a></li>
-          <li><a class="navitem " href="">Contact</a></li>
+          <li><a class="navitem " href="#faq">Features</a></li>
+          <li><a class="navitem " href="">Contact Us</a></li>
           <li><a class="navitem d-lg-none"><button type="button" class="list-button" data-bs-toggle="modal"
                 data-bs-target="#loginModal">Log In</button></a></li>
           <li><a class="navitem d-lg-none"><button type="button" class="list-button" data-bs-toggle="modal"
@@ -53,7 +52,7 @@
   <!-- ------------------------------------------------------------------------------( BODY )----------------------------- -->
   <!-- ------------------------------------------------------------------------------( BODY )----------------------------- -->
   <!-- ------------------------------------------------------------------------------( BODY )----------------------------- -->
-  <div class="heropage" id="heropage">
+  <div class="heropage" id="">
     <div class="video-wrapper" style="margin-top: -7svh;">
       <video playsinline autoplay muted loop
         poster="https://res.cloudinary.com/ddkq0s159/image/upload/v1690991183/data-info-alt_mcg9gm.jpg">
@@ -96,8 +95,9 @@
         </div>
         <div class="col-12 col-md-6 ms-0 ms-lg-5">
           <div class="call-to-action">
-            <button class="c2a1">Start Tasking</button>
-            <button class="c2a1">See Features</button>
+            <a class="c2aA" href="#faq" style="width: 400%;"><button class="c2a1 text-center">Start Tasking</button></a>
+            <a class="c2aA" href="#faq" style="width: 400%;"><button class="c2a1 text-center">See Features</button></a>
+
           </div>
         </div>
       </div>
@@ -112,39 +112,41 @@
       <div class="container-fluid row h-75" >
         <div class="col-12 col-md feat-box">
           <div class="features-list row justify-content-evenly pe-5 ms-1 ms-md-0">
-            <div class="feature-img col-5 col-md-8 text-start text-md-end mt-2">
+            <div class="feature-img col-5 col-md-8 text-start text-md-end mt-4">
               <img src="assets/img/feat-graph.png" alt="" class="feat-icons ">
             </div>
-            <div class="col col-md-12 text-start text-md-center row mt-2">
-              <h1>Monitor sessions</h1>
-              <p>ipsum dolor si? Optio ut qvoluptatum!ipsum dolor si? Optio ut qvoluptatum!</p>
+            <div class="col col-md-12 text-start text-md-center row mt-lg-2">
+              <h1>Real-Time Monitoring</h1>
+              <p>Stay ahead of the curve and work efficiently with real-time monitoring.</p>
             </div>
           </div>
         </div>
   
         <div class="col-12 col-md feat-box">
           <div class="features-list row justify-content-evenly pe-5 ms-1 ms-md-0">
-            <div class="feature-img col-5 col-md-8 text-start text-md-end mt-2">
-              <img src="assets/img/feat-graph.png" alt="" class="feat-icons ">
+            <div class="feature-img col-5 col-md-8 text-start text-md-end mt-4">
+              <img src="assets/img/feat-stats.png" alt="" class="feat-icons ">
             </div>
-            <div class="col col-md-12 text-start text-md-center row mt-2">
-              <h1>Monitor sessions</h1>
-              <p>ipsum dolor si? Optio ut qvoluptatum!ipsum dolor si? Optio ut qvoluptatum!</p>
+            <div class="col col-md-12 text-start text-md-center row mt-lg-2">
+              <h1>Recorded Sessions</h1>
+              <p>Automatically stores all of your activity to be easily reviewed and invoiced.</p>            
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md feat-box">
+          <div class="features-list row justify-content-evenly pe-5 ms-1 ms-md-0">
+            <div class="feature-img col-5 col-md-8 text-start text-md-end mt-4">
+              <img src="assets/img/feat-accuracy.png" alt="" class="feat-icons ">
+            </div>
+            <div class="col col-md-12 text-start text-md-center row mt-lg-2">
+              <h1>100% Time Accuracy</h1>
+              <p>Our system uses Web Worker API to optimize performance, even when the browser is idle.</p>
             </div>
           </div>
         </div>
   
-        <div class="col-12 col-md feat-box">
-          <div class="features-list row justify-content-evenly pe-5 ms-1 ms-md-0">
-            <div class="feature-img col-5 col-md-8 text-start text-md-end mt-2">
-              <img src="assets/img/feat-graph.png" alt="" class="feat-icons ">
-            </div>
-            <div class="col col-md-12 text-start text-md-center row mt-2">
-              <h1>Monitor sessions</h1>
-              <p>ipsum dolor si? Optio ut qvoluptatum!ipsum dolor si? Optio ut qvoluptatum!</p>            
-            </div>
-          </div>
-        </div>
+
   
       </div>
     </div>

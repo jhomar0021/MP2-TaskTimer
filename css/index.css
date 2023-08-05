@@ -5,6 +5,7 @@ body{
     background: linear-gradient(90deg, rgba(20,8,38,1) 9%, rgba(19,7,37,1) 24%, rgba(15,14,48,1) 44%, rgba(9,16,58,1) 64%, rgba(8,25,85,1) 86%);    font-family: 'Montserrat';
     overflow-x: hidden;
     height: 100svh;
+    
   }
   ::-webkit-scrollbar {
     width: 5px;
@@ -146,10 +147,27 @@ body{
     display: flex;
     justify-content: space-evenly;
     width: 90%;
+    height: 50px;
 }
+
 .c2a1{
-    width: 30%;
-    background-color: #4eb9ff;
+    border-radius: 20px;
+    width: 90%;
+    height: 50px;
+    background-color: blueviolet;
+    color: rgb(244, 237, 250);
+    font-weight: 900;
+    font-size: 1.4rem;
+    transition: .2s;
+}
+.c2a1:hover{
+  text-decoration: none;
+  border-radius: 5px;
+  width: 90%;
+  height: 50px;
+  background-color: cyan;
+  color: blueviolet;
+  font-weight: 900;
 }
 
   /* ---------------------------------------------------------------------------------------------------------------- */
@@ -164,7 +182,9 @@ body{
   min-height: 33%;
   margin-top: 10%;
 }
-
+.feature-list{
+  margin-right: -50px;
+}
 .feat-icons{
   border-radius: 5%;
   width: 100%;
