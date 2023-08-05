@@ -1,13 +1,14 @@
 body{
     /* background: rgb(73,45,107);
     background: radial-gradient(circle, rgba(73,45,107,1) 0%, rgba(36,23,84,1) 12%, rgba(35,22,82,1) 31%, rgba(11,12,47,1) 55%, rgba(11,12,46,1) 74%, rgba(13,9,40,1) 82%, rgba(14,7,34,1) 91%, rgba(0,0,0,1) 98%); */
-    background-image:  linear-gradient(to bottom right, rgb(20, 6, 70),rgb(47, 11, 88),rgb(14, 27, 82));
-    font-family: 'Montserrat';
+    background: rgb(20,8,38);
+    background: linear-gradient(90deg, rgba(20,8,38,1) 9%, rgba(19,7,37,1) 24%, rgba(15,14,48,1) 44%, rgba(9,16,58,1) 64%, rgba(8,25,85,1) 86%);    font-family: 'Montserrat';
     overflow-x: hidden;
     height: 100svh;
   }
   ::-webkit-scrollbar {
     width: 5px;
+    background-color: cyan;
   }
   
   ::-webkit-scrollbar-track {
@@ -15,7 +16,7 @@ body{
   }
   
   ::-webkit-scrollbar-thumb {
-    background: transparent;
+    background: blueviolet;
     border-radius: 10px;
     height: 10%;
   }
@@ -155,5 +156,25 @@ body{
 
 .features-page{
     width: 100svw;
-    height: 100svh;
+    height: 130svh;
+    /* background: rgb(0,0,0);
+    background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,1) 98%); */
+    }
+.feat-box{
+  min-height: 33%;
+  margin-top: 10%;
+}
+
+.feat-icons{
+  border-radius: 5%;
+  width: 100%;
+}
+.features-page h1{
+  color: rgb(255, 255, 255);
+  font-size: calc(10px + 1.5vw);
+  display:inline;
+}
+.features-page p{
+  color: cyan;
+  font-size: calc(10px + 1vw);
 }

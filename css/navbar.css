@@ -5,6 +5,7 @@
     .navbgh:hover{
         background-color: blueviolet;
         opacity: .9;
+        height: 10%;
     }
     .navbg{
         background-color: blueviolet;
