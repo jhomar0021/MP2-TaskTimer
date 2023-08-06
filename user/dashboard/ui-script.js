@@ -107,7 +107,8 @@ function setDefaultDate(){
           tommShort =" SUN"
       }
 
-      let dateTom = date+1;
+      let dateTom = parseInt(date)+1;
+      if(dateTom < 10){dateTom = "0"+dateTom;}
 
       $("#graphdatestart").html(month+"-"+date+"<br/>"+dayShort);
       $("#graphdateend").html(month+"-"+dateTom+"<br/>"+tommShort);

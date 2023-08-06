@@ -38,10 +38,13 @@
     color: aliceblue;
     font-weight: bold;
 }
+.sidebar-picture{
+ margin-top: -5%;
+}
 .uploadpic{
 margin-top: 3vh;
 width: 70%;
-height: auto;
+aspect-ratio: 1;
 border: solid aliceblue;
 border-radius: 50%;
 background-color: aliceblue;

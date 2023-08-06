@@ -157,7 +157,7 @@ body{
     background-color: blueviolet;
     color: rgb(244, 237, 250);
     font-weight: 900;
-    font-size: 1.4rem;
+    font-size: calc(10px + 1.5vw);
     transition: .2s;
 }
 .c2a1:hover{
