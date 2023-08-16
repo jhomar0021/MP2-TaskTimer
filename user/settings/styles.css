@@ -1,0 +1,9 @@
+input[type="file"]{
+    display: none;
+}
+.file-label{
+    color: white;
+    background-color: blueviolet;
+    padding: 5%;
+    border-radius: 5px;
+}

@@ -15,7 +15,8 @@
     rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  </head>
 
 <body>
   <!-- ------------------------------------------------------------------------------( NAVBAR )----------------------------- -->
@@ -61,7 +62,7 @@
       </video>
     </div>
 
-    <div class="bg-animation">
+    <div class="bg-animation" id="copy">
       <canvas class="plane-canvas" id="plane-canvas"></canvas>
       <canvas class="main-canvas" id="main-canvas"></canvas>
       <div class="mouse" id="mouse"></div>
@@ -95,7 +96,8 @@
         </div>
         <div class="col-12 col-md-6 ms-0 ms-lg-5">
           <div class="call-to-action">
-            <a class="c2aA" href="#faq" style="width: 400%;"><button class="c2a1 text-center">Start Tasking</button></a>
+            <a class="c2aA" type="button" class="list-button" data-bs-toggle="modal"
+            data-bs-target="#registerModal" style="width: 400%;"><button class="c2a1 text-center">Start Tasking</button></a>
             <a class="c2aA" href="#faq" style="width: 400%;"><button class="c2a1 text-center">See Features</button></a>
 
           </div>
@@ -107,13 +109,19 @@
   ----------------------------------------------------------------------------------------------------------------------
   ---------------------------------------------------------------------------------------------------------------------- -->
   <div class="features-page">
-    <div style="height: 10svh;" id="faq"></div>
+    <div style="height:30svh;" id="copy1"></div>
+    <div style="height:10svh;" id="faq"></div>
     <div style="height: 100svh;" >
       <div class="container-fluid row h-75" >
         <div class="col-12 col-md feat-box">
-          <div class="features-list row justify-content-evenly pe-5 ms-1 ms-md-0">
+          <div class="features-list row justify-content-evenly ms-1 ms-md-0">
             <div class="feature-img col-5 col-md-8 text-start text-md-end mt-4">
-              <img src="assets/img/feat-graph.png" alt="" class="feat-icons ">
+              <img src="assets/img/feat-graph.png" alt="" class=" feat-icons feat-icons1" 
+              data-aos-delay="0"
+              data-aos="fade-right"
+              data-aos-once="true"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine">
             </div>
             <div class="col col-md-12 text-start text-md-center row mt-lg-2">
               <h1>Real-Time Monitoring</h1>
@@ -123,9 +131,15 @@
         </div>
   
         <div class="col-12 col-md feat-box">
-          <div class="features-list row justify-content-evenly pe-5 ms-1 ms-md-0">
+          <div class="features-list row justify-content-evenly ms-1 ms-md-0">
             <div class="feature-img col-5 col-md-8 text-start text-md-end mt-4">
-              <img src="assets/img/feat-stats.png" alt="" class="feat-icons ">
+              <img src="assets/img/feat-stats.png" alt="" class="feat-icons feat-icons2 "
+              data-aos-delay="200"
+              data-aos-once="true"
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+              >
             </div>
             <div class="col col-md-12 text-start text-md-center row mt-lg-2">
               <h1>Recorded Sessions</h1>
@@ -135,9 +149,14 @@
         </div>
 
         <div class="col-12 col-md feat-box">
-          <div class="features-list row justify-content-evenly pe-5 ms-1 ms-md-0">
+          <div class="features-list row justify-content-evenly ms-1 ms-md-0">
             <div class="feature-img col-5 col-md-8 text-start text-md-end mt-4">
-              <img src="assets/img/feat-accuracy.png" alt="" class="feat-icons ">
+              <img src="assets/img/feat-accuracy.png" alt="" class="feat-icons feat-icons3 "
+              data-aos-delay="400"
+              data-aos-once="true"
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine">
             </div>
             <div class="col col-md-12 text-start text-md-center row mt-lg-2">
               <h1>100% Time Accuracy</h1>
@@ -169,10 +188,10 @@
         </div>
         <div class="modal-body">
           <div class="container">
-            <div id="alert" class="text-center row">
+            <div id="loginalert" class="text-center row">
             </div>
             <div>
-              <label for="InputEmail1" class="form-label">Email address</label>
+              <label for="InputEmail1" class="form-label">Username</label>
               <input type="email" class="form-control" id="email">
             </div>
             <div>
@@ -181,7 +200,7 @@
             </div>
 
             <div class="col-12 text-center register">
-              <a href="user/register/index.html" class="">New user? Sign-up here.</a>
+              <a type="button" class="me-4" data-bs-toggle="modal" data-bs-target="#registerModal">New user? Sign-up here.</a>
             </div>
           </div>
         </div>
@@ -200,7 +219,30 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div id="container">
+          <div id="registeralert" class="bg-danger-subtle text-center">
+          </div>
+          <div class="mb-3">
+            <div class="container">
+              <div class="row justify-content-evenly">
+        
+                <div class="input-container col-4">
+                  <input id="personal" type="radio" name="account-level" value="1" checked>
+                  <div class="radio-tile">
+                    <i class="fa-solid fa-user" style="font-size: 5rem;"></i>
+                    <label for="personal">personal</label>
+                  </div>
+                </div>
+        
+                <div class="input-container col-4">
+                  <input id="corporate" type="radio" name="account-level" value="2">
+                  <div class="radio-tile">
+                    <i class="fa-solid fa-user-group" style="font-size: 5rem;"></i>
+                    <label for="corporate">corporate</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
           <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">First name</label>
@@ -216,15 +258,19 @@
           </div>
           <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" required class="form-control" id="password">
+              <input type="password" required class="form-control" id="rpassword">
           </div>
           <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Confirm Password</label>
-              <input type="password" required class="form-control" id="confirmPassword" aria-describedby="emailHelp">
+              <input type="password" required class="form-control" id="rconfirmPassword" aria-describedby="emailHelp">
+          </div>
+          <div class="text-center">
+            <a type="button" class="me-4" data-bs-toggle="modal" data-bs-target="#loginModal">Already have an account? Log-in instead.</a>
           </div>
         </div>
+        
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="sign-in" onclick="regiter()">Sign-in</button>
+          <button type="button" class="btn btn-primary" id="sign-in" onclick="register()">Create Account</button>
         </div>
       </div>
     </div>
@@ -238,11 +284,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
     integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
     crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/77ec53770a.js" crossorigin="anonymous"></script>
   <script src="js/jquery.min.js"></script>
   <script src="user/login/script.js"></script>
-  <script src="user/register/script.js"></script>
   <script src="js/routes.js"></script>
   <script src="js/index.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>

@@ -16,7 +16,7 @@ if (isset($_POST['auth'])) {
         array_push($users, $row);
     }
     
-    $response = createResponse(401, "Error", "Account doesn't exist");
+    $response = createResponse(401, "Log-in Failed", "Account doesn't exist");
 
     foreach ($users as $user) {
 
@@ -37,7 +37,7 @@ if (isset($_POST['auth'])) {
         }
 
         else {
-            $response = createResponse(401, "Error", "Wrong Password please try again");
+            $response = createResponse(401, "Log-in Failed!", "Username/Password does not match");
         }
     }
 

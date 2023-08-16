@@ -18,7 +18,7 @@
     .navbar {
         position: fixed;
         top: 0;
-        z-index: 5;
+        z-index: 999;
         background-color: transparent;
     }
 
@@ -69,7 +69,7 @@
         height: 6vh;
         margin-top: 1vh;
         height: 100%;
-        color: cyan;
+        color: white;
         text-shadow: 0 0 100px 100px rgb(16, 240, 240);
         text-decoration: none;
         display: block;

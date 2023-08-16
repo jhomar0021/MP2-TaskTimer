@@ -17,15 +17,21 @@ function login() {
              * 6. Check the response and parse it thru JSON.parse
              */
             let parseResponse = JSON.parse(response);
-            $("#container").html("<h1>" + parseResponse.title + "</h1>" + "<h2>" + parseResponse.description + "</h2>");
+            $("#loginalert").removeClass('bg-success-subtle');
+            $("#loginalert").addClass('bg-danger-subtle');
+            $("#loginalert").html("<h3>" + parseResponse.title + "</h3>" + "<h5>" + parseResponse.description + "</h5>");
 
             /**
              * If successful yung login
              */
             if (parseResponse.status == 200 && parseResponse.description =="Admin Access"){
+                $("#loginalert").removeClass('bg-danger-subtle');
+                $("#loginalert").addClass("bg-success-subtle");
                 window.location.href = "admin/dashboard";
             }
             if (parseResponse.status == 200 && parseResponse.description =="User Access") {
+                $("#loginalert").removeClass('bg-danger-subtle');
+                $("#loginalert").addClass("bg-success-subtle");
                 window.location.href = "user/dashboard";
             }
         },
@@ -43,81 +49,42 @@ document.addEventListener('keydown', (event) => {
     }
  );
 
+const registerModal = new bootstrap.Modal('#registerModal');
+const loginModal = new bootstrap.Modal('#loginModal')
 
+ function register() {
+    let registrationRequest = {
+        "fname" : $("#fname").val(),
+        "lname" : $("#lname").val(),
+        "username" : $("#username").val(),
+        "password" : $("#rpassword").val(),
+        "confirmPassword" : $("#rconfirmPassword").val(),
+        "level" : $("input[type='radio'][name='account-level']:checked").val()
+    }
 
-function register() {
-    window.location.href = "user/register";
+    $.ajax({
+        "url" : REGISTER_API, //URL of the API
+        "type" : "POST", //GET and POST 
+        "data" : "register=" + JSON.stringify(registrationRequest), //auth will be our php variable $_POST['auth']
+        //JS JSON.stringify -> PHP json_decode
+        //PHP json_encode -> JSON.parse
+        //5. Check your API and do the process
+        "success" : function (response) {
+            let parseResponse = JSON.parse(response);
+            if(parseResponse.status == 200){
+                registerModal.hide();
+                loginModal.show();
+                $("#loginalert").removeClass('bg-danger-subtle');
+                $("#loginalert").addClass("bg-success-subtle");
+                $("#loginalert").html("<h3>" + parseResponse.title + "</h3>" + "<h5>" + parseResponse.description + "</h5>");       
+            }
+            else{
+                $("#registeralert").html("<h3>" + parseResponse.title + "</h3>" + "<h5>" + parseResponse.description + "</h5>");
+            }
+           
+        },
+        "error" : function (xhr, status, error) {
+            alert("Error")
+        }
+    });
 }
-
-// let animationTime = 0;
-
-// function animatetim(){
-//     animationTime =animationTime +1;
-//     console.log(animationTime)
-//     if(animationTime == 10){
-//         animationTime = 0;
-//     }
-// }
-
-// animatetim()
-
-// setInterval(animatetim,400)
-
-// animateText();
-
-// setInterval(animateText,400)
-// function animateText(){
-//         switch (animationTime) {
-//         case 0:
-//         console.log("1");
-//         text = "T|";
-//         break;
-//         case 1:
-//         console.log("1");
-//         text = "TR";
-//         break;
-//         case 2:
-//         console.log("1");
-//         text = "TRA|";
-//         break;
-//         case 3:
-//         console.log("1");
-//         text = "TRAC";
-//         break;
-
-//         case 4:
-//         console.log("1");
-//         text = "TRACK|";
-//         break;
-//         case 5:
-//         console.log("1");
-//         text = "TRACK T";
-//         break;
-//         case 6:
-//         console.log("1");
-//         text = "TRACK TI|";
-//         break;
-//         case 7:
-//         console.log("1");
-//         text = "TRACK TIM";
-//         break;
-//         case 8:
-//         console.log("1");
-//         text = "TRACK TIME|";
-//         break;
-//     }
-//         // case 1:
-//         //     console.log("2");
-//         //     text = "KEEP RECORDS";
-//         //     break;
-//         // case 2:
-//         //     console.log("3")
-//         //     text = "CREATE INVOCE";
-//         //     break;
-//         // case 3:
-//         //     console.log("4")
-//         //     text = "INCREASE PRODUCTIVITY";
-//         //     break;
-//     $("#animatedtext").html(text);
-//       }
-      

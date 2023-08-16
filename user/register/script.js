@@ -3,8 +3,8 @@ function register() {
         "fname" : $("#fname").val(),
         "lname" : $("#lname").val(),
         "username" : $("#username").val(),
-        "password" : $("#password").val(),
-        "confirmPassword" : $("#confirmPassword").val()
+        "password" : $("#rpassword").val(),
+        "confirmPassword" : $("#rconfirmPassword").val()
     }
 
     $.ajax({
