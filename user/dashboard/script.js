@@ -13,6 +13,7 @@ function viewtimer(){
             let contents = parseResponse.data1;
             let sessionrecords = parseResponse.data2;
             let submitrecords = parseResponse.data3;
+            let allowDelete = parseResponse.data4;
             let timerItem = "";
             
             
@@ -26,7 +27,6 @@ function viewtimer(){
                     let value = 0;
                     if(sessionrecords[j].timer_id == id){
 
-                        console.log(sessionrecords[j].timer_id+"is equal to"+id)
                         let stVal = parseInt(sessionrecords[j].session_start_value);
                         let enVal = 0;
                         if( parseInt(sessionrecords[j].session_end_value) < parseInt(sessionrecords[j].session_start_value)){   
@@ -67,6 +67,16 @@ function viewtimer(){
                     workRateDisplay = RPH + "/Hour";
                 }
 
+                let removeBtn = "";
+
+                if(allowDelete == true){
+                    removeBtn =                 
+                    '<button class="timer-remove"'+
+                    'onclick="destroy('+id+')">'+
+                    '<i class="fa-solid fa-square-minus"></i>'+
+                    '</button>';
+                }
+
                 let timerTemplate =
                 '<div class="timer-a-container newtimer">'+
                 '<div class="timer-top text-center">'+
@@ -75,10 +85,7 @@ function viewtimer(){
                 '<h3 class="projectlabel"> '+contents[i].timer_name+' </h3>'+
                 '<h3></h3>'+
                 '</a>'+
-                '<button class="timer-remove"'+
-                'onclick="destroy('+id+')">'+
-                '<i class="fa-solid fa-square-minus"></i>'+
-                '</button>'+
+                removeBtn+
                 '</div>'+
                 '<a onclick="viewUser('+id+')">'+
                 '<div  class="py-1">'+

@@ -3,16 +3,25 @@ include "config.php";
 
 session_start();
 
-$createdBy = $_SESSION['logged-in-user']["id"];
+$sessionID = $_SESSION['logged-in-user']["id"];
+$sessionLevel = $_SESSION['logged-in-user']["account_level"];
 
 if (isset($_GET['index'])) {
-    $sqlCommand = "SELECT * FROM `tbl_timer` WHERE `id` = $createdBy;";
-    $results = $connection->query($sqlCommand);
+    if($sessionLevel == 3){
+        $sqlCommand = "SELECT * FROM `timer_access` WHERE `user` = $sessionID;";
+        $results = $connection->query($sqlCommand);
+        $delete = false;
+    }
+    else{
+        $sqlCommand = "SELECT * FROM `tbl_timer` WHERE `id` = $sessionID;";
+        $results = $connection->query($sqlCommand);
+        $delete = true;
+    }
 
-    $sqlCommand2 = "SELECT * FROM `tbl_timer_session` WHERE `user_id` = $createdBy;";
+    $sqlCommand2 = "SELECT * FROM `tbl_timer_session` WHERE `user_id` = $sessionID;";
     $results2 = $connection->query($sqlCommand2);
 
-    $sqlCommand3 = "SELECT * FROM `submit_stamp` WHERE `user_id` = $createdBy;";
+    $sqlCommand3 = "SELECT * FROM `submit_stamp` WHERE `user_id` = $sessionID;";
     $results3 = $connection->query($sqlCommand3);
 
     $response = array();
@@ -34,7 +43,7 @@ if (isset($_GET['index'])) {
         array_push($records3, $row);
     }
 
-    $response = createResponses(200, "Successful", "Succesful", $records,$records2,$records3);
+    $response = createResponses(200, "Successful", "Succesful", $records,$records2,$records3,$delete);
 
     echo json_encode($response);
 }
@@ -82,7 +91,7 @@ if (isset($_POST['store'])) {
         $timerName = ucwords($registerRequest->timer_name);
         
         $sql = "INSERT INTO ". TBL_TIMER. " (`timer_name`, `id`)
-        VALUES ('{$timerName}','{$createdBy}')";
+        VALUES ('{$timerName}','{$sessionID}')";
     
         $isInserted = $connection->query($sql);
     

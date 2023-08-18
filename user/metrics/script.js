@@ -13,10 +13,10 @@ function viewtimer(){
         "data" : "index", //auth will be our php variable $_POST['auth']
         "success" : function (response) { //success yung response
             console.log(response)
-            let parseResponse = JSON.parse(response);
+            let response1 = JSON.parse(response);
             
-            let contents = parseResponse.data1;
-            let sessions = parseResponse.data2;
+            let contents = response1.data1;
+            let sessions = response1.data2;
             let timerItem = "";
             for (let i = 0; i <contents.length; i++) {
                 let id = contents[i].timer_id;
@@ -86,12 +86,15 @@ function graphRecords(){
 }
 
 
+let usersTable;
 
-function viewRecords(){
+
+
+function viewRecords() {
+
     let fromDate = $("#from-date").val();
     let toDate = $("#to-date").val();
     let timerID = $("#timerlist").val();
-
 
     let datetest1 = Math.floor(new Date(toDate));
     console.log("see "+datetest1)
@@ -103,18 +106,23 @@ function viewRecords(){
             "session_start" : fromDate,
             "session_end" : toDate
         };
-        
 
-        $.ajax({
-            "url" : TIMERRECORD_API, //URL of the API
-            "type" : "GET", //GET and POST 
-            "data" : "getdataspan=" + JSON.stringify(dataRequest), //auth will be our php variable $_POST['auth']
-            "success" : function (response) { //success yung response
-                let parseResponse = JSON.parse(response);
-                let sessions= parseResponse.data1;
-                let submits= parseResponse.data2
+
+    if (usersTable){
+        usersTable.destroy();
+    }
+
+    usersTable = $("#records").DataTable({
+        processing : true,
+        ajax : {
+            url : TIMERRECORD_API +"?getdataspan=" + JSON.stringify(dataRequest),
+            dataSrc : function (response) {
+                console.log(response)
+                let return_data = new Array();
+                let sessions= response.data1;
+                let submits= response.data2
                 let totalActiveTime = 0;
-                let totalSubmits = parseResponse.data2.length;
+                let totalSubmits = response.data2.length;
                 let tableItems = "";
 
                 for(let i = 0; i<sessions.length; i++){
@@ -142,7 +150,11 @@ function viewRecords(){
                         submitted = submitted +1;
                         }
                     }
-                    let prodRate = (Math.round((submitted/activeTime)*600))/10;
+
+                    let prodRate ="0"
+                    
+
+                    prodRate = activeTime ? (Math.round((submitted/activeTime)*600))/10 : "Cannot Determine";
 
                     displaystart = start.slice(0,19);
                     displayend = end.slice(0,19);
@@ -155,15 +167,51 @@ function viewRecords(){
                     "<td>" + activeTimeDisplay + "</td>" + 
                     "<td>" + prodRate + "</td>" + 
                     "</tr>";
+
+                    return_data.push({
+                        sessionid : sessions[i].id,
+                        start :  displaystart,
+                        end :  displayend,
+                        submit : submitted,
+                        time : activeTimeDisplay,
+                        rate : prodRate
+                    });
                 }
-                console.log(tableItems);
-                $("#sessionsrecord").html(tableItems);
-                console.log("total active : "+ totalActiveTime + " total submit : "+ totalSubmits);
+                return return_data;
             },
-            "error" : function (xhr, status, error) { //error yung response
-                alert("Error")
-            }
-        });
-    
+            complete : function() {
+                $('#records tbody').on('dblclick', 'tr', function() {
+                    let data = $('#records')
+                        .DataTable()
+                        .row(this)
+                        .data()
+                    alert(data.id)
+                    $("#idToBeDisplay").html(data.id)
+                    $("#name").val(data.name);
+                    $("#price").val(data.price);
+                    $("#modalClickerShow").click();
+
+                    $("#saveButton").hide();
+                    $("#updateButton").show();
+                    $("#showId").show();
+                });
+            },
+        },
+        columns : [
+            { data : 'sessionid' },
+            { data : 'start' },
+            { data : 'end' },
+            { data : 'submit' },
+            { data : 'time' },
+            { data : 'rate' },
+        ],
+        dom : 'lBfrtip',
+        buttons : [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+        ]
+    });
 }
+
 

@@ -1,6 +1,7 @@
 
 ::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
   }
   
   ::-webkit-scrollbar-track {
@@ -10,7 +11,7 @@
   ::-webkit-scrollbar-thumb {
     background: blueviolet;
     border-radius: 10px;
-    height: 10%;
+    height: 1%;
   }
   @keyframes animatedBackground {
     from {
@@ -87,6 +88,7 @@ header {
     font-size: 30px;
     border-bottom: solid blueviolet;
     height: 7vh;
+    z-index: 100;
 }
 .page-label{
     height: 5vh;

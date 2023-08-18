@@ -28,6 +28,7 @@ if (isset($_POST['auth'])) {
                     $_SESSION['logged-in-user'] = $user;
                 }
             }
+
             else{
                 $response = createResponse(200, "Successful", "User Access");
                 if (empty($_SESSION['logged-in-user'])) {

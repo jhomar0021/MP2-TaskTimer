@@ -1,6 +1,11 @@
 /**
  * @var change url
  */
+
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+
 index();
 function index() {
     $.ajax({
