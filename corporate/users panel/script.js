@@ -29,8 +29,8 @@ function index() {
                         fname :  response.data[i].fname,
                         lname :  response.data[i].lname,
                         username : response.data[i].username,
-                        status : stat,
-                        action : "<button onclick='viewUser(" + id + ")' class='btn btn-warning'>VIEW</button> <button class='btn btn-danger' onclick='destroy(" + id + ")'>DELETE</button></td>"
+                        status : stat ,
+                        action : "<button onclick='viewUser(" + id + ")'>VIEW</button> <button onclick='destroy(" + id + ")'>DELETE</button></td>"
                     });
                 }
 

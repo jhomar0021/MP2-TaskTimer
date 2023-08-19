@@ -88,7 +88,6 @@ header {
     font-size: 30px;
     border-bottom: solid blueviolet;
     height: 7vh;
-    z-index: 100;
 }
 .page-label{
     height: 5vh;

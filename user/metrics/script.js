@@ -214,4 +214,6 @@ function viewRecords() {
     });
 }
 
+viewRecords()
 
+let myTimeout = setTimeout(viewRecords,200)

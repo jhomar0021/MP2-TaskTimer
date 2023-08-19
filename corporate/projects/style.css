@@ -1,0 +1,51 @@
+.projectlist{
+    width: 100%;
+    margin-top: 5svh;
+    overflow-y: scroll;
+    /* height: 100%; */
+    max-height: 80svh;
+}
+.project-btn{
+    border-radius: 10px;
+    width: 100%;
+    border: none;
+    color: white;
+    background-color: blueviolet;
+}
+
+.accordion-button{
+    overflow: hidden;
+    background-color: white;
+}
+
+.accordion{
+
+    overflow-y: hidden;
+}
+
+.accordion-item{
+    border: solid blueviolet 2px;
+    border-radius: 20px;
+    overflow-y: hidden;
+}
+.accordion-footer{
+    width: 150%;
+    height: 2svh;
+    background-color: blueviolet;
+}
+.active-user-btn,.pending-user-btn {
+    background-color: blueviolet;
+    color: white;
+    width: 100%;
+}
+
+.project-name{
+
+    background-color: blueviolet;
+    width: 100%;
+    color: white;
+}
+.stats-box{
+    border: solid blueviolet 2px;
+    border-radius: 10px;
+}

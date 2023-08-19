@@ -20,6 +20,7 @@ function viewtimer(){
 
             for (let i = 0; i < contents.length; i++){
                 let id = contents[i].timer_id;
+                let createdBy = contents[i].id;
                 let activeValue = 0;
                 let submitValue = 0;
 
@@ -69,12 +70,22 @@ function viewtimer(){
 
                 let removeBtn = "";
 
-                if(allowDelete == true){
+                if(allowDelete == true && createdBy == userID){
                     removeBtn =                 
                     '<button class="timer-remove"'+
                     'onclick="destroy('+id+')">'+
                     '<i class="fa-solid fa-square-minus"></i>'+
                     '</button>';
+                }
+                else if(allowDelete == true && createdBy !== userID){
+                    removeBtn =                 
+                    '<button class="timer-remove"'+
+                    'onclick="remove('+id+')">'+
+                    '<i class="fa-solid fa-square-minus"></i>'+
+                    '</button>';
+                }
+                else{
+                    removeBtn = "";
                 }
 
                 let timerTemplate =
@@ -161,6 +172,38 @@ function destroy(id) {
         "url" : TIMERRECORD_API, 
         "type" : "POST",
         "data" : "destroy=" + JSON.stringify(idRequest),
+        "success" : function (response) { 
+            let parseResponse = JSON.parse(response);
+           
+            
+
+            if (parseResponse.status == 200) {
+                viewtimer();
+                alert(parseResponse.description);
+            }
+        },
+        "error" : function (xhr, status, error) { 
+            viewtimer();
+            alert("Error");
+        }
+    });
+}
+
+
+function remove(id) {
+
+
+    if (!confirm("Are you sure you want to delete?")) {
+        return;
+    }
+
+    let idRequest = { "timer_id" : id };
+
+
+    $.ajax({
+        "url" : TIMERRECORD_API, 
+        "type" : "POST",
+        "data" : "remove=" + JSON.stringify(idRequest),
         "success" : function (response) { 
             let parseResponse = JSON.parse(response);
            

@@ -13,12 +13,6 @@
         rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css" />
-
     <link rel="stylesheet" href="../../css/default.css" />
     <link rel="stylesheet" href="../../css/videobg.css" />
     <link rel="stylesheet" href="style.css" />
@@ -111,20 +105,115 @@
                 </header>
                 <!-- ------------------------------ ----------------- START OF HTML BODY CONTENT----------------------------- ----------------- START OF HTML BODY CONTENT------------------------------ ----------------- START OF HTML BODY CONTENT---------------------------- -->
 
-                <div class="add-taskbutton container">
-                    <div class="task-add mt-2 row justify-content-end me-3">
-                        <button class="add-task col-6 ms-5" data-bs-toggle="modal" data-bs-target="#AddTimerPopup">
-                            <h5 class="button-label"><i class="fa-solid fa-square-plus fs-2 pe-2"></i>Add Project</h5>
-                        </button>
-                    </div>
-                </div>
-
-
                 <div class="projectlist container-fluid" id="projectlist">
 
                 </div>
 
 
+                <div class="projectlist container-fluid" id="">
+
+                    <div class="accordion mb-3" id="project-items">
+                        <div class="accordion-item container-fluid">
+                            <div class="accordion-header row text-center">
+                                <div class="col-12 project-name">
+                                    <h3>Project name</h3>
+                                </div>
+                                <div class="col-6 h-100 mt-2 mt-md-0 col-md-4">
+                                    <button class="project-btn my-md-3 py-2" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#4a" aria-expanded="false" aria-controls="4a">
+                                        <div class="col-12 text-center">
+                                            <i class="fa-solid fa-user-group"></i>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <h4>Users</h4>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-6 h-100 mt-2 mt-md-0 col-md-4">
+                                    <button class="project-btn my-md-3 py-2" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#4b" aria-expanded="false" aria-controls="4b">
+                                        <div class="col-12 text-center">
+                                            <i class="fa-solid fa-chart-line"></i>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <h4>Metrics</h4>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-12 h-100 col-md-4 my-2 my-md-0">
+                                    <button class="project-btn my-md-3 py-2" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#4c" aria-expanded="false" aria-controls="4c">
+                                        <div class="col-12 text-center">
+                                            <i class="fas fa-duotone fa-gear"></i>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <h4>Project Settings</h4>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="4a" class="collapse" data-bs-parent="#project-items">
+                                <div class="row">
+                                    <div class="col-12 my-2  col-md-8 mx-2 stats-box row">
+                                        <div class="col-6"><h4>Total Project Hours</h4></div>
+                                        <div class="col-6"><h2>111111</h2></div>
+                                    </div>
+                                    <div class="col-12 my-2  col-md-3 mx-2 row">
+                                        <button>VIEW DETAILED</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="4b" class="collapse" data-bs-parent="#project-items">
+                                <div class="container-fluid my-3 py-3 ">
+                                    <div class="row">
+                                        <div class="col-12 my-2  col-md-4 mx-2 stats-box row">
+                                            <div class="col-6"><h4>Total Project Hours</h4></div>
+                                            <div class="col-6"><h2>111111</h2></div>
+                                        </div>
+                                        <div class="col-12 my-2  col-md-4 mx-2 stats-box row">
+                                            <div class="col-6"><h4>Total Submitted</h4></div>
+                                            <div class="col-6"><h2>111111</h2></div>
+                                        </div>
+                                        <div class="col-12 my-2  col-md-3 mx-2 row">
+                                            <button>VIEW DETAILED</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="4c" class="collapse" data-bs-parent="#project-items">
+                                <div class="row justify-content-evenly">
+                                    <div class="col-3"></div>
+                                    <div class="col-12 col-md-6">
+                                        <form id="project-update">
+                                            <div class="my-4 col">
+                                                <label for="timer-name" class="form-label">Project Name</label>
+                                                <input type="text" required class="form-control" id="timer-name"
+                                                    aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="my-4 col row text-center align-items-bottom">
+                                                <div class="vstack gap-2 col-md-5 mx-auto">
+                                                    <button type="submit" class="project-btn py-3">Update</button>
+                                                    <button type="button" class="project-btn py-3">Delete</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="add-taskbutton container">
+                    <div class="task-add mt-2 row justify-content-center">
+                        <button class="add-task col-6" data-bs-toggle="modal"
+                            data-bs-target="#AddTimerPopup"><h1 class="button-label"><i
+                                class="fa-solid fa-square-plus fs-2 pe-2"></i>Add Project</h1>
+                        </button>
+                    </div>
+                </div>
 
                 <!-- ------------------------------ ----------------- END OF HTML BODY CONTENT----------------------------- ----------------- END OF HTML BODY CONTENT------------------------------ ----------------- END OF HTML BODY CONTENT---------------------------- -->
             </div>
@@ -164,54 +253,13 @@
         </div>
     </div>
 
-    <div id="dom-modals">
 
-    </div>
-
-    <div class="modal fade" id="manageUsers" tabindex="-1" aria-labelledby="manageUsersLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content addtimermodal">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="manageUsersLabel">Manage Project Members</h1>
-                    <button type="button" class="modalclose" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fa-solid fa-square-minus"></i>
-                    </button>
-                </div>
-                <div class="modal-body atmodalbody">
-                    <div class="col-12"
-                        style="overflow-x: scroll; overflow-y: scroll; position: relative; height: 80svh;">
-                        <table class="table table-striped table-responsive" id="managemembers" style="width: 99.5%;">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/routes.js"></script>
     <script src="../../js/account.js"></script>
     <script src="../../js/ui-script.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>

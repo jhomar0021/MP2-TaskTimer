@@ -1,0 +1,16 @@
+.db-itembox{
+    border: solid blueviolet;
+    border-radius: 10px;
+    color:  blueviolet;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: calc(20px + 2svw);
+}
+h4{
+    color: blueviolet;
+}
+h3{
+    color: black;
+}
+

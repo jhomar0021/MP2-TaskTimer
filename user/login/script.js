@@ -67,8 +67,7 @@ $("#reg-form").on("submit", function (e) {
         "success" : function (response) {
             let parseResponse = JSON.parse(response);
             if(parseResponse.status == 200){
-                registerModal.hide();
-                loginModal.show();
+
                 $("#loginalert").removeClass('bg-danger-subtle');
                 $("#loginalert").addClass("bg-success-subtle");
                 $("#loginalert").html("<h3>" + parseResponse.title + "</h3>" + "<h5>" + parseResponse.description + "</h5>");       

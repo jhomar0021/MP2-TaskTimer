@@ -19,9 +19,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css" />
     <link rel="stylesheet" href="../../css/default.css">
     <link rel="stylesheet" href="../../css/videobg.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body style="overflow: hidden;">
 
     <div class="container-fluid">
         <div class="row">
@@ -92,39 +93,63 @@
                     <div id="datetimeview" class="datetimeview text-start"></div>
                 </div>
                 <header class="" >
-                    <!-- <h2 class="page-label text-start">  change title </h4><h2> -->
+                    <h2 class="page-label text-start">Users Panel</h2>
                 </header>
                 <!-- ------------------------------ ----------------- START OF HTML BODY CONTENT----------------------------- ----------------- START OF HTML BODY CONTENT------------------------------ ----------------- START OF HTML BODY CONTENT---------------------------- -->
-                <div class="container" style="position: relative;">
-                    <div class="row">
-                        <div class="col-8 text-center">
-                            <h1>User Management</h1>
+                <div class=" ms-0 home-menu mt-3">
+                    <button class="hm-btn-on" id="activity-btn" onclick="switchToActivityTab()">
+                        <div class="row align-items-center">
+                            <i style="font-size: calc(1vw + 1vh);"
+                                class="fa-solid fa-chart-line col-2 col-lg-5 text-end mb-2 btn-icon"></i>
+                            <h5 style="font-size: calc(1vw + 1vh);" class="col text-start">Today's
+                                Activity </h5>
                         </div>
-                        <div class="col-4 justify-content-evenly">
-                            <button type="button" class="me-4" data-bs-toggle="modal"
-                                data-bs-target="#registerModal">Add User</button>
-                            <button onclick="index()">View Metrics</button>
+                    </button>
+                    <button class="hm-btn-off" id="timers-btn" onclick="switchToTimerTab()">
+                        <div class="row align-items-center">
+                            <i style="font-size: calc(1vw + 1vh);"
+                                class="fa-solid fa-stopwatch col-2 col-lg-5 text-end mb-2 btn-icon"></i>
+                            <h5 style="font-size: calc(1vw + 1vh);" class="col text-start">Task Timers
+                            </h5>
+                        </div>
+                    </button>
+                </div>
+                <div class="home-menu-container">
+
+                    <div class="row active-info-tab" id="active-info-tab">
+                        <div class="container" style="position: relative;">
+                            <div class="row justify-content-end my-2">
+                                <div class="col-4 justify-content-evenly">
+                                    <button type="button" class="me-4" data-bs-toggle="modal"
+                                        data-bs-target="#registerModal">Add User</button>
+                                    <button onclick="index()">View Metrics</button> 
+                                    
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-12" style="overflow-x: scroll; overflow-y: scroll; position: relative; height: 80svh;">
+                            <table class="table table-striped table-responsive" id="records" style="width: 99.5%;">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-12" style="overflow-x: scroll; overflow-y: scroll; position: relative; height: 80svh;">
-                    <table class="table table-striped table-responsive" id="records" style="width: 99.5%;">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-        
-                        <tbody id="content"></tbody>
-                    </table>
-                </div>
+                    <div class="row timer-item-tab d-none" id="timer-item-tab">
+                    </div>
 
+                </div>
+                
+                
                 <!-- ------------------------------ ----------------- END OF HTML BODY CONTENT----------------------------- ----------------- END OF HTML BODY CONTENT------------------------------ ----------------- END OF HTML BODY CONTENT---------------------------- -->
 
             </div>

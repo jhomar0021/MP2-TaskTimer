@@ -26,8 +26,11 @@ if (isset($_POST['register'])) {
             $count = $results->num_rows;
 
             if($count == 0){
+                $fname = ucwords(strtolower($registerRequest->fname));
+                $lname = ucwords(strtolower($registerRequest->lname));
+                
                 $sql = "INSERT INTO `tbl_users`(`fname`, `lname`, `account_level`, `username`, `password`, `is_active`) 
-                VALUES ('{$registerRequest->fname}','{$registerRequest->lname}','{$registerRequest->level}','{$registerRequest->username}','{$password}','1')";
+                VALUES ('{$fname}','{$lname}','{$registerRequest->level}','{$registerRequest->username}','{$password}','1')";
         
                 $isInserted = $connection->query($sql);
         
