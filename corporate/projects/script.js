@@ -91,7 +91,7 @@ function viewProject(){
                 '<div class="col-12"><h2> '+id+' </h2></div>'+
                 '</div><div class="col-12 my-2  col-md-3 mx-2 row">'+
                 '<button class="add-task col-6 ms-5" data-bs-toggle="modal"'+
-                'data-bs-target="#manageUsers">Manage Users</button></div></div></div>'+
+                'data-bs-target="#manageUsers" onclick="manageUsers('+id+')">Manage Users</button></div></div></div>'+
                 '<div id="'+id+'b" class="collapse" data-bs-parent="#projectlist">'+
                 '<div class="container-fluid my-3 py-3 "><div class="row">'+
                 '<div class="col-12 my-2  col-md-4 mx-2 stats-box row">'+
@@ -101,7 +101,7 @@ function viewProject(){
                 '<div class="col-12 col-lg-6 text-center"><h4>Total Submitted</h4></div>'+
                 '<div class="col-12 col-lg-6 text-center"><h3>'+submitDisplay+'</h3></div></div>'+
                 '<div class="col-12 my-2  col-md-3 mx-2 row">'+
-                '<button>VIEW DETAILED</button></div></div></div></div>'+
+                '<button data-bs-toggle="modal" data-bs-target="#projectMetrics" onclick="viewRecords('+id+')">VIEW DETAILED</button></div></div></div></div>'+
                 '<div id="'+id+'c" class="collapse" data-bs-parent="#projectlist">'+
                 '<div class="row justify-content-evenly">'+
                 '<div class="col-3"></div><div class="col-12 col-md-6">'+
@@ -211,3 +211,267 @@ function update(id){
     });
 };
 
+let usersTable;
+
+function manageUsers(id,name) {
+
+    if (usersTable){
+        usersTable.destroy();
+    }
+    let dataRequest = { 
+        "timer_id" : id,
+    };
+
+    usersTable = $("#managemembers").DataTable({
+        processing : true,
+        ajax : {
+            url :  TIMERRECORD_API +"?manageusers=" + JSON.stringify(dataRequest),
+            dataSrc : function (response) {
+                console.log(response)
+                let return_data = new Array();
+
+                for (let i = 0; i<response.data.length; i++) 
+                {
+                    let userid = response.data[i].id
+                    let isActive=""
+                    let addRemove=""
+                    let btnLabel ="";
+                    if(response.data[i].is_active == 2){
+                        isActive="Added";
+                        addRemove="removeFromTimer";
+                        btnLabel ="REMOVE";
+                    }
+                    else{
+                        addRemove="addToTimer";
+                        btnLabel ="ADD";
+                    }
+
+                    return_data.push({
+                        userid : userid,
+                        fname :  response.data[i].fname,
+                        lname :  response.data[i].lname,
+                        username : response.data[i].username,
+                        status :  isActive,
+                        action : "<button onclick='"+addRemove+"(" + id+','+ userid +")'>"+btnLabel+"</button>"
+
+                    });
+
+                    console.log(addRemove);
+                }
+
+                return return_data;
+            },
+
+        },
+        columns : [
+            { data : 'userid' },
+            { data : 'fname' },
+            { data : 'lname' },
+            { data : 'username' },
+            { data : 'status' },
+            { data : 'action' },
+        ],
+    });
+}
+
+function addToTimer(id,userid){
+    let addaccess = { 
+        "user_id" : userid,
+        "timer_id": id 
+        }
+
+    $.ajax({
+        "url" : TIMERRECORD_API, 
+        "type" : "POST", 
+        "data" : "addaccess=" + JSON.stringify(addaccess),
+        "success" : function (response) {
+            usersTable.ajax.reload();
+        },
+        "error" : function (xhr, status, error) {
+            alert("Error")
+            }
+        })
+}
+
+function removeFromTimer(id,userid){
+    let removeaccess = { 
+        "user_id" : userid,
+        "timer_id": id 
+        }
+
+    $.ajax({
+        "url" : TIMERRECORD_API, 
+        "type" : "POST", 
+        "data" : "removeaccess=" + JSON.stringify(removeaccess),
+        "success" : function (response) {
+            usersTable.ajax.reload();
+        },
+        "error" : function (xhr, status, error) {
+            alert("Error")
+            }
+        })
+}
+
+
+setDefaultDate();
+
+function setDefaultDate(){
+    var getToday = new Date(); 
+                
+    var month = getToday.getMonth()+1;
+    if(month < 10){
+        month = "0"+month;
+    }
+    var date  = getToday.getDate();
+    if(date < 10){
+        date  = "0"+ date;
+    } 
+    var hrs  = getToday.getHours();
+    if(hrs < 10){
+        hrs  = "0"+ hrs;
+    } 
+    var min  = getToday.getMinutes();
+    if(min < 10){
+        min  = "0"+ min;
+    }
+    var sec  = getToday.getSeconds();
+    if(sec < 10){
+        sec  = "0"+ sec;
+    }
+
+    today = getToday.getFullYear()+"-" + month+"-" + date +" "
+        + "00" +":"+ "00" +":"+ "00";
+    todayTime = getToday.getFullYear()+"-" + month+"-" + getToday.getDate()+" "+ hrs +":"+ min +":"+ sec;
+
+    sundayDate = date - getToday.getDay();
+
+    $("#from-date").val(today);
+    $("#to-date").val(todayTime);
+
+}
+
+let metricsTable ="";
+
+function viewRecords(id) {
+    
+
+    let fromDate = $("#from-date").val();
+    let toDate = $("#to-date").val();
+    let timerID = id;
+
+    let datetest1 = Math.floor(new Date(toDate));
+    let datetest2 = new Date(fromDate);
+
+        let dataRequest = { 
+            "timer_id" : timerID,
+            "session_start" : fromDate,
+            "session_end" : toDate
+        };
+
+
+    if (metricsTable){
+        metricsTable.ajax.reload();
+        metricsTable.destroy();
+    }
+
+    metricsTable = $("#viewmetrics").DataTable({
+        processing : true,
+        ajax : {
+            url : TIMERRECORD_API +"?getdataspanadmin=" + JSON.stringify(dataRequest),
+            dataSrc : function (response) {
+                console.log(response)
+                let return_data = new Array();
+                let sessions= response.data1;
+                let submits= response.data2
+                let totalActiveTime = 0;
+                let totalSubmits = response.data2.length;
+                let tableItems = "";
+
+                for(let i = 0; i<sessions.length; i++){
+                    console.log(sessions[i].session_start+sessions[i].session_end)
+                    let start = sessions[i].session_start;
+                    let end = sessions[i].session_end;
+                    let startMins= Math.round(parseInt(new Date(sessions[i].session_start)/6000));
+                    let endMins = Math.round(parseInt(new Date(sessions[i].session_end)/6000));
+                    let activeTime = (endMins - startMins)/10;
+                    totalActiveTime = totalActiveTime + activeTime;
+                    let activeTimeInMins = Math.round(activeTime%60);
+                    let activeTimeinHours = Math.floor(activeTime/60);
+
+                    if(activeTimeInMins < 10){
+                        activeTimeInMins = "0"+activeTimeInMins;
+                    }
+                    if(activeTimeinHours < 10){
+                        activeTimeinHours = "0"+activeTimeinHours;
+                    }
+                    let activeTimeDisplay = activeTimeinHours+":"+activeTimeInMins;
+                    console.log(activeTimeDisplay);
+                    let submitted = 0;  
+                    for(let j=0; j < submits.length; j++){
+                        if(submits[j].time_stamp >= start && submits[j].time_stamp <= end){
+                        submitted = submitted +1;
+                        }
+                    }
+
+                    let prodRate ="0"
+                    
+
+                    prodRate = activeTime ? (Math.round((submitted/activeTime)*600))/10 : "Cannot Determine";
+
+                    displaystart = start.slice(0,19);
+                    displayend = end.slice(0,19);
+                    console.log(submitted);
+                    tableItems += "<tr>" + 
+                    "<td>" + sessions[i].id + "</td>" + 
+                    "<td>" + displaystart + "</td>" + 
+                    "<td>" + displayend + "</td>" + 
+                    "<td>" + submitted + "</td>" + 
+                    "<td>" + activeTimeDisplay + "</td>" + 
+                    "<td>" + prodRate + "</td>" + 
+                    "</tr>";
+
+                    return_data.push({
+                        sessionid : sessions[i].id,
+                        start :  displaystart,
+                        end :  displayend,
+                        submit : submitted,
+                        time : activeTimeDisplay,
+                        rate : prodRate
+                    });
+                }
+                return return_data;
+            },
+            complete : function() {
+                $('#records tbody').on('dblclick', 'tr', function() {
+                    let data = $('#records')
+                        .DataTable()
+                        .row(this)
+                        .data()
+                    alert(data.id)
+                    $("#idToBeDisplay").html(data.id)
+                    $("#name").val(data.name);
+                    $("#price").val(data.price);
+                    $("#modalClickerShow").click();
+
+                    $("#saveButton").hide();
+                    $("#updateButton").show();
+                    $("#showId").show();
+                });
+            },
+        },
+        columns : [
+            { data : 'sessionid' },
+            { data : 'start' },
+            { data : 'end' },
+            { data : 'submit' },
+            { data : 'time' },
+            { data : 'rate' },
+        ],
+        dom : 'lBfrtip',
+        // buttons : [
+        //     'copyHtml5',
+        //     'excelHtml5',
+        //     'csvHtml5',
+        // ]
+    });
+}
