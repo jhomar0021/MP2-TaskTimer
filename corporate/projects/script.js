@@ -1,5 +1,6 @@
 viewProject()
 
+
 function viewProject(){
 
 
@@ -21,7 +22,6 @@ function viewProject(){
             for (let i = 0; i < timers.length; i++){
                 let id = timers[i].timer_id;
                 let name = timers[i].timer_name;
-                let createdBy = timers[i].id;
                 let activeValue = 0;
                 let submitValue = 0;
 
@@ -67,7 +67,7 @@ function viewProject(){
                 '<div class="accordion-item container-fluid">'+
                 '<div class="accordion-header row text-center">'+
                 '<div class="col-12 project-name">'+
-                '<h3>'+ name+'</h3></div>'+
+                '<h3 id="'+id+'timerlabel">'+name+'</h3></div>'+
                 '<div class="col-6 h-100 mt-2 mt-md-0 col-md-4">'+
                 '<button class="project-btn my-md-3 py-2" type="button" data-bs-toggle="collapse"'+
                 'data-bs-target="#'+id+'a" aria-expanded="false" aria-controls="'+id+'a">'+
@@ -213,7 +213,7 @@ function update(id){
 
 let usersTable;
 
-function manageUsers(id,name) {
+function manageUsers(id) {
 
     if (usersTable){
         usersTable.destroy();
@@ -351,28 +351,32 @@ function setDefaultDate(){
 }
 
 let metricsTable ="";
+let timerName= 0;
+
+
 
 function viewRecords(id) {
+    if (metricsTable){
+        // metricsTable.ajax.reload();
+        metricsTable.destroy();
+    }
     
+    let timerlabelid = id+'timerlabel';
 
+    let tableLabel = $('#'+timerlabelid).text();
+    $('#viewMetricsLabel').text(tableLabel + ' - Project Metrics');
+
+    $("#view-button").attr('onclick','viewRecords('+id+')');
     let fromDate = $("#from-date").val();
     let toDate = $("#to-date").val();
     let timerID = id;
 
-    let datetest1 = Math.floor(new Date(toDate));
-    let datetest2 = new Date(fromDate);
 
         let dataRequest = { 
             "timer_id" : timerID,
             "session_start" : fromDate,
             "session_end" : toDate
         };
-
-
-    if (metricsTable){
-        metricsTable.ajax.reload();
-        metricsTable.destroy();
-    }
 
     metricsTable = $("#viewmetrics").DataTable({
         processing : true,
@@ -475,3 +479,4 @@ function viewRecords(id) {
         // ]
     });
 }
+

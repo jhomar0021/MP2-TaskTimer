@@ -199,34 +199,29 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content addtimermodal">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="projectMetricsLabel">Manage Project Members</h1>
+                    <h1 class="modal-title fs-5" id="viewMetricsLabel"></h1>
                     <button type="button" class="modalclose" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fa-solid fa-square-minus"></i>
                     </button>
                 </div>
                 <div class="modal-body atmodalbody">
-                    <div class="container mt-4">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <select id="timerlist" class="data-inputs">
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                            <div class="col-6 col-sm-5 col-lg-3 mt-3 mt-lg-0">
-                                <input type="datetime-local" class="data-inputs" id="from-date" name="from-date" value="">
-                            </div>
-                            <div class="col-6  col-sm-5 col-lg-3 mt-3 mt-lg-0">
-                                <input type="datetime-local" class="data-inputs" id="to-date" name="to-date" value="">
-                            </div>
-                            <div class="col-12 col-sm-2 col-lg-1 mt-3 mt-lg-0">
-                                <button class="data-inputs" onclick="viewRecords()">
+                    <table class="date-inputs mb-3" style="width: 99.5%;">
+                        <thead>
+                            <tr>
+                                <th><p class="">From Date : </p></th>
+                                <th><input type="datetime-local" class="data-inputs" id="from-date" name="from-date" value=""></th>
+                                <th><p style="color:white"> spacer: </p></th>
+                                <th><p class="">To Date : </p></th>
+                                <th><input type="datetime-local" class="data-inputs" id="to-date" name="to-date" value=""></th>
+                                <th><p style="color:white"> spacer: </p></th>
+                                <th>                                
+                                    <button class="data-inputs" id="view-button">
                                     <p class="button-label">View</p>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                                </button></th>
+                            </tr>
+                        </thead>
+                    </table>
+
                     <div class="col-12"
                         style="overflow-x: scroll; overflow-y: scroll; position: relative; height: 80svh;">
                         <table class="table table-striped table-responsive" id="viewmetrics" style="width: 99.5%;">
@@ -267,5 +262,4 @@
     <script src="https://kit.fontawesome.com/77ec53770a.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
