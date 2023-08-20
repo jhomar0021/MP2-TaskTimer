@@ -10,7 +10,7 @@ function createResponse($status, $title, $description, $data = array()) {
 }
 
 
-function createResponses($status, $title, $description, $data1 = array(), $data2 = array(), $data3 = array(), $data4 = array()) {
+function createResponses($status, $title, $description, $data1 = array(), $data2 = array(), $data3 = array(), $data4 = array(), $data5 = array()) {
     $response = array();
     $response["status"] = $status;
     $response["description"] = $description;
@@ -19,6 +19,7 @@ function createResponses($status, $title, $description, $data1 = array(), $data2
     $response["data2"] = $data2;
     $response["data3"] = $data3;
     $response["data4"] = $data4;
+    $response["data5"] = $data5;
     
     return $response;
 }

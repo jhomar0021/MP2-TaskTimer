@@ -3,7 +3,6 @@ viewProject()
 
 function viewProject(){
 
-
     $.ajax({
         "url" : TIMERRECORD_API, 
         "type" : "GET", 
@@ -15,8 +14,8 @@ function viewProject(){
             let users = parseResponse.data2;
             let timersessions = parseResponse.data3;
             let submits = parseResponse.data4;
-            let timerItem = "";
-            
+            let access = parseResponse.data5;
+            let timerItem ="";
             
 
             for (let i = 0; i < timers.length; i++){
@@ -24,6 +23,8 @@ function viewProject(){
                 let name = timers[i].timer_name;
                 let activeValue = 0;
                 let submitValue = 0;
+                let activeUsers = "";
+
 
                 for (let j = 0; j < timersessions.length; j++){
                     let value = 0;
@@ -41,9 +42,6 @@ function viewProject(){
                         value = enVal - stVal;
                         activeValue = activeValue + value;
                     }
-                    else{
-                        console.log("is not equal"+timersessions[j].timer_id+"/"+id);
-                    }
                 }
 
                 for (let k = 0; k < submits.length; k++ ){
@@ -53,12 +51,40 @@ function viewProject(){
                     }
                     submitValue = submitValue + svalue;
                 }
+                
+
+
+                for(let l = 0; l < users.length; l++){
+                    let usercheck= users[l].id;
+                    let userHasAccess = 0;
+                    for (let m = 0; m < access.length; m++){
+                        if(access[m].user == usercheck){
+                            console.log(users[l]);
+                            userHasAccess+= 1;
+                            console.log(userHasAccess);
+                            
+                        }
+                        else{
+                            console.log(users[l].fname+' has no access to '+ name);
+                        }
+                    }
+                    if(userHasAccess !==0 ){
+                        let activeTemplate = '<div class="">' +
+                        '<div class="card" style="width: 18rem;">' +
+                        '<div class="card-body">' +
+                        '<h5 class="card-title">' + users[l].fname + ' ' + users[l].lname + '</h5>' +
+                        '<p class="card-text"></p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' ;
+                    activeUsers += activeTemplate;
+                    }
+                }
 
                 let activeMins = activeValue % 60;
                 if(activeMins < 10){activeMins = "0"+ activeMins};
                 let activeHrs = Math.floor(activeValue/60);
                 if(activeHrs < 10){activeHrs = "0"+ activeHrs};
-
                 let activeHoursMins = activeHrs + "Hrs " + activeMins +"Mins" ;
                 let submitDisplay = submitValue + "  Task Submitted"
 
@@ -88,7 +114,7 @@ function viewProject(){
                 '<div id="'+id+'a" class="collapse" data-bs-parent="#projectlist"><div class="row">'+
                 '<div class="col-12 my-2  col-md-8 mx-2 stats-box row">'+
                 '<div class="col-12 text-center"><h4>Active Members</h4></div>'+
-                '<div class="col-12"><h2> '+id+' </h2></div>'+
+                '<div class="col-12">'+ activeUsers +'</div>'+
                 '</div><div class="col-12 my-2  col-md-3 mx-2 row">'+
                 '<button class="add-task col-6 ms-5" data-bs-toggle="modal"'+
                 'data-bs-target="#manageUsers" onclick="manageUsers('+id+')">Manage Users</button></div></div></div>'+
@@ -125,8 +151,6 @@ function viewProject(){
         }
     });
 }
-
-
 
 function addtimer() {
  
@@ -285,6 +309,7 @@ function addToTimer(id,userid){
         "type" : "POST", 
         "data" : "addaccess=" + JSON.stringify(addaccess),
         "success" : function (response) {
+            viewProject();
             usersTable.ajax.reload();
         },
         "error" : function (xhr, status, error) {
@@ -304,6 +329,7 @@ function removeFromTimer(id,userid){
         "type" : "POST", 
         "data" : "removeaccess=" + JSON.stringify(removeaccess),
         "success" : function (response) {
+            viewProject();
             usersTable.ajax.reload();
         },
         "error" : function (xhr, status, error) {
@@ -351,7 +377,6 @@ function setDefaultDate(){
 }
 
 let metricsTable ="";
-let timerName= 0;
 
 
 

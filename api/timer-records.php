@@ -91,11 +91,14 @@ if (isset($_GET['admin-index'])) {
     $sqlCommandsub2 = "SELECT * FROM `associate` WHERE `added_by` = $sessionID AND  `status` = 1 ;";
     $subresult = $connection->query($sqlCommandsub2);
 
-    $sqlCommand3 = "SELECT * FROM `timer_access` WHERE `admin` = $sessionID;";
-    $results3 = $connection->query($sqlCommand3);
+    $sqlTimerAccess = "SELECT * FROM `timer_access` WHERE `admin` = $sessionID;";
+    $timerAccessResults = $connection->query($sqlTimerAccess);
 
+    $timerAccess = array();
 
-
+    while ($row = $timerAccessResults->fetch_assoc()) {
+        array_push($timerAccess, $row);
+    }
 
     $response = array();
     $timers = array();
@@ -155,7 +158,7 @@ if (isset($_GET['admin-index'])) {
             array_push($submits, $row);
         }
       }
-    $response = createResponses(200, "Successful", "Succesful", $timers,$users,$timersessions,$submits );
+    $response = createResponses(200, "Successful", "Succesful", $timers,$users,$timersessions,$submits,$timerAccess );
     echo json_encode($response);
 }
 
