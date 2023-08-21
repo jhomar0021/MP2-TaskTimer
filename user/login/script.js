@@ -44,7 +44,7 @@ $("#login-form").on("submit", function (e) {
 
 
 const registerModal = new bootstrap.Modal('#registerModal');
-const loginModal = new bootstrap.Modal('#loginModal')
+const loginModal = new bootstrap.Modal('#loginModal');
 
 $("#reg-form").on("submit", function (e) {
     e.preventDefault();
@@ -67,7 +67,8 @@ $("#reg-form").on("submit", function (e) {
         "success" : function (response) {
             let parseResponse = JSON.parse(response);
             if(parseResponse.status == 200){
-
+                registerModal.hide();
+                loginModal.show();
                 $("#loginalert").removeClass('bg-danger-subtle');
                 $("#loginalert").addClass("bg-success-subtle");
                 $("#loginalert").html("<h3>" + parseResponse.title + "</h3>" + "<h5>" + parseResponse.description + "</h5>");       

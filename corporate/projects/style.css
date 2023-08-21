@@ -42,9 +42,43 @@
 .project-name{
 
     background-color: blueviolet;
+    background-image: url(https://mp-2-task-timer-ixtf.vercel.app/assets/img/bg-uneddited.png);
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    animation: animatedBackground 50s linear infinite alternate;
     width: 100%;
     color: white;
 }
+
+@keyframes animatedBackground {
+    0% {
+    background-position: 0% 0%;
+    }
+    15% {
+    background-position: 15% 15%;
+    }
+    30% {
+    background-position: 30% 30%;
+    }
+    45% {
+    background-position: 45% 45%;
+    }
+    60% {
+    background-position: 60% 60%;
+    }
+    75% {
+    background-position: 75% 75%;
+    }
+    90% {
+        background-position: 90% 90%;
+    }
+    100% {
+    background-position: 100% 100%;
+    }
+}
+
+
+
 .stats-box{
     border: solid blueviolet 2px;
     border-radius: 10px;
