@@ -8,9 +8,9 @@
 .project-btn{
     border-radius: 10px;
     width: 100%;
-    border: none;
-    color: white;
-    background-color: blueviolet;
+    border: solid blueviolet;
+    color:  blueviolet;
+    background-color: white;
 }
 
 .accordion-button{

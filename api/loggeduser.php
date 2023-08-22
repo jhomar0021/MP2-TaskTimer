@@ -78,6 +78,8 @@ if (isset($_POST['update'])) {
 }
 
 
+
+
 if (isset($_FILES['my_image'])) {
 
     $img_name = $_FILES['my_image']['name'];
@@ -103,10 +105,16 @@ if (isset($_FILES['my_image'])) {
 
             $img_upload_path = "../upload/".$new_img_name;
 
+            if(file_exists("../upload/".$userId.".jpg")){unlink("../upload/".$userId.".jpg");}
+            if(file_exists("../upload/".$userId.".png")){unlink("../upload/".$userId.".png");}
+            if(file_exists("../upload/".$userId.".jpeg")){unlink("../upload/".$userId.".jpeg");}
+            if(file_exists("../upload/".$userId.".gif")){unlink("../upload/".$userId.".gif");}
+
+            
             move_uploaded_file($tmp_name, $img_upload_path);
 
             $sqlCommand = "UPDATE " . TBL_USERS . " SET 
-            image_path = '../../upload/$new_img_name'
+            image_path = '../$img_upload_path'
             WHERE id = {$userId}
             ";
             $isUpdated = $connection->query($sqlCommand);
@@ -114,6 +122,7 @@ if (isset($_FILES['my_image'])) {
             $response = array();
         
             if ($isUpdated) {
+                $_SESSION['logged-in-user']["image_path"] = "../".$img_upload_path;
                 $response = createResponse(200, "Successful", "Successfully Updated user",$new_img_name);
             } else {
                 $response = createResponse(300, "Error", "Error while updating user");

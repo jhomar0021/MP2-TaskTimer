@@ -34,8 +34,7 @@
                     <p id="userID" class="d-none"></p>
                 </div>
 
-                <div class="sidebar-picture text-center">
-                    <img src="https://mp-2-task-timer-ixtf.vercel.app/assets/img/upload-image-icon-png-26.jpg" class="uploadpic mt-5 mt-md-0" alt=>
+                <div class="sidebar-picture text-center" id="pro-pic">
                 </div>
 
                 <div class="sidebar-list">
@@ -89,7 +88,36 @@
                     <!-- <h2 class="page-label text-start">  change title </h4><h2> -->
                 </header>
                 <!-- ------------------------------ ----------------- START OF HTML BODY CONTENT----------------------------- ----------------- START OF HTML BODY CONTENT------------------------------ ----------------- START OF HTML BODY CONTENT---------------------------- -->
+                <div class="row ms-3 mt-2">
+                    <div class="col-12">
+                        <div class="card text-center mb-3" style="width: 15rem;">
+                            <div class="card-body">
+                                <div id="uploader"><img src="https://mp-2-task-timer-ixtf.vercel.app/assets/img/upload-image-icon-png-26.jpg" alt="" class="uploadpic"
+                                    ></div>
+                                <input type="file" id="file" accept="image/*">
+                                <label class="file-label" for="file">Update Profile Photo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
 
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">First name</label>
+                            <input type="text" class="form-control" id="fname" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lname" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Username</label>
+                            <input type="email" class="form-control" id="username" aria-describedby="emailHelp">
+                        </div>
+                        <div class="text-center mt-5">
+                            <button type="button" onclick="update()" class="btn btn-primary px-5">Save</button>
+                        </div>
+                    </div>
+                </div>
 
 
                 <!-- ------------------------------ ----------------- END OF HTML BODY CONTENT----------------------------- ----------------- END OF HTML BODY CONTENT------------------------------ ----------------- END OF HTML BODY CONTENT---------------------------- -->
@@ -108,7 +136,7 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/77ec53770a.js" crossorigin="anonymous"></script>
-    <script src="ui-script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -34,6 +34,7 @@ function getProfile() {
                 $("#userID").text(userID);
                 $('#username').val(username);
                 $('#pro-pic').html(profilepic);
+                $('#uploader').html(profilepic);
     
             }
 

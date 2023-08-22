@@ -18,8 +18,8 @@ let startValue = "";
 let recorded = false;
 let accountID = "";
 const urlParams = new URLSearchParams(window.location.search);
-console.log(urlParams);
 let timer_id = urlParams.get('q');
+
 
 setID();
 

@@ -49,6 +49,7 @@ aspect-ratio: 1;
 border: solid aliceblue;
 border-radius: 50%;
 background-color: aliceblue;
+object-fit: cover;
 }
 .listed-items{
     color: aliceblue;
