@@ -8,8 +8,8 @@
 .project-btn{
     border-radius: 10px;
     width: 100%;
-    border: solid blueviolet;
-    color:  blueviolet;
+    border: solid #ab51ff;
+    color:  #ab51ff;
     background-color: white;
 }
 
@@ -20,28 +20,32 @@
 
 .accordion{
 
-    overflow-y: hidden;
+    overflow: hidden;
+    border: solid #ab51ff;
+    border-radius: 15px;
+    
 }
 
 .accordion-item{
-    border: solid blueviolet 2px;
+    border:none;
+    /* border: solid #ab51ff 2px; */
     border-radius: 20px;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 .accordion-footer{
     width: 150%;
     height: 2svh;
-    background-color: blueviolet;
+    background-color: #ab51ff;
 }
 .active-user-btn,.pending-user-btn {
-    background-color: blueviolet;
+    background-color: #ab51ff;
     color: white;
     width: 100%;
 }
 
 .project-name{
 
-    background-color: blueviolet;
+    background-color: #ab51ff;
     background-image: url(https://mp-2-task-timer-ixtf.vercel.app/assets/img/bg-uneddited.png);
     background-position: 0px 0px;
     background-repeat: repeat-x;
@@ -80,7 +84,7 @@
 
 
 .stats-box{
-    border: solid blueviolet 2px;
+    border: solid #ab51ff 2px;
     border-radius: 10px;
 }
 
@@ -96,5 +100,30 @@
 .button-label{
     width: 100%;
     height: auto;
+    margin: auto;
+}
+.add-task{
+    padding: 5px;
+    border: #ab51ff solid;
+    color: #ab51ff;
+    border-radius: 10px;
+    transition: .5s;
+}
+.accor-pop-btn{
+    max-height: 100px;
+    border: #ab51ff solid;
+    border-radius: 10px;
+}
+.accor-pop-btn:hover,.add-task:hover,.project-btn:hover{
+    color: white;
+    background-color: #ab51ff;
+    transition: .5s;
+}
+.active-user-card{
+    border-radius: 5px;
+    border: #ab51ff solid;
+    max-height: 100px ;
+}
+.user-card-data{
     margin: auto;
 }

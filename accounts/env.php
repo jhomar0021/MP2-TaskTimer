@@ -1,6 +1,7 @@
 <?php
 
-
+$gmailuser = 'kurukintesekalpen@gmail.com';
+$gmailpass = 'qkygxchvssvmjgik';
 
 
 // -----------------local-------------

@@ -1,6 +1,6 @@
 <?php
 
-include "env.php";
+include "../accounts/env.php";
 include "models.php";
 include "functions.php";
 

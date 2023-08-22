@@ -25,6 +25,22 @@ function viewProject(){
                 let submitValue = 0;
                 let activeUsers = "";
 
+                for(let l = 0; l < access.length; l++){
+                    if( id == access[l].timer_id){
+                        let usercheck = access[l].user;
+                        for (let m = 0; m < users.length; m++){
+                            if(users[m].id == usercheck){
+                                
+                                console.log(users[m].fname+'with id of'+users[m].id+' has access to '+ id);
+                                activeTemplate = '<div class="col-5 active-user-card mb-2 mx-2 py-2 row"> <div class="col-4"><img src="'+users[m].image_path+'" style="width:100%;aspect-ratio:1; margin-left:-10px; border-radius:50px;" class=""></div> <div class="col-8"><p class="user-card-data my-1">'+users[m].fname+ ' '+users[m].lname+'</p></div></div>';
+                                activeUsers += activeTemplate;
+                            }
+                        }
+                    }
+                }
+
+
+
 
                 for (let j = 0; j < timersessions.length; j++){
                     let value = 0;
@@ -54,32 +70,6 @@ function viewProject(){
                 
 
 
-                for(let l = 0; l < users.length; l++){
-                    let usercheck= users[l].id;
-                    let userHasAccess = 0;
-                    for (let m = 0; m < access.length; m++){
-                        if(access[m].user == usercheck){
-                            console.log(users[l]);
-                            userHasAccess+= 1;
-                            console.log(userHasAccess);
-                            
-                        }
-                        else{
-                            console.log(users[l].fname+' has no access to '+ name);
-                        }
-                    }
-                    if(userHasAccess !==0 ){
-                        let activeTemplate = '<div class="">' +
-                        '<div class="card" style="width: 18rem;">' +
-                        '<div class="card-body">' +
-                        '<h5 class="card-title">' + users[l].fname + ' ' + users[l].lname + '</h5>' +
-                        '<p class="card-text"></p>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' ;
-                    activeUsers += activeTemplate;
-                    }
-                }
 
                 let activeMins = activeValue % 60;
                 if(activeMins < 10){activeMins = "0"+ activeMins};
@@ -112,11 +102,11 @@ function viewProject(){
                 '<i class="fas fa-duotone fa-gear"></i></div><div class="col-12 text-center">'+
                 '<h4>Project Settings</h4></div></button></div></div>'+
                 '<div id="'+id+'a" class="collapse" data-bs-parent="#projectlist"><div class="row">'+
-                '<div class="col-12 my-2  col-md-8 mx-2 stats-box row">'+
-                '<div class="col-12 text-center"><h4>Active Members</h4></div>'+
-                '<div class="col-12">'+ activeUsers +'</div>'+
+                '<div class="col-12 my-2 justify-content-center col-md-8 mx-2 stats-box">'+
+                '<div class="text-center mb-2" ><h4>Active Members</h4></div>'+
+                '<div class="col-12 row justify-content-start" style="max-height:200px; overflow-y:scroll;">'+ activeUsers +'</div>'+
                 '</div><div class="col-12 my-2  col-md-3 mx-2 row">'+
-                '<button class="add-task col-6 ms-5" data-bs-toggle="modal"'+
+                '<button class="accor-pop-btn" data-bs-toggle="modal"'+
                 'data-bs-target="#manageUsers" onclick="manageUsers('+id+')">Manage Users</button></div></div></div>'+
                 '<div id="'+id+'b" class="collapse" data-bs-parent="#projectlist">'+
                 '<div class="container-fluid my-3 py-3 "><div class="row">'+
@@ -127,7 +117,7 @@ function viewProject(){
                 '<div class="col-12 col-lg-6 text-center"><h4>Total Submitted</h4></div>'+
                 '<div class="col-12 col-lg-6 text-center"><h3>'+submitDisplay+'</h3></div></div>'+
                 '<div class="col-12 my-2  col-md-3 mx-2 row">'+
-                '<button data-bs-toggle="modal" data-bs-target="#projectMetrics" onclick="viewRecords('+id+')">VIEW DETAILED</button></div></div></div></div>'+
+                '<button class="accor-pop-btn" data-bs-toggle="modal" data-bs-target="#projectMetrics" onclick="viewRecords('+id+')">VIEW DETAILED</button></div></div></div></div>'+
                 '<div id="'+id+'c" class="collapse" data-bs-parent="#projectlist">'+
                 '<div class="row justify-content-evenly">'+
                 '<div class="col-3"></div><div class="col-12 col-md-6">'+
@@ -139,7 +129,7 @@ function viewProject(){
                 '<div class="vstack gap-2 col-md-5 mx-auto">'+
                 '<button type="button" onclick="update('+id+')" class="project-btn py-3">Update</button>'+
                 '<button type="button" onclick="destroy('+id+')" class="project-btn py-3">Delete</button>'+
-                '</div></div></form></div><div class="col-3"></div></div></div></div></div>';
+                '</div></div></form></div><div class="col-3"></div></div></div></div></div></div>';
 
                 timerItem += timerTemplate;
             }

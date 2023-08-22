@@ -37,12 +37,12 @@ $mail = new PHPMailer(true);
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
-$mail->Username = 'kurukintesekalpen@gmail.com';
-$mail->Password = 'qkygxchvssvmjgik';
+$mail->Username = $gmailuser;
+$mail->Password = $gmailpass;
 $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
 
-$mail->setFrom('kurukintesekalpen@gmail.com');
+$mail->setFrom($gmailuser);
 $mail->addAddress($request->username);
 $mail->isHTML(true);
 $mail->Subject = $invite;
