@@ -32,10 +32,10 @@ function viewProject(){
                             if(users[m].id == usercheck){
                                 
                                 console.log(users[m].fname+'with id of'+users[m].id+' has access to '+ id);
-                                activeTemplate = '<div class="col-5 active-user-card mb-2 mx-2 py-2 row">'+
+                                activeTemplate = '<div class="col-11 col-lg-5 active-user-card mb-2 mx-2 py-2 row">'+
                                 '<div class="col-4"><img src="'+users[m].image_path+
-                                '" style="width:100%; min-width:60px;aspect-ratio:1; border-radius:50px;" class="">'+
-                                '</div> <div class="col-8 d-none d-md-block"><p class="user-card-data my-1">'+
+                                '" style="width:100%; min-width:60px;aspect-ratio:1;border:solid black 2px; border-radius:50px;" class="">'+
+                                '</div> <div class="col-8"><p class="user-card-data my-1">'+
                                 ''+users[m].fname+' '+users[m].lname+'</p></div></div>';
                                 activeUsers += activeTemplate;
                             }

@@ -2,11 +2,18 @@
  * @var change url
  */
 
+
+
+
+
 let usersTable;
 index();
 function index() {
     usersTable = $("#records").DataTable({
         processing : true,
+        paging: true,
+        scrollCollapse: true,
+        scrollY: '60svh',
         ajax : {
             url : USERS_API + "?index",
             dataSrc : function (response) {
@@ -16,20 +23,21 @@ function index() {
                 for (let i = 0; i<response.data.length; i++) 
                 {
                     let stat="";
-
+                    let image= '<img src="'+response.data[i].image_path+
+                    '" style="width:10%; min-width:60px;aspect-ratio:1;border:solid black 2px; border-radius:50px;" position:absolute;>'
                     if(response.data[i].is_active == 1){
-                        stat ="Active";
+                        stat = '<a href="#" class="badge" style="color:black;background-color:hsla(110, 100%, 50%, 0.863)">Active</a>';
                     }
                     else{
-                        stat="Pending";
+                        stat= '<a href="#" class="badge" style="color:black;background-color:rgb(255, 0, 0)">Pending</a>';
                     }
                     let id = response.data[i].id
                     return_data.push({
-                        id : id,
+                        id : image,
                         fname :  response.data[i].fname,
                         lname :  response.data[i].lname,
                         username : response.data[i].username,
-                        status : stat ,
+                        status :  stat,
                         action : "<button onclick='viewUser(" + id + ")'>VIEW</button> <button onclick='destroy(" + id + ")'>DELETE</button></td>"
                     });
                 }
@@ -63,7 +71,7 @@ function index() {
             { data : 'action' },
         ],
         columnDefs: [ {
-            'targets': [5], // column index (start from 0)
+            'targets': [0,5], // column index (start from 0)
             'orderable': false, // set orderable false for selected columns
       }],
         dom : 'lBfrtip',
@@ -102,7 +110,7 @@ const registerModal = new bootstrap.Modal('#registerModal');
 
 
 function adduser() {
-    let addUserID = $("#username").val();
+    // let addUserID = $("#username").val();
     let urlID= "";
     let hash = {
         "username" : $("#username").val()
@@ -114,8 +122,7 @@ function adduser() {
         "data" :"hash=" + JSON.stringify(hash),
         "success" : function (response) { //success yung response
             let parseResponse = JSON.parse(response);
-            console.log(parseResponse);
-
+            
             urlID = parseResponse.data;
             console.log("this is hashed  "+   urlID);
 
@@ -126,10 +133,14 @@ function adduser() {
             '<div style="width: 100%; display:block; text-align: center; color: white;" ><h1>Welcome to TaskTimer</h1><br></div><td><tr>'+
             '<tr><td><h1 style="display:hidden;">.</h1><td><tr><tr><td><h1 style="display:hidden;">.</h1><td><tr><tr><td><td><tr><tr><td><div style="width: 100%; display:block; text-align: center; color: white;">'+
             '<h2>You have been invited to join TaskTimer by your Manager, Please click the link below to activate your account</h2><br></div><td><tr>'+
-            '<tr><td><div style="width: 100%;  display:block; text-align: center; "><a href="http://localhost/mp2-tasktimer/user/verification/?q='+addUserID+'">'+
+            '<tr><td><div style="width: 100%;  display:block; text-align: center; "><a href="http://localhost/mp2-tasktimer/user/verification/?q='+urlID+'">'+
             '<button style="width: 50%; border: none; height: 50px; border-radius: 10px; color: white;background-color: blueviolet;">ACTIVATE ACCOUNT'+
             '</button></a></div><td><tr><tr><td><h1 style="display:hidden;">.</h1><td><tr></table></center></body>';
             
+
+            console.log(body);
+
+
                 let registrationRequest = {
                     "fname" : $("#fname").val(),
                     "lname" : $("#lname").val(),
@@ -187,4 +198,9 @@ function adduser() {
 
     
 
+}
+
+
+function viewRejected(){
+	myTable.ajax.url(API + '?get&status=REJECTED').load()
 }

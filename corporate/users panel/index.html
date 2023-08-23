@@ -11,12 +11,15 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,600;0,900;1,400&family=Roboto:wght@500&display=swap"
         rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="../../css/default.css">
     <link rel="stylesheet" href="../../css/videobg.css">
     <link rel="stylesheet" href="style.css">
@@ -29,7 +32,8 @@
             <div class="col-1 col-md-2 position-fixed sidebar px-0 px-lg-2">
                 <div class="video-wrapper">
                     <video playsinline autoplay muted loop>
-                        <source src="https://mp-2-task-timer-ixtf.vercel.app/assets/img/backgroundvide.mp4" type="video/mp4">
+                        <source src="https://mp-2-task-timer-ixtf.vercel.app/assets/img/backgroundvide.mp4"
+                            type="video/mp4">
                     </video>
                 </div>
                 <div class="sidebar-label d-none d-md-block text-center">
@@ -65,7 +69,7 @@
                     </ul>
                 </div>
                 <div class="text-center">
-                    <a type="button" class="listed-items" onclick="logout()"><i
+                    <a type="button" class="listed-items mb-3 mb-lg-0" onclick="logout()"><i
                             class="fa-solid fa-arrow-right-from-bracket"></i>
                         <p class="side-category d-none d-md-inline-block">Sign Out</p>
                     </a>
@@ -87,47 +91,43 @@
                     <i class="mt-1 my-md-0 fas fa-regular fa-calendar-days"></i>
                     <div id="datetimeview" class="datetimeview text-start"></div>
                 </div>
-                <header class="" >
+                <header class="">
                     <h2 class="page-label text-start">Users Panel</h2>
                 </header>
                 <!-- ------------------------------ ----------------- START OF HTML BODY CONTENT----------------------------- ----------------- START OF HTML BODY CONTENT------------------------------ ----------------- START OF HTML BODY CONTENT---------------------------- -->
-                <div class=" ms-0 home-menu mt-3">
+                <!-- <div class=" ms-0 home-menu mt-3">
                     <button class="hm-btn-on" id="activity-btn" onclick="switchToActivityTab()">
                         <div class="row align-items-center">
                             <i style="font-size: calc(1vw + 1vh);"
-                                class="fa-solid fa-chart-line col-2 col-lg-5 text-end mb-2 btn-icon"></i>
-                            <h5 style="font-size: calc(1vw + 1vh);" class="col text-start">Today's
-                                Activity </h5>
+                                class="fa-solid fa-user-group col-2 col-lg-5 text-end mb-2 btn-icon"></i>
+                            <h5 style="font-size: calc(1vw + 1vh);" class="col text-start">User List</h5>
                         </div>
                     </button>
                     <button class="hm-btn-off" id="timers-btn" onclick="switchToTimerTab()">
                         <div class="row align-items-center">
                             <i style="font-size: calc(1vw + 1vh);"
-                                class="fa-solid fa-stopwatch col-2 col-lg-5 text-end mb-2 btn-icon"></i>
-                            <h5 style="font-size: calc(1vw + 1vh);" class="col text-start">Task Timers
+                                class="fa-regular fa-bell-slash col-2 col-lg-5 text-end mb-2 btn-icon"></i>
+                            <h5 style="font-size: calc(1vw + 1vh);" class="col text-start">User Activities
                             </h5>
                         </div>
                     </button>
-                </div>
-                <div class="home-menu-container">
+                </div> -->
 
-                    <div class="row active-info-tab" id="active-info-tab">
-                        <div class="container" style="position: relative;">
-                            <div class="row justify-content-end my-2">
-                                <div class="col-4 justify-content-evenly">
-                                    <button type="button" class="me-4" data-bs-toggle="modal"
-                                        data-bs-target="#registerModal">Add User</button>
-                                    <button onclick="index()">View Metrics</button> 
-                                    
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="col-12" style="overflow-x: scroll; overflow-y: scroll; position: relative; height: 80svh;">
-                            <table class="table table-striped table-responsive" id="records" style="width: 99.5%;">
+                    <div class="row justify-content-end active-info-tab" id="active-info-tab">
+
+                        
+
+                        <button type="button" class="col-6 my-3 me-0 me-lg-5 py-2 add-user-btn" data-bs-toggle="modal"
+                            data-bs-target="#registerModal">
+                            <i class="fa-solid fa-square-plus"> </i> Add User
+                        </button>
+
+                        <!-- <div class="col-12"
+                            style="overflow-x: scroll; overflow-y: scroll; position: relative; max-height: 73svh;"> -->
+                            <table class="table nowrap responsive tableusers" id="records" style="width: 99.5%;">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th></th>
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Username</th>
@@ -139,12 +139,8 @@
                         </div>
                     </div>
 
-                    <div class="row timer-item-tab d-none" id="timer-item-tab">
-                    </div>
 
-                </div>
-                
-                
+
                 <!-- ------------------------------ ----------------- END OF HTML BODY CONTENT----------------------------- ----------------- END OF HTML BODY CONTENT------------------------------ ----------------- END OF HTML BODY CONTENT---------------------------- -->
 
             </div>

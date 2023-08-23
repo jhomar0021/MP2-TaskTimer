@@ -16,13 +16,44 @@ $invite = "Task Timer Invite ";
 if(isset($_POST["hash"])){
     $request = json_decode($_POST['hash']);
 
-    $username = password_hash($request->username, PASSWORD_DEFAULT);
-    $response = array();
+    $ciphering = "AES-128-CTR";
+    $option = 0;
+    $encryption_iv = '1234567890123456';
+    $encryption_key = "tasktimer";
+    $param5 = null;
+    $emptyString = "";
+    $encryption = openssl_encrypt(
+        $request->username,
+        $ciphering,
+        $encryption_key,
+        $option,
+        $encryption_iv,
+        $param5,
+        $emptyString,
+        16
+    );
 
-    $response = createResponse(200, "Successful", "Succesful", $username);
+
+    $ciphering = "AES-128-CTR";
+    $option = 0;
+    $encryption_iv = '1234567890123456';
+    $encryption_key = "tasktimer";
+    $param5 = null;
+    $emptyString = "";
+    $decryption = openssl_decrypt(
+        $encryption,
+        $ciphering,
+        $encryption_key,
+        $option,
+        $encryption_iv,
+        $param5,
+        $emptyString,
+    );
+
+
+    $response = createResponse(200, "Successful", "Succesful", $encryption);
 
     echo json_encode($response);
-    
 }
 
 
@@ -61,10 +92,27 @@ echo json_encode($response);
 
 if (isset($_POST['validate'])) { 
 
-    $loginRequest = json_decode($_POST['validate']);
+    $request = json_decode($_POST['validate']);
     $response = array();
 
-    $sql = "SELECT * FROM " . TBL_USERS . " WHERE username = '" . $loginRequest->username . "'";
+    $ciphering = "AES-128-CTR";
+    $option = 0;
+    $encryption_iv = '1234567890123456';
+    $encryption_key = "tasktimer";
+    $param5 = null;
+    $emptyString = "";
+    $decryption = openssl_decrypt(
+        $request->username,
+        $ciphering,
+        $encryption_key,
+        $option,
+        $encryption_iv,
+        $param5,
+        $emptyString,
+    );
+
+
+    $sql = "SELECT * FROM " . TBL_USERS . " WHERE username = '" . $decryption . "'";
     $results = $connection->query($sql);
 
     $users = array();
@@ -93,16 +141,33 @@ if (isset($_POST['verify'])) {
     $updaterRequest = json_decode($_POST['verify']);
     $response = array();
 
+
     if ($updaterRequest->password != $updaterRequest->confirmpassword) {
         $response = createResponse(401, "Error", "Password does not match");
     } else {
         $password = password_hash($updaterRequest->password, PASSWORD_DEFAULT);
 
 
+        $ciphering = "AES-128-CTR";
+        $option = 0;
+        $encryption_iv = '1234567890123456';
+        $encryption_key = "tasktimer";
+        $param5 = null;
+        $emptyString = "";
+        $decryption = openssl_decrypt(
+            $updaterRequest->username,
+            $ciphering,
+            $encryption_key,
+            $option,
+            $encryption_iv,
+            $param5,
+            $emptyString,
+        );
+
             $sqlCommand = "UPDATE " . TBL_USERS . " SET 
             password = '{$password}',
             is_active = '1'
-            WHERE username = '{$updaterRequest->username}'
+            WHERE username = '{$decryption}'
             ";
             $isUpdated = $connection->query($sqlCommand);
 
@@ -121,3 +186,6 @@ if (isset($_POST['verify'])) {
   
     echo json_encode($response);
 }
+
+
+
