@@ -21,7 +21,7 @@
 .accordion{
 
     overflow: hidden;
-    border: solid #ab51ff;
+    border: solid blueviolet;
     border-radius: 15px;
     
 }
@@ -114,10 +114,25 @@
     border: #ab51ff solid;
     border-radius: 10px;
 }
-.accor-pop-btn:hover,.add-task:hover,.project-btn:hover{
+
+.modalclose:hover{
+    color: #ab51ff;
+    border: #ab51ff solid;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.save-btn{
+    border: #ab51ff solid;
+    color: #ab51ff;
+    transition: .2s;
+    border-radius: 5px;
+}
+.save-btn:hover,.modalclose,.accor-pop-btn:hover,.add-task:hover,.project-btn:hover{
     color: white;
     background-color: #ab51ff;
-    transition: .5s;
+    transition: .2s;
+    border: solid #ab51ff;
 }
 .active-user-card{
     border-radius: 5px;
@@ -126,4 +141,13 @@
 }
 .user-card-data{
     margin: auto;
+    overflow: hidden;
+}
+.input-timer-name{
+    border: solid #ab51ff 2px;
+}
+
+.modal-header{
+    background-color: #ab51ff;
+    color: white;
 }

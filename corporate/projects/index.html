@@ -30,7 +30,8 @@
             <div class="col-1 col-md-2 position-fixed sidebar px-0 px-lg-2">
                 <div class="video-wrapper">
                     <video playsinline autoplay muted loop>
-                        <source src="https://mp-2-task-timer-ixtf.vercel.app/assets/img/backgroundvide.mp4" type="video/mp4" />
+                        <source src="https://mp-2-task-timer-ixtf.vercel.app/assets/img/backgroundvide.mp4"
+                            type="video/mp4" />
                     </video>
                 </div>
                 <div class="sidebar-label d-none d-md-block text-center">
@@ -149,7 +150,7 @@
                     </div>
                 </div>
                 <div class="modal-footer atmodalbody">
-                    <button onclick="addtimer();" data-bs-dismiss="modal">Save</button>
+                    <button class="save-btn" onclick="addtimer();" data-bs-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>
@@ -196,22 +197,27 @@
                     </button>
                 </div>
                 <div class="modal-body atmodalbody">
-                    <table class="date-inputs mb-3" style="width: 99.5%;">
-                        <thead>
-                            <tr>
-                                <th><p class="">From Date : </p></th>
-                                <th><input type="datetime-local" class="data-inputs" id="from-date" name="from-date" value=""></th>
-                                <th><p style="color:white"> spacer: </p></th>
-                                <th><p class="">To Date : </p></th>
-                                <th><input type="datetime-local" class="data-inputs" id="to-date" name="to-date" value=""></th>
-                                <th><p style="color:white"> spacer: </p></th>
-                                <th>                                
-                                    <button class="data-inputs" id="view-button">
+
+                    <div class="container-fluid mb-5">
+                        <div class="row">
+                            <div class="col-6 col-md-5 mb-2" style="max-height: 30px;">
+                                <label for="from-date">From Date:</label>
+                                <input type="datetime-local" class="data-inputs " id="from-date" name="from-date"
+                                    value="">
+                            </div>
+                            <div class="col-6 col-md-5 mb-2" style="max-height: 30px;">
+                                <label for="to-date">To Date:</label>
+                                <input type="datetime-local" class="data-inputs " id="to-date" name="to-date" value="">
+                            </div>
+                            <div class="col-12 col-md-2 mb-2" style="max-height: 30px;">
+                                <label for="view-button"></label>
+                                <button class="data-inputs" id="view-button">
                                     <p class="button-label">View</p>
-                                </button></th>
-                            </tr>
-                        </thead>
-                    </table>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="col-12"
                         style="overflow-x: scroll; overflow-y: scroll; position: relative; height: 80svh;">
@@ -253,4 +259,5 @@
     <script src="https://kit.fontawesome.com/77ec53770a.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
