@@ -1,148 +1,279 @@
-/* button{
-    border: 2px solid #ab51ff;
-    background-color: transparent;
-    border-radius: 5px;
-    transition: .2s;
-}
 
-button:hover {
-    border: 2px solid #ab51ff;
-    background-color: #ab51ff;
-    color: white;
-    border-radius: 5px;
-} */
-
-
-.home-menu-container {
-    border: solid blueviolet;
-    border-top: none;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    min-height: 40svh;
-    margin-bottom: 2vh;
-}
-
-.home-menu {
-    display: flex;
-    vertical-align: baseline;
-    justify-content: space-between;
-    margin: 0;
-    width: 100%;
-    position: sticky;
-    top:6vh;
-    background-color: white;
-    transition: 0.3s;
-}
-
-.hm-btn-on {
-    width: 55%;
-    height: 5vh;
-    border: blueviolet solid;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    background-color: transparent;
-    border-bottom: none;
-    font-family: Roboto;
-    transition: 0.3s;
+@media (orientation: landscape){
+    .home-menu-container {
+        border: solid blueviolet;
+        border-top: none;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        min-height: 40svh;
+        margin-bottom: 2vh;
+    }
     
-}
-.hm-btn-off {
-    width: 45%;
-    height: 5vh;
-    border: blueviolet solid;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    background-image: url(../../assets/img/bg-uneddited.png);
-    background-position: 0px 0px;
-    background-repeat: repeat-x;
-    animation: animatedBackground 20s linear infinite reverse;
-    color: white;
-    font-family: Roboto;
-    transition: 0.3s;
+    .home-menu {
+        display: flex;
+        vertical-align: baseline;
+        justify-content: space-between;
+        margin: 0;
+        width: 100%;
+        position: sticky;
+        top:6vh;
+        background-color: white;
+        transition: 0.3s;
+    }
+    
+    .hm-btn-on {
+        width: 55%;
+        height: 5vh;
+        border: blueviolet solid;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: transparent;
+        border-bottom: none;
+        font-family: Roboto;
+        transition: 0.3s;
+        
+    }
+    .hm-btn-off {
+        width: 45%;
+        height: 5vh;
+        border: blueviolet solid;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-image: url(../../assets/img/bg-uneddited.png);
+        background-position: 0px 0px;
+        background-repeat: repeat-x;
+        animation: animatedBackground 20s linear infinite reverse;
+        color: white;
+        font-family: Roboto;
+        transition: 0.3s;
+    }
+    
+    .active-info-tab{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+        overflow: scroll;
+    }
+    .userlist-tbl{
+        max-height: 50svh;
+    }
+    .add-user-btn{
+        border: solid blueviolet;
+        border-radius: 10px;
+        color: blueviolet;
+        background-color: white;
+        transition: .3s;
+    }
+    
+    .add-user-btn:hover{
+        border: solid blueviolet;
+        border-radius: 10px;
+        background-color: blueviolet;
+        color: white;
+    }
+    div.dt-buttons .dt-button {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: none !important;
+    }
+    
+    /* tbody {
+        display: block;
+        height: 60svh;
+        width: 100%;
+        overflow-y: scroll;
+    }
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+    } */
+    
+    
+    table.dataTable thead th, table.dataTable thead td {
+        padding: 10px;
+        border-bottom: solid blueviolet;
+    }
+    
+    table.dataTable tbody th, table.dataTable tbody td {
+        padding: 8px 10px;
+        border-top: solid blueviolet;
+        border-bottom: none;
+    }
+    .sorting_1,.dtr-control{
+        width: 10px;
+    }
+    
+    
+    .sorting_2,.dtr-control{
+        width: 30px;
+    }
+    
+    .sorting_3,.dtr-control{
+        width: 30px;
+    }
+    
+    .sorting_4,.dtr-control{
+        width: 40%;
+    }
+    .sorting_5,.dtr-control{
+        width: 10%;
+    }
+    .sorting_6,.dtr-control{
+        width: 20px;
+    }
+    
+    .adding{
+        width: 49%;min-height: 10vw;border: solid blueviolet; border-radius: 10px;display: inline;
+        color: blueviolet;transition: .2s;
+    }
+    
+    .adding:hover{
+        color: white;
+        background-color: blueviolet;
+    
+    }
+
 }
 
-.active-info-tab{
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0;
-    overflow: scroll;
-}
-.userlist-tbl{
-    max-height: 50svh;
-}
-.add-user-btn{
-    border: solid blueviolet;
-    border-radius: 10px;
-    color: blueviolet;
-    background-color: white;
-    transition: .3s;
-}
+@media (orientation: portrait){
 
-.add-user-btn:hover{
-    border: solid blueviolet;
-    border-radius: 10px;
-    background-color: blueviolet;
-    color: white;
-}
-div.dt-buttons .dt-button {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: none !important;
-}
+    .home-menu-container {
+        border: solid blueviolet;
+        border-top: none;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        min-height: 40svh;
+        margin-bottom: 2vh;
+    }
+    
+    .home-menu {
+        display: flex;
+        vertical-align: baseline;
+        justify-content: space-between;
+        margin: 0;
+        width: 100%;
+        position: sticky;
+        top:6vh;
+        background-color: white;
+        transition: 0.3s;
+    }
+    
+    .hm-btn-on {
+        width: 55%;
+        height: 5vh;
+        border: blueviolet solid;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: transparent;
+        border-bottom: none;
+        font-family: Roboto;
+        transition: 0.3s;
+        
+    }
+    .hm-btn-off {
+        width: 45%;
+        height: 5vh;
+        border: blueviolet solid;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-image: url(../../assets/img/bg-uneddited.png);
+        background-position: 0px 0px;
+        background-repeat: repeat-x;
+        animation: animatedBackground 20s linear infinite reverse;
+        color: white;
+        font-family: Roboto;
+        transition: 0.3s;
+    }
+    
+    .active-info-tab{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+        overflow: scroll;
+    }
+    .userlist-tbl{
+        max-height: 50svh;
+    }
+    .add-user-btn{
+        border: solid blueviolet;
+        border-radius: 10px;
+        color: blueviolet;
+        background-color: white;
+        transition: .3s;
+    }
+    
+    .add-user-btn:hover{
+        border: solid blueviolet;
+        border-radius: 10px;
+        background-color: blueviolet;
+        color: white;
+    }
+    div.dt-buttons .dt-button {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: none !important;
+    }
+    
+    /* tbody {
+        display: block;
+        height: 60svh;
+        width: 100%;
+        overflow-y: scroll;
+    }
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+    } */
+    
+    
+    table.dataTable thead th, table.dataTable thead td {
+        padding: 10px;
+        border-bottom: solid blueviolet;
+    }
+    
+    table.dataTable tbody th, table.dataTable tbody td {
+        padding: 8px 10px;
+        border-top: solid blueviolet;
+        border-bottom: none;
+    }
+    .sorting_1,.dtr-control{
+        width: 10px;
+    }
+    
+    
+    .sorting_2,.dtr-control{
+        width: 30px;
+    }
+    
+    .sorting_3,.dtr-control{
+        width: 30px;
+    }
+    
+    .sorting_4,.dtr-control{
+        width: 40%;
+    }
+    .sorting_5,.dtr-control{
+        width: 10%;
+    }
+    .sorting_6,.dtr-control{
+        width: 20px;
+    }
+    
+    .adding{
+        width: 49%;min-height: 10vw;border: solid blueviolet; border-radius: 10px;display: inline;
+        color: blueviolet;transition: .2s;
+    }
+    
+    .adding:hover{
+        color: white;
+        background-color: blueviolet;
+    
+    }
 
-/* tbody {
-    display: block;
-    height: 60svh;
-    width: 100%;
-    overflow-y: scroll;
-}
-thead, tbody tr {
-    display: table;
-    width: 100%;
-} */
-
-
-table.dataTable thead th, table.dataTable thead td {
-    padding: 10px;
-    border-bottom: solid blueviolet;
-}
-
-table.dataTable tbody th, table.dataTable tbody td {
-    padding: 8px 10px;
-    border-top: solid blueviolet;
-    border-bottom: none;
-}
-.sorting_1,.dtr-control{
-    width: 10px;
-}
-
-
-.sorting_2,.dtr-control{
-    width: 30px;
-}
-
-.sorting_3,.dtr-control{
-    width: 30px;
-}
-
-.sorting_4,.dtr-control{
-    width: 40%;
-}
-.sorting_5,.dtr-control{
-    width: 10%;
-}
-.sorting_6,.dtr-control{
-    width: 20px;
-}
-
-.adding{
-    width: 49%;min-height: 10vw;border: solid blueviolet; border-radius: 10px;display: inline;
-    color: blueviolet;transition: .2s;
-}
-
-.adding:hover{
-    color: white;
-    background-color: blueviolet;
-
+    .dataTables_wrapper .dataTables_filter {
+        margin-top: 0.5em;
+        display: none;
+    }
 }

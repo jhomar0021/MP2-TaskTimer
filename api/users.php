@@ -186,23 +186,88 @@ if (isset($_POST['destroy'])) {
 
 
     $sqlCommand = "DELETE FROM tbl_users WHERE id = $request->id AND added_by = $sessionID";
+    $sqlCommand2 = "DELETE FROM associate WHERE user_id = $request->id AND added_by = $sessionID";
+
+    $isDeleted = $connection->query($sqlCommand);
+    $isDeleted2 = $connection->query($sqlCommand2);
+
+    $response = array();
+
+    if ($isDeleted||$isDeleted2) {
+        $response = createResponses(200, "Successful", "Successfully Deleted",$isDeleted,$isDeleted2);
+    } else {
+        $response = createResponse(300, "Error", "Error while deleting user");
+
+    }
     
+    echo json_encode($response);
+}
+
+
+if (isset($_POST['updatenotif'])) {
+    $request = json_decode($_POST['updatenotif']);
+
+
+
+    $sqlCommand = "SELECT tbl_users.fname,tbl_users.lname,tbl_users.id as created_by FROM associate LEFT JOIN tbl_users ON tbl_users.id = associate.added_by WHERE associate.user_id = $sessionID AND associate.status = 0;";
+
+    
+
+    $results = $connection->query($sqlCommand);
+
+    $records = array();
+    $response = array();
+
+
+    while ($row = $results->fetch_assoc()) {
+        array_push($records, $row);
+    }
+
+    $response = createResponse(200, "Success", "Notification Updated", $records);
+
+    echo json_encode($response);
+}
+
+if (isset($_POST['declineinvite'])) {
+    $request = json_decode($_POST['declineinvite']);
+
+
+    $sqlCommand = "DELETE FROM associate WHERE user_id = $request->user_id AND added_by = $request->created_by";
+
+
 
     $isDeleted = $connection->query($sqlCommand);
 
     $response = array();
 
     if ($isDeleted) {
-        $response = createResponse(200, "Successful", "Successfully Deleted");
+        $response = createResponses(200, "Successful", "Successfully Deleted",$isDeleted,$isDeleted2);
     } else {
-        $sqlCommand2 = "DELETE FROM associate WHERE user_id = $request->id AND added_by = $sessionID";
-        $isDeleted2 = $connection->query($sqlCommand2);
-        if ($isDeleted2) {
-            $response = createResponse(200, "Successful", "Successfully Deleted");
-        } else {
-            $response = createResponse(300, "Error", "Error while deleting user");
-        }
+        $response = createResponse(300, "Error", "Error while deleting user");
+
     }
     
+    echo json_encode($response);
+}
+
+
+if (isset($_POST['acceptinvite'])) {
+    $request = json_decode($_POST['acceptinvite']);
+
+    $sqlCommand = "UPDATE " . TBL_ASSOC . " SET 
+    status = '1'
+    WHERE user_id = {$request->user_id}
+    AND added_by = {$request->created_by}
+    ";
+    $isUpdated = $connection->query($sqlCommand);
+
+    $response = array();
+
+    if ($isUpdated) {
+        $response = createResponse(200, "Successful", "Successfully Updated user");
+    } else {
+        $response = createResponse(300, "Error", "Error while updating user");
+    }
+
     echo json_encode($response);
 }

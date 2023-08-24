@@ -27,7 +27,7 @@ function index() {
         processing : true,
         paging: true,
         scrollCollapse: true,
-        scrollY: '50svh',
+        scrollY: '57svh',
         ajax : {
             url : USERS_API + "?index",
             dataSrc : function (response) {
@@ -53,7 +53,7 @@ function index() {
                         lname :  response.data[i].lname,
                         username : response.data[i].username,
                         status :  stat,
-                        action : "<button onclick='viewUser(" + id + ")'>VIEW</button> <button onclick='destroy(" + id+","+createdby+ ")'>DELETE</button></td>"
+                        action : "<button onclick='viewUser(" + id + ")'>VIEW</button> <button onclick='destroy(" + id+","+userID+ ")'>DELETE</button></td>"
                     });
                 }
 
@@ -96,7 +96,9 @@ function index() {
             'csvHtml5',
         ]
     });
+
 }
+
 
 function show(id) {
     let idRequest = { "id" : id}; //$("#id").val() <- dito naka lagay yung specific id
@@ -224,8 +226,8 @@ function adduser() {
 }
 
 
-function viewRejected(){
-	myTable.ajax.url(API + '?get&status=REJECTED').load()
+function hideInactive(){
+	usersTable.ajax.url(USERS_API + '?get&name=test').load()
 }
 
 function clear(){

@@ -152,7 +152,7 @@ function addtimer() {
             "error" : function (xhr, status, error) {
                 alert("Error")
                 }
-            })
+            });
     
 }
 
