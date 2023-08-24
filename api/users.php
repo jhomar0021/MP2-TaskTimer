@@ -5,15 +5,21 @@ session_start();
 $sessionID = $_SESSION['logged-in-user']["id"];
 
 if (isset($_GET['index'])) {
-    $sqlCommand = "SELECT * FROM `tbl_users` WHERE `added_by` = $sessionID;";
-    $results = $connection->query($sqlCommand);
+    
+    $sql = "SELECT *,users.added_by as 
+    created_by,associate.added_by as nil from tbl_users as users LEFT JOIN associate 
+    as associate ON users.id = associate.user_id WHERE users.added_by = $sessionID or associate.added_by = $sessionID;";
+    $results = $connection->query($sql);
 
-    $response = array();
+    
     $records = array();
 
     while ($row = $results->fetch_assoc()) {
         array_push($records, $row);
     }
+
+
+    $response = array();
 
     $response = createResponse(200, "Successful", "Succesful", $records);
 
@@ -85,22 +91,6 @@ if (isset($_POST['update'])) {
     echo json_encode($response);
 }
 
-if (isset($_POST['destroy'])) {
-    $request = json_decode($_POST['destroy']);
-
-    $sqlCommand = "DELETE FROM " . TBL_USERS . " WHERE id = " . $request->id;
-    $isDeleted = $connection->query($sqlCommand);
-
-    $response = array();
-
-    if ($isDeleted) {
-        $response = createResponse(200, "Successful", "Successfully Deleted");
-    } else {
-        $response = createResponse(300, "Error", "Error while deleting user");
-    }
-
-    echo json_encode($response);
-}
 
 
 if (isset($_POST['adduser'])) {
@@ -146,5 +136,73 @@ if (isset($_POST['adduser'])) {
                 $response = createResponse(300, "Error", "Username already exist");
             }
         }
+    echo json_encode($response);
+}
+
+
+if (isset($_POST['addexistinguser'])) {
+    $registerRequest = json_decode($_POST['addexistinguser']);
+
+    $response = array();
+
+
+            $sqlDuplicate = "SELECT * FROM `tbl_users` WHERE username = '$registerRequest->username';";
+            $results = $connection->query($sqlDuplicate);
+
+
+            $count = $results->num_rows;
+
+            $user = array();
+
+            while ($row = $results->fetch_assoc()) {
+                array_push($user, $row);
+            }
+
+            if($count == 0){
+                $response = createResponse(300, "Error", "Username doesn't exist");
+
+            }
+            else{
+                $sql = "INSERT INTO `associate`(`added_by`, `user_id`) 
+                VALUES ('{$sessionID}','{$user[0]['id']}')";
+        
+                $isInserted = $connection->query($sql);
+        
+                if ($isInserted) {
+                    $response = createResponse(200, "Successfully Registered", "",$user);
+                    
+                } else {
+                    $response = createResponse(300, "Error", "Error while saving user");
+                }
+            }
+        
+    echo json_encode($response);
+}
+
+
+if (isset($_POST['destroy'])) {
+    $request = json_decode($_POST['destroy']);
+
+
+
+    $sqlCommand = "DELETE FROM tbl_users WHERE id = $request->id AND added_by = $sessionID";
+    
+
+    $isDeleted = $connection->query($sqlCommand);
+
+    $response = array();
+
+    if ($isDeleted) {
+        $response = createResponse(200, "Successful", "Successfully Deleted");
+    } else {
+        $sqlCommand2 = "DELETE FROM associate WHERE user_id = $request->id AND added_by = $sessionID";
+        $isDeleted2 = $connection->query($sqlCommand2);
+        if ($isDeleted2) {
+            $response = createResponse(200, "Successful", "Successfully Deleted");
+        } else {
+            $response = createResponse(300, "Error", "Error while deleting user");
+        }
+    }
+    
     echo json_encode($response);
 }

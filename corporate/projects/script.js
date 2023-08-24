@@ -242,6 +242,9 @@ function manageUsers(id) {
 
     usersTable = $("#managemembers").DataTable({
         processing : true,
+        paging: true,
+        scrollCollapse: true,
+        scrollY: '60svh',
         ajax : {
             url :  TIMERRECORD_API +"?manageusers=" + JSON.stringify(dataRequest),
             dataSrc : function (response) {
@@ -289,6 +292,16 @@ function manageUsers(id) {
             { data : 'status' },
             { data : 'action' },
         ],
+        columnDefs: [ {
+            'targets': [5], // column index (start from 0)
+            'orderable': false, // set orderable false for selected columns
+      }],
+        dom : 'lBfrtip',
+        buttons : [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+        ]
     });
 }
 
@@ -399,6 +412,9 @@ function viewRecords(id) {
 
     metricsTable = $("#viewmetrics").DataTable({
         processing : true,
+        paging: true,
+        scrollCollapse: true,
+        scrollY: '50svh',
         ajax : {
             url : TIMERRECORD_API +"?getdataspanadmin=" + JSON.stringify(dataRequest),
             dataSrc : function (response) {

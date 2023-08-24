@@ -114,23 +114,35 @@ table.dataTable tbody th, table.dataTable tbody td {
     border-bottom: none;
 }
 .sorting_1,.dtr-control{
-    width: 5px;
+    width: 10px;
 }
 
-/* .sorting_2,.dtr-control{
-    width: 20%;
+
+.sorting_2,.dtr-control{
+    width: 30px;
 }
 
 .sorting_3,.dtr-control{
-    width: 20%;
+    width: 30px;
 }
 
 .sorting_4,.dtr-control{
-    width: 20%;
+    width: 40%;
 }
 .sorting_5,.dtr-control{
     width: 10%;
 }
 .sorting_6,.dtr-control{
-    width: 20%;
-} */
+    width: 20px;
+}
+
+.adding{
+    width: 49%;min-height: 10vw;border: solid blueviolet; border-radius: 10px;display: inline;
+    color: blueviolet;transition: .2s;
+}
+
+.adding:hover{
+    color: white;
+    background-color: blueviolet;
+
+}

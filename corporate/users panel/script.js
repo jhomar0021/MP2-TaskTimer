@@ -4,16 +4,30 @@
 
 
 
+const toastLiveExample = document.getElementById('liveToast');
+const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+
+clear();
+
+
+function clear(){
+    $("#fname").val("");
+    $("#lname").val("");
+    $("#username").val("");
+};
+
+
 
 
 let usersTable;
-index();
+
+setTimeout(index,100)
 function index() {
     usersTable = $("#records").DataTable({
         processing : true,
         paging: true,
         scrollCollapse: true,
-        scrollY: '60svh',
+        scrollY: '50svh',
         ajax : {
             url : USERS_API + "?index",
             dataSrc : function (response) {
@@ -23,9 +37,10 @@ function index() {
                 for (let i = 0; i<response.data.length; i++) 
                 {
                     let stat="";
+                    let createdby = response.data[i].created_by;
                     let image= '<img src="'+response.data[i].image_path+
                     '" style="width:10%; min-width:60px;aspect-ratio:1;border:solid black 2px; border-radius:50px;" position:absolute;>'
-                    if(response.data[i].is_active == 1){
+                    if((response.data[i].is_active == 1 && response.data[i].created_by == userID)||(response.data[i].status == 1)){
                         stat = '<a href="#" class="badge" style="color:black;background-color:hsla(110, 100%, 50%, 0.863)">Active</a>';
                     }
                     else{
@@ -33,12 +48,12 @@ function index() {
                     }
                     let id = response.data[i].id
                     return_data.push({
-                        id : image,
+                        image : image,
                         fname :  response.data[i].fname,
                         lname :  response.data[i].lname,
                         username : response.data[i].username,
                         status :  stat,
-                        action : "<button onclick='viewUser(" + id + ")'>VIEW</button> <button onclick='destroy(" + id + ")'>DELETE</button></td>"
+                        action : "<button onclick='viewUser(" + id + ")'>VIEW</button> <button onclick='destroy(" + id+","+createdby+ ")'>DELETE</button></td>"
                     });
                 }
 
@@ -63,7 +78,7 @@ function index() {
             },
         },
         columns : [
-            { data : 'id' },
+            { data : 'image' },
             { data : 'fname' },
             { data : 'lname' },
             { data : 'username' },
@@ -107,7 +122,7 @@ function show(id) {
 }
 
 const registerModal = new bootstrap.Modal('#registerModal');
-
+const addUserModal = new bootstrap.Modal('#add-userModal');
 
 function adduser() {
     // let addUserID = $("#username").val();
@@ -162,12 +177,15 @@ function adduser() {
                     "success" : function (response) {
                         let parseResponse = JSON.parse(response);
                         if(parseResponse.status == 200){
+                            $('#alert-title').html(parseResponse.title);
+                            $('#alert-description').html(parseResponse.description);
+                            toastBootstrap.show()
                             $("#fname").val("");
                             $("#lname").val("");
                             $("#username").val("");
                             usersTable.ajax.reload();
                             registerModal.hide();
-            
+
                             $.ajax({
                                 "url" : SEND_API, //URL of the API
                                 "type" : "POST", //GET and POST 
@@ -180,8 +198,10 @@ function adduser() {
                             });
                         }
                         else{
-                            $("#registeralert").html("<h3>" + parseResponse.title + "</h3>" + "<h5>" + parseResponse.description + "</h5>");
-                        }
+                            $('#alert-status').html('<i class="fa-solid fa-circle-exclamation"></i>');
+                            $('#alert-title').html(parseResponse.title);
+                            $('#alert-description').html(parseResponse.description);
+                            toastBootstrap.show()                        }
                        
                     },
                     "error" : function (xhr, status, error) {
@@ -191,7 +211,10 @@ function adduser() {
 
         },
         "error" : function (xhr, status, error) { //error yung response
-            alert("Error")
+            $('#alert-status').html('<i class="fa-solid fa-circle-exclamation"></i>');
+            $('#alert-title').html(parseResponse.title);
+            $('#alert-description').html(parseResponse.description);
+            toastBootstrap.show()    
         }
     });
 
@@ -203,4 +226,94 @@ function adduser() {
 
 function viewRejected(){
 	myTable.ajax.url(API + '?get&status=REJECTED').load()
+}
+
+function clear(){
+    $("#fname").val("");
+    $("#lname").val("");
+    $("#username").val("");
+    $("#e-username")
+}
+
+function adduserExist(){
+    let registrationRequest = {
+        "username" : $("#e-username").val(),
+    }
+
+    $.ajax({
+        "url" : USERS_API, //URL of the API
+        "type" : "POST", //GET and POST 
+        "data" : "addexistinguser=" + JSON.stringify(registrationRequest), //auth will be our php variable $_POST['auth']
+        //JS JSON.stringify -> PHP json_decode
+        //PHP json_encode -> JSON.parse
+        //5. Check your API and do the process
+        "success" : function (response) {
+            let parseResponse = JSON.parse(response);
+            if(parseResponse.status == 200){
+
+                $("#e-username").val("");
+                usersTable.ajax.reload();
+                addUserModal.hide();
+                $('#alert-title').html(parseResponse.title);
+                $('#alert-description').html(parseResponse.description);
+                toastBootstrap.show()
+            }
+            else{
+                $("#registeralert").html("<h3>" + parseResponse.title + "</h3>" + "<h5>" + parseResponse.description + "</h5>");
+                $('#alert-title').html(parseResponse.title);
+                $('#alert-description').html(parseResponse.description);
+                toastBootstrap.show()
+            }
+           
+        },
+        "error" : function (xhr, status, error) {
+            $('#alert-status').html('<i class="fa-solid fa-circle-exclamation"></i>');
+            $('#alert-title').html(parseResponse.title);
+            $('#alert-description').html(parseResponse.description);
+            toastBootstrap.show()    
+        }
+    });
+}
+
+
+
+function destroy(id,createdby) {
+
+    if (!confirm("Are you sure you want to delete?")) {
+        return;
+    }
+
+    let idRequest = {
+         "id" : id ,
+         "added_by" : createdby
+        }; 
+
+    $.ajax({
+        "url" : USERS_API, //URL of the API
+        "type" : "POST", //GET and POST 
+        "data" : "destroy=" + JSON.stringify(idRequest), //auth will be our php variable $_POST['auth']
+        "success" : function (response) { //success yung response
+            console.log(response)
+            let parseResponse = JSON.parse(response);
+            //Do certain process
+
+            if (parseResponse.status == 200) {
+                //index();
+
+                usersTable.ajax.reload();
+            }
+            $('#alert-status').html('<i class="fa-solid fa-circle-exclamation"></i>');
+            $('#alert-title').html(parseResponse.title);
+            $('#alert-description').html(parseResponse.description);
+            toastBootstrap.show()    
+            
+        },
+        "error" : function (xhr, status, error) { //error yung response
+            $('#alert-status').html('<i class="fa-solid fa-circle-exclamation"></i>');
+            $('#alert-title').html(parseResponse.title);
+            $('#alert-description').html(parseResponse.description);
+            toastBootstrap.show()    
+        }
+    });
+    
 }

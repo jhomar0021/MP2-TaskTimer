@@ -151,3 +151,23 @@
     background-color: #ab51ff;
     color: white;
 }
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px;
+    border-bottom: solid blueviolet;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 8px 10px;
+    border-bottom: solid blueviolet;
+    border-top: none;
+}
+.sorting_1,.dtr-control{
+    width: 5px;
+}
+
+div.dt-buttons .dt-button {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: none !important;
+}

@@ -95,70 +95,71 @@
                     <h2 class="page-label text-start">Users Panel</h2>
                 </header>
                 <!-- ------------------------------ ----------------- START OF HTML BODY CONTENT----------------------------- ----------------- START OF HTML BODY CONTENT------------------------------ ----------------- START OF HTML BODY CONTENT---------------------------- -->
-                <!-- <div class=" ms-0 home-menu mt-3">
-                    <button class="hm-btn-on" id="activity-btn" onclick="switchToActivityTab()">
-                        <div class="row align-items-center">
-                            <i style="font-size: calc(1vw + 1vh);"
-                                class="fa-solid fa-user-group col-2 col-lg-5 text-end mb-2 btn-icon"></i>
-                            <h5 style="font-size: calc(1vw + 1vh);" class="col text-start">User List</h5>
-                        </div>
+
+                <div class="row justify-content-end active-info-tab" id="active-info-tab">
+
+
+
+                    <button type="button" onclick="clear()" class="col-6 my-3 me-0 me-lg-5 py-2 add-user-btn" data-bs-toggle="modal"
+                        data-bs-target="#addModal">
+                        <i class="fa-solid fa-square-plus"> </i> Add User
                     </button>
-                    <button class="hm-btn-off" id="timers-btn" onclick="switchToTimerTab()">
-                        <div class="row align-items-center">
-                            <i style="font-size: calc(1vw + 1vh);"
-                                class="fa-regular fa-bell-slash col-2 col-lg-5 text-end mb-2 btn-icon"></i>
-                            <h5 style="font-size: calc(1vw + 1vh);" class="col text-start">User Activities
-                            </h5>
-                        </div>
-                    </button>
-                </div> -->
+                    <table class="table nowrap responsive tableusers" id="records" style="width: 99.5%;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
 
-                    <div class="row justify-content-end active-info-tab" id="active-info-tab">
 
-                        
 
-                        <button type="button" class="col-6 my-3 me-0 me-lg-5 py-2 add-user-btn" data-bs-toggle="modal"
-                            data-bs-target="#registerModal">
-                            <i class="fa-solid fa-square-plus"> </i> Add User
-                        </button>
+            <!-- ------------------------------ ----------------- END OF HTML BODY CONTENT----------------------------- ----------------- END OF HTML BODY CONTENT------------------------------ ----------------- END OF HTML BODY CONTENT---------------------------- -->
 
-                        <!-- <div class="col-12"
-                            style="overflow-x: scroll; overflow-y: scroll; position: relative; max-height: 73svh;"> -->
-                            <table class="table nowrap responsive tableusers" id="records" style="width: 99.5%;">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+        </div>
+    </div>
+    </div>
+    <!-- ------------------------------ ----------------- ADD MODAL CONTENTS----------------------------- ----------------- ADD MODAL CONTENTS------------------------------ ----------------- ADD MODAL CONTENTS---------------------------- -->
+
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <strong>ADD A USER TO YOUR GROUP</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="addalert" class="bg-danger-subtle text-center">
                     </div>
 
+                    <button  class="adding" data-bs-toggle="modal" data-bs-target="#registerModal"><i class="fa-solid fa-user-plus"></i>Add New User</button>
 
+                    <button  class="adding" data-bs-toggle="modal" data-bs-target="#add-userModal"><i class="fa-solid fa-user"></i>Add Existing
+                        User</button>
 
-                <!-- ------------------------------ ----------------- END OF HTML BODY CONTENT----------------------------- ----------------- END OF HTML BODY CONTENT------------------------------ ----------------- END OF HTML BODY CONTENT---------------------------- -->
-
+                    <div class="mb-4"></div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- ------------------------------ ----------------- ADD MODAL CONTENTS----------------------------- ----------------- ADD MODAL CONTENTS------------------------------ ----------------- ADD MODAL CONTENTS---------------------------- -->
 
 
     <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <strong>Sign-up for a Task Timer Account</strong>
+                    <strong>CREATE A NEW USER ACCOUNT</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div id="registeralert" class="bg-danger-subtle text-center">
-                    </div>
+
                     <div class="mb-4">
                         <label for="exampleInputEmail1" class="form-label">First name</label>
                         <input type="text" required class="form-control" id="fname" aria-describedby="emailHelp">
@@ -181,6 +182,45 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="add-userModal" tabindex="-1" aria-labelledby="add-userModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <strong>ADD AN EXISTING USER TO YOUR GROUP</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="mb-4">
+                        <label for="exampleInputEmail1" class="form-label">Username/Email Address</label>
+                        <input type="email" required class="form-control" id="e-username" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-4"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="" onclick="adduserExist()">Add User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header text-center">
+            <div id="alert-status"></div>
+            <strong class="me-auto" id="alert-title"></strong>
+            <small></small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            <p id="alert-description"></p>
+          </div>
+        </div>
+      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
