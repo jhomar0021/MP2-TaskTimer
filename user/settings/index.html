@@ -24,10 +24,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-1 col-md-2 position-fixed sidebar px-0 px-lg-2"
-            poster="https://mp-2-task-timer-ixtf.vercel.app/assets/img/bg-uneddited.png">
+                poster="https://mp-2-task-timer-ixtf.vercel.app/assets/img/bg-uneddited.png">
                 <div class="video-wrapper">
-                    <video playsinline autoplay muted loop>
-                        <source src="https://mp-2-task-timer-ixtf.vercel.app/assets/img/backgroundvide.mp4" type="video/mp4">
+                    <video playsinline autoplay muted loop
+                        poster="https://mp-2-task-timer-ixtf.vercel.app/assets/img/bg-uneddited.png">
+                        <source src="https://mp-2-task-timer-ixtf.vercel.app/assets/img/backgroundvide.mp4"
+                            type="video/mp4">
                     </video>
                 </div>
                 <div class="sidebar-label d-none d-md-block text-center">
@@ -92,8 +94,9 @@
                     <div class="col-12">
                         <div class="card text-center mb-3" style="width: 15rem;">
                             <div class="card-body">
-                                <div id="uploader"><img src="https://mp-2-task-timer-ixtf.vercel.app/assets/img/upload-image-icon-png-26.jpg" alt="" class="uploadpic"
-                                    ></div>
+                                <div id="uploader"><img
+                                        src="https://mp-2-task-timer-ixtf.vercel.app/assets/img/upload-image-icon-png-26.jpg"
+                                        alt="" class="uploadpic"></div>
                                 <input type="file" id="file" accept="image/*">
                                 <label class="file-label" for="file">Update Profile Photo</label>
                             </div>
@@ -119,6 +122,25 @@
                     </div>
                 </div>
 
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+                        data-bs-autohide="false">
+                        <div class="toast-header text-center">
+                            <div id="alert-status"></div>
+                            <strong class="me-auto" id="alert-title">You have been invited to Task Timer Groups</strong>
+
+                        </div>
+                        <div class="toast-body">
+                            <table style="width: 100%;" id="invite-list">
+                                <tr>
+                                    <td>Jhom Has invited</td>
+                                    <td>Accept</td>
+                                    <td>Decline</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
                 <!-- ------------------------------ ----------------- END OF HTML BODY CONTENT----------------------------- ----------------- END OF HTML BODY CONTENT------------------------------ ----------------- END OF HTML BODY CONTENT---------------------------- -->
 
             </div>
@@ -136,6 +158,7 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/77ec53770a.js" crossorigin="anonymous"></script>
+    <script src="../../js/notif.js"></script>
 
 </body>
 

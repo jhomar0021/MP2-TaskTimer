@@ -169,12 +169,13 @@ function viewRecords() {
                     "</tr>";
 
                     return_data.push({
-                        sessionid : sessions[i].id,
+
+                        time : activeTimeDisplay,
+                        submit : submitted,
+                        rate : prodRate,
                         start :  displaystart,
                         end :  displayend,
-                        submit : submitted,
-                        time : activeTimeDisplay,
-                        rate : prodRate
+                        sessionid : sessions[i].id,
                     });
                 }
                 return return_data;
@@ -198,12 +199,12 @@ function viewRecords() {
             },
         },
         columns : [
-            { data : 'sessionid' },
+            { data : 'time' },
+            { data : 'submit' },
+            { data : 'rate' },
             { data : 'start' },
             { data : 'end' },
-            { data : 'submit' },
-            { data : 'time' },
-            { data : 'rate' },
+            { data : 'sessionid' },
         ],
         dom : 'lBfrtip',
         buttons : [
@@ -214,6 +215,7 @@ function viewRecords() {
     });
 }
 
-viewRecords()
 
-let myTimeout = setTimeout(viewRecords,200)
+
+setTimeout(viewRecords,500)
+viewRecords()

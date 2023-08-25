@@ -53,7 +53,7 @@ function index() {
                         lname :  response.data[i].lname,
                         username : response.data[i].username,
                         status :  stat,
-                        action : "<button onclick='viewUser(" + id + ")'>VIEW</button> <button onclick='destroy(" + id+","+userID+ ")'>DELETE</button></td>"
+                        action : "<button onclick='destroy(" + id+","+userID+ ")'>DELETE</button></td>"
                     });
                 }
 

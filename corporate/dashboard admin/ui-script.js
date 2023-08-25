@@ -13,6 +13,7 @@ let dayDate ="";
 let dayDateTom= "";
 
 
+
 helloUser();
 setTimeout(helloUser,100);
 function helloUser(){
@@ -36,7 +37,8 @@ function switchToTimerTab(){
     timersTab.classList.remove("d-none")
     activeTab.classList.add("d-none");
 }
-
+;
+setDefaultDate();
 
 function setDefaultDate(){
     var getToday = new Date(); 
@@ -135,90 +137,4 @@ function setDefaultDate(){
     if(hrs >=5 && hrs <= 17){
         $("#dayimg").show();
     }
-}
-
-
-
-setTimeout(graphRecords,500);
-
-function graphRecords(){
-    let recordRequest = {
-        'user_id' : $('#userID').text(),
-        'from_time': today,
-        'to_time': todayTime
-    }
-
-    $.ajax({
-        "url" : TIMERRECORD_API, 
-        "type" : "GET", 
-        "data" : "showsessionvalue=" + JSON.stringify(recordRequest),
-        "success" : function (response) { 
-            let parseResponse = JSON.parse(response);
-            $("#active-submit-count").text(parseResponse.data2 + " Submits");
-            let contents = parseResponse.data1;
-            let activeTime = 0;
-            let graph ="";
-            let graphdefaultitems =                                
-                '<div class="graphline" style="grid-column:1/1;"></div>'+
-                '<div class="graphline" style="grid-column:450/450;"></div>'+
-                '<div class="graphline" style="grid-column:900/900;"></div>'+
-                '<div class="graphline" style="grid-column:1350/1350;"></div>'+
-                '<div class="graphline" style="grid-column:1800/1800;"></div>'+
-                '<div class="graphline" style="grid-column:2250/2250;"></div>'+
-                '<div class="graphline" style="grid-column:2700/2700;"></div>'+
-                '<div class="graphline" style="grid-column:3150/3150;"></div>'+
-                '<div class="graphline" style="grid-column:3600/3600;"></div> ';
-            for (let i = 0; i <contents.length; i++) {
-
-                if(contents[i].session_start < today){
-                    contents[i].session_start_value = 0.4;
-                    }
-
-                    let correctionstart = contents[i].session_start_value * 2.5;
-                    let correctionend = contents[i].session_end_value * 2.5;
-                    let graphstart = Math.round(correctionstart);
-                    let graphend =  Math.round(correctionend);
-
-                    let graphItem = '<div class="gridgraphitem" style="grid-column:'+
-                    + graphstart+'/'+ graphend +
-                    ';"></div>';
-
-                    graph = graph + graphItem;
-                    
-                
-
-                let difference = contents[i].session_end_value - contents[i].session_start_value;
-                if(difference < 1){difference = 1}
-                activeTime = activeTime + difference ;     
-            }
-            let activeMins = Math.round((activeTime % 60)*10)/10;
-            if(activeMins < 10){activeMins = "0"+ activeMins};
-            let activeHrs = Math.floor(activeTime/60);
-            if(activeHrs < 10){activeHrs = "0"+ activeHrs};
-            $("#active-time-value").text(activeHrs+":"+activeMins);
-            $("#gridgraph").html(graphdefaultitems+graph);
-
-            let productivity =Math.floor(parseResponse.data2/activeTime*6000);
-            let prodvalue = productivity/100;
-            if(parseResponse.data2 == 0){
-                $("#active-productivity-count").text("No Subbmitted Task");
-            }
-            else{$("#active-productivity-count").text(prodvalue+"/Hour");}
-            
-        },
-        "error" : function (xhr, status, error) { //error yung response
-            alert("Error")
-        }
-    });
-}
-
-
-updateValues();
-
-// setInterval(updateValues,1000);
-
-function updateValues (){
-    console.log("updating..");
-    setDefaultDate();
-    graphRecords();
 }

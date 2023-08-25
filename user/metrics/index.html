@@ -95,9 +95,9 @@
                     <div class="row">
                         <div class="col-12 col-lg-5">
                             <select id="timerlist" class="data-inputs">
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="1"></option>
+                                <option value="2"></option>
+                                <option value="3"></option>
                             </select>
                         </div>
                         <div class="col-6 col-sm-5 col-lg-3 mt-3 mt-lg-0">
@@ -114,21 +114,41 @@
                     </div>
                 </div>
                 <div class="col-12 mt-5" style="overflow-x: scroll; overflow-y: scroll; position: relative; height: 80svh;">
-                    <table class="table table-striped table-responsive" id="records" style="width: 99.5%;" >
+                    <table class="table nowrap responsive" id="records" style="width: 99.5%;" >
                         <thead>
                             <tr>
-                                <th>Session ID</th>
+                                
+                                <th>Total Time</th>
+                                <th>Submitted</th>
+                                <th>Production Rate</th>
                                 <th>Session Start</th>
                                 <th>Session End</th>
-                                <th>Submitted</th>
-                                <th>Total Time</th>
-                                <th>Production Rate</th>
+                                <th>Session ID</th>
                             </tr>
                         </thead>
 
                         <tbody id="content"></tbody>
                     </table>
                 </div>
+
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                      <div class="toast-header text-center">
+                        <div id="alert-status"></div>
+                        <strong class="me-auto" id="alert-title">You have been invited to Task Timer Groups</strong>
+            
+                      </div>
+                      <div class="toast-body">
+                        <table style="width: 100%;" id="invite-list">
+                            <tr>
+                                <td>Jhom Has invited</td>
+                                <td>Accept</td>
+                                <td>Decline</td>
+                            </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 <!-- ---------------------------------------------------- End of HTML BODY -------------------------------------------------------------------------------------------------------- End of HTML BODY -------------------------------------------------------------------------------------------------------- End of HTML BODY ---------------------------------------------------- -->
 
 
@@ -142,7 +162,6 @@
             <script src="../../js/jquery.min.js"></script>
             <script src="../../js/routes.js"></script>
             <script src="../../js/account.js"></script>
-            <script src="../../js/notif.js"></script>
             <script src="../../js/ui-script.js"></script>
             <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
             <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
@@ -158,6 +177,9 @@
                 integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
                 crossorigin="anonymous"></script>
             <script src="https://kit.fontawesome.com/77ec53770a.js" crossorigin="anonymous"></script>
+            
+            <script src="../../js/notif.js"></script>
+
 
 </body>
 

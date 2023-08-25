@@ -1,4 +1,4 @@
-<?php
+<?php   
 include "config.php";
 
 session_start();
@@ -268,6 +268,42 @@ if (isset($_POST['acceptinvite'])) {
     } else {
         $response = createResponse(300, "Error", "Error while updating user");
     }
+
+    echo json_encode($response);
+}
+
+
+if (isset($_POST['adminpanel'])) {
+
+    $sqlCommand = "SELECT tbl_users.id FROM tbl_users LEFT JOIN associate as associate on tbl_users.id = associate.user_id WHERE tbl_users.added_by = $sessionID AND tbl_users.is_active = 1 OR associate.status = 1 AND associate.added_by = $sessionID;";
+    $users = $connection->query($sqlCommand);
+
+    $countUsers= $users->num_rows;
+
+    
+    $sqlCommand2 = "SELECT timer_id FROM tbl_timer WHERE id = $sessionID;";
+    $timers = $connection->query($sqlCommand2);
+
+    $countTimers= $timers->num_rows;
+
+    $sqlCommand3 = "SELECT submit FROM submit_stamp LEFT JOIN tbl_timer on submit_stamp.timer_id = tbl_timer.timer_id WHERE tbl_timer.id = $sessionID;";
+    $submits = $connection->query($sqlCommand3);
+
+    $countsubmits= $submits->num_rows;
+
+    $sqlCommand4 = "SELECT session_start,session_end FROM tbl_timer_session LEFT JOIN tbl_timer ON tbl_timer_session.timer_id = tbl_timer.timer_id WHERE tbl_timer.id = $sessionID;";
+    $timersessions = $connection->query($sqlCommand4);
+
+    $records= array();
+
+    while ($row = $timersessions->fetch_assoc()) {
+        array_push($records, $row);
+    }
+
+
+    $countSubmits = $submits->num_rows;
+    $response = createResponses(200, "Success", "Notification Updated", $countUsers,$countTimers,$countsubmits,$records);
+
 
     echo json_encode($response);
 }

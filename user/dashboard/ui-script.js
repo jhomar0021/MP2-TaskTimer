@@ -213,9 +213,9 @@ function graphRecords(){
 }
 
 
-updateValues();
 
-// setInterval(updateValues,1000);
+
+setInterval(updateValues,1000);
 
 function updateValues (){
     console.log("updating..");
