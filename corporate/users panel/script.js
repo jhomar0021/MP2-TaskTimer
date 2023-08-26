@@ -24,6 +24,7 @@ let usersTable;
 setTimeout(index,100)
 function index() {
     usersTable = $("#records").DataTable({
+        
         processing : true,
         paging: true,
         scrollCollapse: true,
@@ -89,6 +90,11 @@ function index() {
             'targets': [0,5], // column index (start from 0)
             'orderable': false, // set orderable false for selected columns
       }],
+      columnDefs: [ {
+            'targets': [0,4], // column index (start from 0)
+            'width': '10px', // set orderable false for selected columns
+
+     }],
         dom : 'lBfrtip',
         buttons : [
             'copyHtml5',

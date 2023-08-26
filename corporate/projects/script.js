@@ -296,6 +296,11 @@ function manageUsers(id) {
             'targets': [5], // column index (start from 0)
             'orderable': false, // set orderable false for selected columns
       }],
+      columnDefs: [ {
+        'targets': [0,4], // column index (start from 0)
+        'width': '10px', // set orderable false for selected columns
+
+    }],
         dom : 'lBfrtip',
         buttons : [
             'copyHtml5',
