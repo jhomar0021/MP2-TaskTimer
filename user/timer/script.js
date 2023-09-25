@@ -19,31 +19,13 @@ let recorded = false;
 let accountID = "";
 const urlParams = new URLSearchParams(window.location.search);
 let timer_id = urlParams.get('q');
-// var myWindow = window.open("", "myTab_" + Date.now());
 
 
-// checkForDuplicateTab();
+const bc = new BroadcastChannel("decode");
 
-// function checkForDuplicateTab() {
-//     var currentUrl = window.location.href;
-//     var tabs = window.opener ? window.opener.window.frames : window.frames;
-//     console.log(tabs.length);
-//     for (var i = 0; i < tabs.length; i++) {
-//         var tabUrl = tabs[i].location.href;
-//         console.log(tabUrl);
-        
-//       try {
-        
-//         if (tabUrl === currentUrl) {
-//             // tabs[i].focus();
-//             console.log("similar")
-//             window.close();
-//           return true;
-//         }
-//       } catch (e) {}
-//     }
-//     return false;
-//   }
+
+
+
 
 
 

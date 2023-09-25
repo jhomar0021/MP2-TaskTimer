@@ -7,7 +7,7 @@ function buttonHide(){
 
 pipButton.addEventListener("click", async () => {
 
-    if ('documentPictureInPicture' in window) {
+
         const player = document.querySelector("#player");
 
         // Open a Picture-in-Picture window.
@@ -103,13 +103,7 @@ $("#playerContainer").html(popUpSub);
             
           buttonShow();
         });
-    }
-    else {
-        alert("feature is not enebled chrome://flags/#document-picture-in-picture-api")
-        open("url","chrome://flags/#document-picture-in-picture-api");
-
-    }
-
+    
   });
 
   
